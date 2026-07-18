@@ -17,7 +17,7 @@ export const profile = {
   github: 'https://github.com/dooddles07',
   linkedin: 'https://www.linkedin.com/in/brixsonn-romero-0b18b9327',
   resume: '/assets/me/resume.pdf',
-  availability: 'AVAILABLE FOR WORK 2026',
+  availability: 'OPEN FOR WORK: FULL TIME, PART TIME, CONTRACTS',
   stats: [
     { value: '3+', label: 'YEARS WITH AI TOOLS' },
     { value: '9+', label: 'PLATFORMS SHIPPED' },

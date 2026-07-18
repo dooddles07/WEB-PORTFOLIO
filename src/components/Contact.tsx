@@ -53,7 +53,7 @@ export function Contact() {
 
         <Reveal delay={0.15}>
           <p className="max-w-[520px] text-base leading-relaxed text-muted">
-            Open to full time roles, freelance projects, and automation work anywhere in the world.
+            Open for full time, part time, and contract work anywhere in the world.
           </p>
         </Reveal>
 
