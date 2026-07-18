@@ -158,7 +158,7 @@ export function Hero() {
             />
             <div className="glass absolute bottom-4 left-4 flex items-center gap-2.5 rounded-[14px] border border-line-accent px-4 py-3">
               <img src="/assets/me/lettermark.png" alt="" aria-hidden className="h-3 w-auto" />
-              <span className="font-mono text-[11px] tracking-[0.14em] text-muted">FULL STACK · AI-FIRST</span>
+              <span className="font-mono text-[11px] tracking-[0.14em] text-muted">FULL STACK, AI FIRST</span>
             </div>
           </TiltCard>
           <span aria-hidden className="absolute -right-2 top-20 h-2.5 w-2.5 rounded-full bg-cyan" />

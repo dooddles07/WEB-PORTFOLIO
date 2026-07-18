@@ -58,7 +58,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             />
-            <span className="mono-label text-faint">PORTFOLIO — 2026</span>
+            <span className="mono-label text-faint">PORTFOLIO 2026</span>
           </div>
           <span className="font-display text-7xl font-bold tabular-nums leading-none tracking-tight text-ink sm:text-9xl">
             {count}

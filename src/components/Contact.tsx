@@ -33,7 +33,7 @@ export function Contact() {
 
         <Reveal delay={0.15}>
           <p className="max-w-[520px] text-base leading-relaxed text-muted">
-            Open to full-time roles, freelance builds and automation projects — anywhere in the world.
+            Open to full time roles, freelance projects, and automation work anywhere in the world.
           </p>
         </Reveal>
 
@@ -86,7 +86,7 @@ export function Contact() {
                     <path d="M1.5 7h11M7 1.5c1.8 1.6 2.6 3.4 2.6 5.5S8.8 11.4 7 12.5C5.2 10.9 4.4 9.1 4.4 7S5.2 3.1 7 1.5Z" stroke="#8a90a8" strokeWidth="1.2" />
                   </svg>
                 }
-                text="github.com/dooddles07 · linkedin.com/in/brixsonn-romero"
+                text="github.com/dooddles07 and linkedin.com/in/brixsonn-romero"
               />
             </a>
           </div>

@@ -27,7 +27,7 @@ export function Navbar() {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
     >
       <nav className="flex items-center justify-between px-6 py-5 sm:px-14">
-        <a href="#top" aria-label="QUAN7UM — back to top">
+        <a href="#top" aria-label="QUAN7UM, back to top">
           <img src="/assets/me/lettermark.png" alt="QUAN7UM" className="h-3.5 w-auto sm:h-[18px]" />
         </a>
 

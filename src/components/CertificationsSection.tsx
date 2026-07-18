@@ -6,14 +6,14 @@ import { TiltCard } from './shared/TiltCard'
 export function CertificationsSection() {
   return (
     <section id="certifications" className="border-t border-line px-6 py-24 sm:px-14 lg:py-28">
-      <SectionHeader index="05" label="CERTIFICATIONS — ANTHROPIC" />
+      <SectionHeader index="05" label="CERTIFICATIONS BY ANTHROPIC" />
 
       <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
         <h2 className="font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">
           <RevealWords text="Certified on Claude." />
         </h2>
         <Reveal delay={0.2} y={16}>
-          <span className="font-mono text-xs tracking-[0.14em] text-faint">7 CERTIFICATES · ANTHROPIC ACADEMY</span>
+          <span className="font-mono text-xs tracking-[0.14em] text-faint">7 CERTIFICATES FROM ANTHROPIC ACADEMY</span>
         </Reveal>
       </div>
 
@@ -24,7 +24,7 @@ export function CertificationsSection() {
               <TiltCard strength={9} className="overflow-hidden rounded-[14px] border border-line">
                 <img
                   src={cert.image}
-                  alt={`Certificate — ${cert.title}`}
+                  alt={`Certificate for ${cert.title}`}
                   className="aspect-[313/240] w-full object-cover"
                   loading="lazy"
                   draggable={false}
@@ -34,13 +34,6 @@ export function CertificationsSection() {
             </div>
           </Reveal>
         ))}
-
-        <Reveal delay={0.27} y={40}>
-          <div className="flex aspect-[313/240] flex-col items-center justify-center gap-2.5 rounded-[14px] border border-dashed border-line-accent bg-violet/[0.04]">
-            <span className="grad-text font-display text-3xl font-bold">10/10</span>
-            <span className="font-mono text-[11px] tracking-[0.16em] text-muted">AI FLUENCY SCORE</span>
-          </div>
-        </Reveal>
       </div>
     </section>
   )

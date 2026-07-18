@@ -3,7 +3,7 @@ export function Footer() {
     <footer className="flex flex-col items-center justify-between gap-4 border-t border-line px-6 py-7 sm:flex-row sm:px-14">
       <img src="/assets/me/lettermark.png" alt="QUAN7UM" className="h-3 w-auto" />
       <span className="font-mono text-[11px] tracking-[0.1em] text-faint">
-        © 2026 BRIXSONN M. ROMERO — BUILT WITH REACT + CLAUDE CODE
+        © 2026 BRIXSONN M. ROMERO. BUILT WITH REACT AND CLAUDE CODE
       </span>
       <a
         href="#top"
