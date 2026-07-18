@@ -6,7 +6,7 @@
   --color-surface-2: #12121e;
   --color-ink: #f4f5fa;
   --color-muted: #8a90a8;
-  --color-faint: #565c72;
+  --color-faint: #747c96;
   --color-cyan: #5ec8f2;
   --color-blue: #5b7cfa;
   --color-violet: #8b5cf6;
@@ -42,6 +42,36 @@ body {
 ::selection {
   background: rgba(139, 92, 246, 0.4);
   color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* native cursor hides only while the custom cursor is active */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #12121e;
+  border: 1px solid var(--color-line-accent);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  transition: top 0.2s;
+}
+.skip-link:focus-visible {
+  top: 16px;
 }
 
 ::-webkit-scrollbar {
@@ -102,6 +132,17 @@ body {
 }
 .marquee-left { animation: marquee-left 36s linear infinite; }
 .marquee-right { animation: marquee-right 42s linear infinite; }
+
+.marquee-track:hover .marquee-left,
+.marquee-track:hover .marquee-right {
+  animation-play-state: paused;
+}
+
+/* soft fade at both edges of the marquee */
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
 
 /* 3D space for tilt cards */
 .persp {

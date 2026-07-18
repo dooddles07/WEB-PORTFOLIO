@@ -1,21 +1,54 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion'
 import { profile } from '../data/profile'
 
 const links = [
-  { label: 'ABOUT', href: '#about' },
-  { label: 'EXPERIENCE', href: '#experience' },
-  { label: 'PROJECTS', href: '#projects' },
-  { label: 'CERTIFICATIONS', href: '#certifications' },
-  { label: 'CONTACT', href: '#contact' },
+  { label: 'ABOUT', href: '#about', id: 'about' },
+  { label: 'EXPERIENCE', href: '#experience', id: 'experience' },
+  { label: 'PROJECTS', href: '#projects', id: 'projects' },
+  { label: 'CERTIFICATIONS', href: '#certifications', id: 'certifications' },
+  { label: 'CONTACT', href: '#contact', id: 'contact' },
 ]
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [active, setActive] = useState<string | null>(null)
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, 'change', (v) => setScrolled(v > 40))
+
+  // watch section positions; the section crossing the upper third wins.
+  // sections mount after the preloader, so keep retrying until they exist
+  useEffect(() => {
+    let observer: IntersectionObserver | null = null
+    let retry = 0
+
+    const connect = () => {
+      const sections = links
+        .map((link) => document.getElementById(link.id))
+        .filter((el): el is HTMLElement => Boolean(el))
+      if (sections.length < links.length) {
+        retry = window.setTimeout(connect, 400)
+        return
+      }
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) setActive(entry.target.id)
+          }
+        },
+        { rootMargin: '-30% 0px -60% 0px' },
+      )
+      sections.forEach((section) => observer!.observe(section))
+    }
+    connect()
+
+    return () => {
+      clearTimeout(retry)
+      observer?.disconnect()
+    }
+  }, [])
 
   return (
     <motion.header
@@ -36,9 +69,26 @@ export function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className="font-mono text-xs tracking-[0.16em] text-muted transition-colors hover:text-ink"
+              aria-current={active === link.id ? 'true' : undefined}
+              className={`group relative py-1 font-mono text-xs tracking-[0.16em] transition-colors hover:text-ink ${
+                active === link.id ? 'text-ink' : 'text-muted'
+              }`}
             >
               {link.label}
+              {/* hover underline for inactive links */}
+              <span
+                aria-hidden
+                className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-muted/60 transition-transform duration-300 group-hover:scale-x-100"
+              />
+              {/* gradient underline slides between active links */}
+              {active === link.id && (
+                <motion.span
+                  aria-hidden
+                  layoutId="nav-underline"
+                  className="absolute -bottom-0.5 left-0 h-[2px] w-full bg-gradient-to-r from-cyan to-violet"
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                />
+              )}
             </a>
           ))}
           <a
@@ -80,7 +130,9 @@ export function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="py-3 font-mono text-sm tracking-[0.16em] text-muted transition-colors hover:text-ink"
+                  className={`py-3 font-mono text-sm tracking-[0.16em] transition-colors hover:text-ink ${
+                    active === link.id ? 'text-ink' : 'text-muted'
+                  }`}
                 >
                   {link.label}
                 </a>

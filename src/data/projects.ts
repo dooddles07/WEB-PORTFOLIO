@@ -6,6 +6,7 @@ export interface Project {
   stack: string
   image: string
   link?: string
+  repo?: string
 }
 
 export const projects: Project[] = [
@@ -16,8 +17,9 @@ export const projects: Project[] = [
     description:
       'All in one app for running a modern residential community. Residents book shared facilities, reserve restaurant tables, invite guests with digital passes, join events, and read announcements. Staff and management each get their own secure login and dashboards.',
     stack: 'React, Tailwind, Node, Express, Prisma, PostgreSQL',
-    image: '/assets/projects/stayflow.png',
+    image: '/assets/projects/stayflow.webp',
     link: 'https://stayflow-production-bc16.up.railway.app',
+    repo: 'https://github.com/dooddles07/StayFlow',
   },
   {
     name: 'The Lumina',
@@ -26,8 +28,9 @@ export const projects: Project[] = [
     description:
       'Live property management platform with three connected portals. Residents book facilities, register guests, track parcels, report defects, and pay deposits through real Stripe checkout. Every action shows up instantly for managers and guards.',
     stack: 'JavaScript, Node, Express, MongoDB, Stripe, Railway',
-    image: '/assets/projects/lumina.png',
+    image: '/assets/projects/lumina.webp',
     link: 'https://the-lumina-production.up.railway.app',
+    repo: 'https://github.com/dooddles07/The-Lumina',
   },
   {
     name: 'CYA Daily Verse',
@@ -36,7 +39,8 @@ export const projects: Project[] = [
     description:
       'Devotional web app for a youth ministry. Members get a fresh Bible verse every day, plus reading plans, daily challenges, a prayer wall, and events. A mood finder suggests Scripture based on how you feel. Verses come live from public Bible sources.',
     stack: 'Next.js, React, TypeScript, Tailwind, Railway',
-    image: '/assets/projects/cya.png',
+    image: '/assets/projects/cya.webp',
     link: 'https://cya-daily-verses-production.up.railway.app',
+    repo: 'https://github.com/dooddles07/CYA-Daily-Verses',
   },
 ]

@@ -36,20 +36,29 @@ export default function App() {
 
   return (
     <div className="noise">
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       <Preloader onDone={() => setReady(true)} />
       <CustomCursor />
       <ScrollProgress />
       <Navbar />
-      <main style={{ visibility: ready ? 'visible' : 'hidden' }}>
-        <Hero />
-        <About />
-        <TechMarquee />
-        <ExperienceSection />
-        <ProjectsSection />
-        <CertificationsSection />
-        <EducationSection />
-        <Contact />
-        <Footer />
+      {/* sections mount only when the veil starts lifting, so entrance
+          animations play in front of the visitor instead of behind the loader */}
+      <main id="main">
+        {ready && (
+          <>
+            <Hero />
+            <About />
+            <TechMarquee />
+            <ExperienceSection />
+            <ProjectsSection />
+            <CertificationsSection />
+            <EducationSection />
+            <Contact />
+            <Footer />
+          </>
+        )}
       </main>
     </div>
   )

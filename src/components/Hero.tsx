@@ -56,11 +56,11 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="flex items-center gap-2.5 rounded-full border border-line-accent bg-violet/5 px-4 py-2"
           >
-            <span className="h-[7px] w-[7px] rounded-full bg-green-400" aria-hidden>
-              <span className="absolute h-[7px] w-[7px] animate-ping rounded-full bg-green-400/70" />
+            <span className="relative h-[7px] w-[7px] rounded-full bg-green-400" aria-hidden>
+              <span className="absolute inset-0 animate-ping rounded-full bg-green-400/70" />
             </span>
             <span className="font-mono text-[11px] tracking-[0.18em] text-muted">{profile.availability}</span>
           </motion.div>
@@ -73,7 +73,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.05 }}
+            transition={{ duration: 0.7, delay: 0.35 }}
             className="mt-7 flex items-center gap-3.5"
           >
             <span aria-hidden className="h-px w-11 shrink-0 bg-gradient-to-r from-cyan to-violet" />
@@ -83,7 +83,7 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.2 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
             className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-muted"
           >
             {profile.tagline} {profile.location.split(',').slice(0, 2).join(',')}.
@@ -92,7 +92,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.35 }}
+            transition={{ duration: 0.7, delay: 0.65 }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
             <MagneticButton
@@ -116,6 +116,7 @@ export function Hero() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
+                data-cursor="OPEN"
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-line transition-colors hover:border-line-accent hover:bg-violet/10"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -131,6 +132,7 @@ export function Hero() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
+                data-cursor="OPEN"
                 className="flex h-12 w-12 items-center justify-center rounded-full border border-line transition-colors hover:border-line-accent hover:bg-violet/10"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-muted" aria-hidden>
@@ -145,17 +147,20 @@ export function Hero() {
           style={{ y: portraitY, opacity: fade }}
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 1.15, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
           className="relative mx-auto shrink-0 lg:mx-0"
         >
-          <div aria-hidden className="absolute inset-6 rounded-[32px] bg-[radial-gradient(circle,rgba(94,200,242,0.28),rgba(139,92,246,0.14)_55%,transparent_75%)] blur-md" />
+          <div aria-hidden className="absolute -inset-3 rounded-[36px] bg-[radial-gradient(circle,rgba(94,200,242,0.34),rgba(139,92,246,0.2)_55%,transparent_78%)] blur-lg" />
           <TiltCard strength={6} className="relative h-[420px] w-[330px] overflow-hidden rounded-[28px] border border-line-accent bg-surface sm:h-[470px] sm:w-[370px]">
             <img
-              src="/assets/me/profile.png"
+              src="/assets/me/profile.webp"
               alt="Portrait of Brixsonn Romero"
               className="h-full w-full object-cover"
               draggable={false}
             />
+            {/* melt the white studio backdrop into the void */}
+            <div aria-hidden className="absolute inset-0 bg-violet/[0.07] mix-blend-multiply" />
+            <div aria-hidden className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-bg/85 via-bg/25 to-transparent" />
             <div className="glass absolute bottom-4 left-4 flex items-center gap-2.5 rounded-[14px] border border-line-accent px-4 py-3">
               <img src="/assets/me/lettermark.png" alt="" aria-hidden className="h-3 w-auto" />
               <span className="font-mono text-[11px] tracking-[0.14em] text-muted">FULL STACK, AI FIRST</span>
@@ -170,7 +175,7 @@ export function Hero() {
         style={{ opacity: fade }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
+        transition={{ delay: 1.3 }}
         className="relative z-10 flex items-center gap-3 pb-8 pt-6"
         aria-hidden
       >

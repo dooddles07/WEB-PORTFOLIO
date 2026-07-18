@@ -5,7 +5,7 @@ import { Reveal, RevealWords } from './shared/Reveal'
 
 export function About() {
   return (
-    <section id="about" className="border-t border-line px-6 py-24 sm:px-14 lg:py-28">
+    <section id="about" className="scroll-mt-16 border-t border-line px-6 py-24 sm:px-14 lg:py-28">
       <SectionHeader index="01" label="ABOUT" />
 
       <div className="mt-12 flex flex-col gap-12 lg:flex-row lg:justify-between lg:gap-20">

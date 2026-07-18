@@ -6,7 +6,7 @@ export function EducationSection() {
   const { education } = profile
 
   return (
-    <section id="education" className="border-t border-line px-6 py-24 sm:px-14 lg:py-28">
+    <section id="education" className="scroll-mt-16 border-t border-line px-6 py-24 sm:px-14 lg:py-28">
       <div className="flex flex-col gap-12 lg:flex-row lg:gap-20">
         <div className="flex w-full flex-col gap-6 lg:w-[420px] lg:shrink-0">
           <SectionHeader index="06" label="EDUCATION" />

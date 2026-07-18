@@ -24,16 +24,27 @@ export function TechMarquee() {
         <SectionHeader index="02" label="TECH STACK" />
       </div>
 
-      <div className="mt-10 flex flex-col gap-4" aria-label="Technologies I work with">
+      <div className="marquee-track marquee-mask mt-10 flex flex-col gap-4" aria-label="Technologies I work with">
         <div className="flex w-max gap-4 marquee-left">
-          {[...techStack, ...techStack].map((tech, i) => (
-            <Chip key={`${tech}-${i}`} label={tech} index={i} />
+          {techStack.map((tech, i) => (
+            <Chip key={tech} label={tech} index={i} />
           ))}
+          {/* clone half only exists to make the loop seamless */}
+          <div aria-hidden className="flex gap-4">
+            {techStack.map((tech, i) => (
+              <Chip key={`clone-${tech}`} label={tech} index={i} />
+            ))}
+          </div>
         </div>
         <div className="flex w-max gap-4 marquee-right">
-          {[...techStack2, ...techStack2].map((tech, i) => (
-            <Chip key={`${tech}-${i}`} label={tech} highlight={tech === 'Claude Code'} index={i} />
+          {techStack2.map((tech, i) => (
+            <Chip key={tech} label={tech} highlight={tech === 'Claude Code'} index={i} />
           ))}
+          <div aria-hidden className="flex gap-4">
+            {techStack2.map((tech, i) => (
+              <Chip key={`clone-${tech}`} label={tech} highlight={tech === 'Claude Code'} index={i} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

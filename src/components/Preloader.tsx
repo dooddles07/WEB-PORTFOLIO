@@ -12,12 +12,15 @@ export function Preloader({ onDone }: { onDone: () => void }) {
   doneRef.current = onDone
 
   useEffect(() => {
-    if (reduce) {
+    // repeat visits in the same session skip straight to the page
+    const seen = sessionStorage.getItem('q7-loaded')
+    if (reduce || seen) {
       setCount(100)
       setGone(true)
       doneRef.current()
       return
     }
+    sessionStorage.setItem('q7-loaded', '1')
     const start = performance.now()
     let raf = 0
     let exitTimer = 0
