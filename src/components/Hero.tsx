@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { useRef } from 'react'
 import { profile } from '../data/profile'
-import { ParticleField } from './ParticleField'
 import { MagneticButton } from './shared/MagneticButton'
 import { TiltCard } from './shared/TiltCard'
 
@@ -48,7 +47,6 @@ export function Hero() {
   return (
     <section ref={ref} id="top" className="relative flex min-h-svh flex-col overflow-hidden px-6 pt-28 sm:px-14 lg:pt-0">
       <div aria-hidden className="grid-texture absolute inset-0" />
-      <ParticleField />
       <div aria-hidden className="absolute -right-36 -top-44 h-[640px] w-[640px] rounded-full bg-[radial-gradient(circle,rgba(91,124,250,0.22),transparent_68%)]" />
       <div aria-hidden className="absolute -bottom-56 -left-40 h-[560px] w-[560px] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.16),transparent_68%)]" />
 

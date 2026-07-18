@@ -1,4 +1,4 @@
-import { projects, miniProjects, type Project } from '../data/projects'
+import { projects, type Project } from '../data/projects'
 import { SectionHeader } from './shared/SectionHeader'
 import { Reveal } from './shared/Reveal'
 import { ScrollFillText } from './shared/ScrollFillText'
@@ -148,26 +148,6 @@ export function ProjectsSection() {
           </div>
         </div>
 
-        <div className="mt-16">
-          <Reveal>
-            <span className="font-mono text-xs tracking-[0.2em] text-faint">MORE BUILDS</span>
-          </Reveal>
-          <div className="mt-4 flex flex-col">
-            {miniProjects.map((mini, i) => (
-              <Reveal key={mini.name} delay={i * 0.08}>
-                <div className={`flex flex-col gap-1.5 py-5 sm:flex-row sm:items-center sm:justify-between ${i < miniProjects.length - 1 ? 'border-b border-line' : ''}`}>
-                  <div className="flex items-center gap-4">
-                    <span className="font-display text-lg font-semibold text-ink">{mini.name}</span>
-                    <span className="rounded-full border border-line px-2.5 py-1 font-mono text-[10px] tracking-[0.14em] text-faint">
-                      {mini.tag}
-                    </span>
-                  </div>
-                  <span className="max-w-[520px] text-[13px] leading-relaxed text-muted">{mini.description}</span>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   )

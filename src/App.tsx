@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Lenis from 'lenis'
 import { Preloader } from './components/Preloader'
+import { ParticleField } from './components/ParticleField'
 import { CustomCursor } from './components/CustomCursor'
 import { ScrollProgress } from './components/ScrollProgress'
 import { Navbar } from './components/Navbar'
@@ -36,6 +37,10 @@ export default function App() {
 
   return (
     <div className="noise">
+      {/* constellation runs behind the whole page, hero to footer */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-0">
+        <ParticleField />
+      </div>
       <a href="#main" className="skip-link">
         Skip to content
       </a>
@@ -45,7 +50,7 @@ export default function App() {
       <Navbar />
       {/* sections mount only when the veil starts lifting, so entrance
           animations play in front of the visitor instead of behind the loader */}
-      <main id="main">
+      <main id="main" className="relative">
         {ready && (
           <>
             <Hero />
