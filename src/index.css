@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #050508;
+  --color-surface: #0c0c14;
+  --color-surface-2: #12121e;
+  --color-ink: #f4f5fa;
+  --color-muted: #8a90a8;
+  --color-faint: #565c72;
+  --color-cyan: #5ec8f2;
+  --color-blue: #5b7cfa;
+  --color-violet: #8b5cf6;
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-line-accent: rgba(139, 92, 246, 0.28);
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.4);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #050508;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #5b7cfa, #8b5cf6);
+  border-radius: 999px;
+  border: 2px solid #050508;
+}
+
+/* single gradient system carrying the identity */
+.grad-text {
+  background-image: linear-gradient(92deg, #5ec8f2, #5b7cfa 48%, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.grad-bg {
+  background-image: linear-gradient(90deg, #5b7cfa, #8b5cf6);
+}
+
+.glass {
+  background: rgba(12, 12, 20, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+}
+
+/* film-grain noise over the void */
+.noise::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* infinite marquee */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.marquee-left { animation: marquee-left 36s linear infinite; }
+.marquee-right { animation: marquee-right 42s linear infinite; }
+
+/* 3D space for tilt cards */
+.persp {
+  perspective: 1100px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-left,
+  .marquee-right {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
