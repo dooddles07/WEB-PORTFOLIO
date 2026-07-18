@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { experiences, type Experience } from '../data/experience'
 import { SectionHeader } from './shared/SectionHeader'
-import { Reveal, RevealWords } from './shared/Reveal'
+import { Reveal } from './shared/Reveal'
+import { ScrollFillText } from './shared/ScrollFillText'
 import { TiltCard } from './shared/TiltCard'
 import { Lightbox } from './shared/Lightbox'
 
@@ -156,8 +157,8 @@ export function ExperienceSection() {
 
       <div className="relative">
         <SectionHeader index="03" label="CLIENT PLATFORMS" />
-        <h2 className="mt-6 font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">
-          <RevealWords text="Systems shipped for real clients." />
+        <h2 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+          <ScrollFillText text="Systems shipped for real clients." />
         </h2>
         <Reveal delay={0.15} y={16}>
           <p className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-muted">

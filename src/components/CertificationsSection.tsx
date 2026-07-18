@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { certifications } from '../data/certifications'
 import { SectionHeader } from './shared/SectionHeader'
-import { Reveal, RevealWords } from './shared/Reveal'
+import { Reveal } from './shared/Reveal'
+import { ScrollFillText } from './shared/ScrollFillText'
 import { TiltCard } from './shared/TiltCard'
 import { Lightbox } from './shared/Lightbox'
 
@@ -16,8 +17,8 @@ export function CertificationsSection() {
         <SectionHeader index="05" label="CERTIFICATIONS BY ANTHROPIC" />
 
         <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
-          <h2 className="font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">
-            <RevealWords text="Certified on Claude." />
+          <h2 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">
+            <ScrollFillText text="Certified on Claude." />
           </h2>
           <Reveal delay={0.2} y={16}>
             <span className="font-mono text-xs tracking-[0.14em] text-faint">7 CERTIFICATES FROM ANTHROPIC ACADEMY</span>

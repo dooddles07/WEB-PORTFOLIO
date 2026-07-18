@@ -7,6 +7,14 @@ export interface Project {
   image: string
   link?: string
   repo?: string
+  /** featured projects render as the wide spotlight card */
+  featured?: boolean
+}
+
+export interface MiniProject {
+  name: string
+  description: string
+  tag: string
 }
 
 export const projects: Project[] = [
@@ -31,6 +39,7 @@ export const projects: Project[] = [
     image: '/assets/projects/lumina.webp',
     link: 'https://the-lumina-production.up.railway.app',
     repo: 'https://github.com/dooddles07/The-Lumina',
+    featured: true,
   },
   {
     name: 'CYA Daily Verse',
@@ -42,5 +51,23 @@ export const projects: Project[] = [
     image: '/assets/projects/cya.webp',
     link: 'https://cya-daily-verses-production.up.railway.app',
     repo: 'https://github.com/dooddles07/CYA-Daily-Verses',
+  },
+]
+
+export const miniProjects: MiniProject[] = [
+  {
+    name: 'ResqYOU',
+    description: 'Real time emergency response and locator system with shortest path routing.',
+    tag: 'EMERGENCY',
+  },
+  {
+    name: 'CYA FaithWear',
+    description: 'Full stack e-commerce platform from catalog to checkout, built at Ateneo de Naga University.',
+    tag: 'E-COMMERCE',
+  },
+  {
+    name: 'NagaMed',
+    description: 'Mobile clinic booking and nearby clinic discovery app driven by usage analytics.',
+    tag: 'MOBILE',
   },
 ]

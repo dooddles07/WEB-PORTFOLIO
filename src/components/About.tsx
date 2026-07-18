@@ -5,10 +5,18 @@ import { Reveal, RevealWords } from './shared/Reveal'
 
 export function About() {
   return (
-    <section id="about" className="scroll-mt-16 border-t border-line px-6 py-24 sm:px-14 lg:py-28">
+    <section id="about" className="relative scroll-mt-16 overflow-hidden border-t border-line px-6 py-24 sm:px-14 lg:py-28">
+      {/* the brand 7, hollow, anchoring the quiet corner of the section */}
+      <span
+        aria-hidden
+        className="stroke-text pointer-events-none absolute -bottom-24 left-2 hidden select-none font-display text-[420px] font-bold leading-none lg:block"
+      >
+        7
+      </span>
+
       <SectionHeader index="01" label="ABOUT" />
 
-      <div className="mt-12 flex flex-col gap-12 lg:flex-row lg:justify-between lg:gap-20">
+      <div className="relative mt-12 flex flex-col gap-12 lg:flex-row lg:justify-between lg:gap-20">
         <h2 className="max-w-[560px] shrink-0 font-display text-[28px] font-semibold leading-[1.3] tracking-tight text-ink sm:text-[34px]">
           <RevealWords text={profile.aboutHeadline} />
         </h2>
