@@ -53,7 +53,7 @@ export function Navbar() {
   return (
     <motion.header
       className={`fixed inset-x-0 top-0 z-[80] border-b transition-colors duration-300 ${
-        scrolled ? 'glass border-line' : 'border-transparent'
+        open ? 'border-line bg-[#07070d]' : scrolled ? 'glass border-line' : 'border-transparent'
       }`}
       initial={{ y: -80 }}
       animate={{ y: 0 }}
@@ -118,7 +118,7 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="glass border-t border-line lg:hidden"
+            className="overflow-hidden border-t border-line bg-[#07070d] lg:hidden"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
