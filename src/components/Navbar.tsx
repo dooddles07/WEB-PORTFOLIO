@@ -61,7 +61,7 @@ export function Navbar() {
     >
       <nav className="flex items-center justify-between px-6 py-5 sm:px-14">
         <a href="#top" aria-label="QUAN7UM, back to top">
-          <img src="/assets/me/lettermark.png" alt="QUAN7UM" className="h-3.5 w-auto sm:h-[18px]" />
+          <img src="/assets/me/logo-lockup.png" alt="QUAN7UM" className="h-8 w-auto sm:h-10" />
         </a>
 
         <div className="hidden items-center gap-9 lg:flex">
