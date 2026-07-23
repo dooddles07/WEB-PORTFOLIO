@@ -3,7 +3,7 @@ import { projects, type Project } from '../data/projects'
 import { SectionHeader } from './shared/SectionHeader'
 import { Reveal } from './shared/Reveal'
 import { ScrollFillText } from './shared/ScrollFillText'
-import { TiltCard } from './shared/TiltCard'
+import { ShowcaseRail } from './shared/ShowcaseRail'
 import { Lightbox } from './shared/Lightbox'
 
 function Badge({ project }: { project: Project }) {
@@ -25,7 +25,7 @@ function Badge({ project }: { project: Project }) {
 
 function CardLinks({ project }: { project: Project }) {
   return (
-    <div className="mt-1 flex items-center gap-5">
+    <div className="flex items-center gap-5">
       {project.link && (
         <a
           href={project.link}
@@ -61,109 +61,51 @@ function CardLinks({ project }: { project: Project }) {
   )
 }
 
-function ShotLink({ project, className }: { project: Project; className: string }) {
-  const image = (
-    <img
-      src={project.image}
-      alt={`${project.name} screenshot`}
-      className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-      loading="lazy"
-      draggable={false}
-    />
-  )
-  return project.link ? (
-    <a
-      href={project.link}
-      target="_blank"
-      rel="noreferrer"
-      aria-label={`Visit the live site of ${project.name}`}
-      data-cursor="VIEW"
-      className={className}
-    >
-      {image}
-    </a>
-  ) : (
-    <div className={className}>{image}</div>
-  )
-}
-
-/** wide spotlight card for the flagship project */
-function FeaturedCard({ project }: { project: Project }) {
-  return (
-    <Reveal y={50}>
-      <TiltCard strength={4} className="flex flex-col overflow-hidden rounded-[22px] border border-line-accent bg-surface lg:flex-row">
-        <ShotLink project={project} className="relative block aspect-[16/9] w-full overflow-hidden bg-[#0a0a12] lg:aspect-auto lg:w-[58%] lg:shrink-0" />
-        <div className="flex flex-1 flex-col justify-center gap-4 p-8 lg:p-10">
-          <span className="font-mono text-[11px] tracking-[0.2em] text-cyan">FEATURED BUILD</span>
-          <div className="flex items-center gap-4">
-            <h3 className="font-display text-[30px] font-bold tracking-tight text-ink">{project.name}</h3>
-            <Badge project={project} />
-          </div>
-          <p className="text-sm leading-[1.8] text-muted">{project.description}</p>
-          <span className="font-mono text-[11px] text-faint">{project.stack}</span>
-          <CardLinks project={project} />
-        </div>
-      </TiltCard>
-    </Reveal>
-  )
-}
-
-function GalleryStrip({ images, onOpen }: { images: string[]; onOpen: (index: number) => void }) {
-  return (
-    <div className="grid grid-cols-4 gap-2 px-7 pt-5">
-      {images.map((src, i) => (
-        <button
-          key={src}
-          onClick={() => onOpen(i)}
-          data-cursor="VIEW"
-          aria-label={`Open screenshot ${i + 1} of ${images.length}`}
-          className="group relative aspect-[4/3] overflow-hidden rounded-lg border border-line"
-        >
-          <img
-            src={src}
-            alt=""
-            aria-hidden
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-            loading="lazy"
-            draggable={false}
-          />
-          {i === 3 && images.length > 4 && (
-            <span className="absolute inset-0 flex items-center justify-center bg-bg/70 font-mono text-xs text-ink">
-              +{images.length - 4}
-            </span>
-          )}
-        </button>
-      ))}
-    </div>
-  )
-}
-
-function ProjectCard({
+/** immersive stage: 3D screenshot rail on top, project identity below */
+function ProjectStage({
   project,
-  delay,
   onOpenGallery,
+  galleryOpen,
 }: {
   project: Project
-  delay: number
   onOpenGallery: (project: Project, index: number) => void
+  galleryOpen: boolean
 }) {
+  const shots = project.images ?? [project.image]
+
   return (
-    <Reveal delay={delay} className="flex-1" y={50}>
-      <TiltCard strength={8} className="flex h-full flex-col overflow-hidden rounded-[20px] border border-line-accent bg-surface">
-        <ShotLink project={project} className="relative block aspect-[421/250] w-full overflow-hidden bg-[#0a0a12]" />
-        {project.images && project.images.length > 1 && (
-          <GalleryStrip images={project.images} onOpen={(i) => onOpenGallery(project, i)} />
-        )}
-        <div className="flex flex-1 flex-col gap-3 p-7">
-          <div className="flex items-center justify-between gap-3">
-            <h3 className="font-display text-[22px] font-bold tracking-tight text-ink">{project.name}</h3>
-            <Badge project={project} />
+    <Reveal y={60}>
+      <div className="relative">
+        <ShowcaseRail
+          images={shots}
+          name={project.name}
+          paused={galleryOpen}
+          onOpen={(index) => onOpenGallery(project, index)}
+        />
+
+        <div className="mx-auto mt-10 flex max-w-4xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+          <div className="flex max-w-xl flex-col gap-3">
+            {project.featured && (
+              <span className="font-mono text-[11px] tracking-[0.2em] text-cyan">FEATURED BUILD</span>
+            )}
+            <div className="flex flex-wrap items-center gap-4">
+              <h3 className="font-display text-[28px] font-bold tracking-tight text-ink sm:text-[32px]">
+                {project.name}
+              </h3>
+              <Badge project={project} />
+            </div>
+            <p className="text-sm leading-[1.8] text-muted">{project.description}</p>
+            <span className="font-mono text-[11px] text-faint">{project.stack}</span>
           </div>
-          <p className="flex-1 text-[13px] leading-[1.7] text-muted">{project.description}</p>
-          <span className="font-mono text-[11px] text-faint">{project.stack}</span>
-          <CardLinks project={project} />
+
+          <div className="flex shrink-0 flex-col items-start gap-3 sm:items-end">
+            <span className="font-mono text-[10px] tracking-[0.16em] text-faint">
+              {String(shots.length).padStart(2, '0')} SCREENS · DRAG TO EXPLORE
+            </span>
+            <CardLinks project={project} />
+          </div>
         </div>
-      </TiltCard>
+      </div>
     </Reveal>
   )
 }
@@ -171,6 +113,7 @@ function ProjectCard({
 export function ProjectsSection() {
   const featured = projects.find((project) => project.featured)
   const rest = projects.filter((project) => !project.featured)
+  const ordered = featured ? [featured, ...rest] : rest
   const [gallery, setGallery] = useState<{ project: Project; index: number } | null>(null)
 
   return (
@@ -183,25 +126,24 @@ export function ProjectsSection() {
           <ScrollFillText text="Built on my own time." />
         </h2>
 
-        <div className="mt-14 flex flex-col gap-6">
-          {featured && <FeaturedCard project={featured} />}
-          <div className="flex flex-col gap-6 lg:flex-row">
-            {rest.map((project, i) => (
-              <ProjectCard
-                key={project.name}
-                project={project}
-                delay={i * 0.12}
-                onOpenGallery={(p, index) => setGallery({ project: p, index })}
-              />
-            ))}
-          </div>
+        <div className="mt-16 flex flex-col gap-24 lg:gap-28">
+          {ordered.map((project) => (
+            <ProjectStage
+              key={project.name}
+              project={project}
+              galleryOpen={gallery?.project.name === project.name}
+              onOpenGallery={(p, index) => setGallery({ project: p, index })}
+            />
+          ))}
         </div>
-
       </div>
 
       {gallery && (
         <Lightbox
-          images={gallery.project.images!.map((src, i) => ({ src, alt: `${gallery.project.name} screenshot ${i + 1}` }))}
+          images={(gallery.project.images ?? [gallery.project.image]).map((src, i) => ({
+            src,
+            alt: `${gallery.project.name} screenshot ${i + 1}`,
+          }))}
           index={gallery.index}
           onClose={() => setGallery(null)}
           onNavigate={(index) => setGallery({ project: gallery.project, index })}
