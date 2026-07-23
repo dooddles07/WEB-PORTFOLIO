@@ -147,8 +147,8 @@ export function ShowcaseRail({ images, name, paused = false, onOpen }: ShowcaseR
                 z: reduced ? 0 : dist * cfg.zStep,
                 rotateY: reduced ? 0 : offset * cfg.rotY,
                 scale: isCenter ? 1 : 0.85,
-                opacity: isCenter ? 1 : Math.max(0.18, 1 - dist * 0.45),
-                filter: `blur(${isCenter ? 0 : dist * 5}px) brightness(${isCenter ? 1 : 0.55})`,
+                opacity: isCenter ? 1 : Math.max(0.3, 1 - dist * 0.35),
+                filter: `brightness(${isCenter ? 1 : 0.6})`,
               }}
               transition={{
                 x: BASE_SPRING,
@@ -163,14 +163,7 @@ export function ShowcaseRail({ images, name, paused = false, onOpen }: ShowcaseR
                 else setActive((p) => p + offset)
               }}
             >
-              {/* blurred fill behind, sharp contain in front: no screenshot ever crops */}
-              <img
-                src={images[index]}
-                alt=""
-                aria-hidden
-                className="absolute inset-0 h-full w-full object-cover opacity-40 blur-xl"
-                draggable={false}
-              />
+              {/* sharp contain on dark surface: no screenshot ever crops */}
               <img
                 src={images[index]}
                 alt={`${name} screenshot ${index + 1}`}
