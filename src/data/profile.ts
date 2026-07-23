@@ -3,14 +3,14 @@ export const profile = {
   firstName: 'BRIXSONN',
   lastName: 'ROMERO',
   brand: 'QUAN7UM',
-  role: 'Backend Developer, API Integration, GHL CRM and Workflow Automation, Conversational AI Chatbot Builder',
-  roleShort: 'Backend Developer, API Integration, GHL Automation, Conversational AI Chatbots',
+  role: 'Full Stack AI Web and App Developer — APIs, CRM and Workflow Automation, Conversational AI',
+  roleShort: 'Full Stack AI Web and App Developer',
   tagline:
-    'Full stack developer building real products for businesses in Singapore and beyond, using Claude Code every day.',
+    'I build production web and mobile apps at the speed of AI, steered by a computer science foundation in algorithms, data structures, and system architecture. Shipping for businesses in Singapore and beyond from',
   summary:
-    'Application Engineer and Full Stack Developer who builds production web apps with AI assisted development, using Claude Code every day. Certified by Anthropic in Claude Code and AI Fluency. Strong with React, Node.js, TypeScript, and PostgreSQL, plus REST APIs, OAuth, and Git based workflows. Computer Science graduate, cum laude. Comfortable working across time zones and structured engineering processes.',
+    'Every product on this site was built the same way: AI agents at the keyboard, my engineering judgment at the helm. I direct Claude Code through the full stack — architecture, data models, APIs, UI — then verify each decision against what I learned earning a Computer Science degree, cum laude: data structures, algorithms, design patterns, and system architecture. Certified 7 times by Anthropic. Strong with React, React Native, Node.js, TypeScript, PostgreSQL, REST APIs, OAuth, and Git workflows. This is how one developer ships platforms that used to need a team.',
   aboutHeadline:
-    'I build the systems that run real businesses: CRMs, booking platforms, and automated workflows.',
+    'AI writes the code with me. Computer science decides what ships.',
   location: 'Naga City, Camarines Sur, Philippines 4400',
   email: 'brixdodd07@gmail.com',
   phone: '+63 948 571 6293',
@@ -19,8 +19,8 @@ export const profile = {
   resume: '/assets/me/resume.pdf',
   availability: 'OPEN FOR WORK: FULL TIME, PART TIME, CONTRACTS',
   stats: [
-    { value: '3+', label: 'YEARS WITH AI TOOLS' },
-    { value: '9+', label: 'PLATFORMS SHIPPED' },
+    { value: '2+', label: 'YEARS BUILDING WITH AI' },
+    { value: '9+', label: 'PLATFORMS SHIPPED SOLO' },
     { value: '7', label: 'ANTHROPIC CERTS' },
   ],
   education: {
