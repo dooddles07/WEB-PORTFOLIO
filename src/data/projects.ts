@@ -40,8 +40,8 @@ export const projects: Project[] = [
   },
   {
     name: 'The Lumina',
-    badge: 'LIVE',
-    badgeStyle: 'live',
+    badge: 'PROPERTY PLATFORM',
+    badgeStyle: 'violet',
     description:
       'Live property management platform with three connected portals. Residents book facilities, register guests, track parcels, report defects, and pay deposits through real Stripe checkout. Every action shows up instantly for managers and guards.',
     stack: 'JavaScript, Node, Express, MongoDB, Stripe, Railway',

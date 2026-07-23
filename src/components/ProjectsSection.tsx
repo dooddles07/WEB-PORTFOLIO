@@ -7,18 +7,28 @@ import { ShowcaseRail } from './shared/ShowcaseRail'
 import { Lightbox } from './shared/Lightbox'
 
 function Badge({ project }: { project: Project }) {
-  if (project.badgeStyle === 'live') {
-    return (
-      <span className="flex items-center gap-1.5 rounded-full border border-green-400/40 bg-green-400/10 px-2.5 py-1.5 font-mono text-[10px] tracking-[0.14em] text-green-400">
-        <span aria-hidden className="h-1 w-1 rounded-full bg-green-400" />
-        {project.badge}
-      </span>
-    )
-  }
-  const tone = project.badgeStyle === 'cyan' ? 'border-cyan/30 text-cyan' : 'border-line-accent text-violet'
+  const tone =
+    project.badgeStyle === 'cyan'
+      ? 'border-cyan/30 text-cyan'
+      : project.badgeStyle === 'live'
+        ? 'border-green-400/40 text-green-400'
+        : 'border-line-accent text-violet'
   return (
     <span className={`rounded-full border px-2.5 py-1.5 font-mono text-[10px] tracking-[0.14em] ${tone}`}>
       {project.badge}
+    </span>
+  )
+}
+
+/** every project ships deployed: pulsing LIVE chip shown whenever a link exists */
+function LiveChip() {
+  return (
+    <span className="flex items-center gap-1.5 rounded-full border border-green-400/40 bg-green-400/10 px-2.5 py-1.5 font-mono text-[10px] tracking-[0.14em] text-green-400">
+      <span aria-hidden className="relative flex h-1.5 w-1.5">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-60" />
+        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-400" />
+      </span>
+      LIVE
     </span>
   )
 }
@@ -93,6 +103,7 @@ function ProjectStage({
                 {project.name}
               </h3>
               <Badge project={project} />
+              {project.link && <LiveChip />}
             </div>
             <p className="text-sm leading-[1.8] text-muted">{project.description}</p>
             <span className="font-mono text-[11px] text-faint">{project.stack}</span>
