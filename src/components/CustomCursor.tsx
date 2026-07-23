@@ -43,14 +43,14 @@ export function CustomCursor() {
     <>
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[95] h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full grad-bg"
+        className="pointer-events-none fixed left-0 top-0 z-[120] h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full grad-bg"
         style={{ x, y }}
         animate={{ opacity: label ? 0 : 1 }}
         transition={{ duration: 0.1 }}
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[94] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full border border-violet/50"
+        className="pointer-events-none fixed left-0 top-0 z-[119] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden rounded-full border border-violet/50"
         style={{ x: ringX, y: ringY }}
         animate={
           label
