@@ -5,6 +5,7 @@ export const profile = {
   brand: 'QUAN7UM',
   role: 'Full Stack AI Web and App Developer — APIs, CRM and Workflow Automation, Conversational AI',
   roleShort: 'Full Stack AI Web and App Developer',
+  specialties: ['APIs', 'CRM and Workflow Automation', 'Conversational AI'],
   tagline:
     'I build production web and mobile apps at the speed of AI, steered by a computer science foundation in algorithms, data structures, and system architecture. Shipping for businesses in Singapore and beyond from',
   summary:

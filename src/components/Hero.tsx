@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion
 import { useRef } from 'react'
 import { profile } from '../data/profile'
 import { MagneticButton } from './shared/MagneticButton'
+import { RotatingText } from './shared/RotatingText'
 import { TiltCard } from './shared/TiltCard'
 
 const nameLine = {
@@ -76,7 +77,9 @@ export function Hero() {
             className="mt-7 flex items-center gap-3.5"
           >
             <span aria-hidden className="h-px w-11 shrink-0 bg-gradient-to-r from-cyan to-violet" />
-            <p className="font-body text-base font-medium text-ink sm:text-lg">{profile.role}</p>
+            <p className="font-body text-base font-medium text-ink sm:text-lg">
+              {profile.roleShort} — <RotatingText words={profile.specialties} />
+            </p>
           </motion.div>
 
           <motion.p
