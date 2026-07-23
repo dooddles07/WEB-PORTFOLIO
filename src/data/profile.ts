@@ -7,7 +7,7 @@ export const profile = {
   roleShort: 'Full Stack AI Web and App Developer',
   specialties: ['APIs', 'CRM and Workflow Automation', 'Conversational AI'],
   tagline:
-    'I build production web and mobile apps at the speed of AI, steered by a computer science foundation in algorithms, data structures, and system architecture. Shipping for businesses in Singapore and beyond from',
+    'I build production web and mobile apps at the speed of AI, steered by a computer science foundation in algorithms, data structures, and system architecture. 5 live client projects shipped — open to full-time, part-time, or contract work, based in',
   summary:
     'Every product on this site was built the same way: AI agents at the keyboard, my engineering judgment at the helm. I direct Claude Code through the full stack — architecture, data models, APIs, UI — then verify each decision against what I learned earning a Computer Science degree, cum laude: data structures, algorithms, design patterns, and system architecture. Certified 7 times by Anthropic. Strong with React, React Native, Node.js, TypeScript, PostgreSQL, REST APIs, OAuth, and Git workflows. This is how one developer ships platforms that used to need a team.',
   aboutHeadline:
