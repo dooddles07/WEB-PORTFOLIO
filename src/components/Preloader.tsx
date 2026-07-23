@@ -54,7 +54,7 @@ export function Preloader({ onDone }: { onDone: () => void }) {
         >
           <div className="flex flex-col gap-3">
             <motion.img
-              src="/assets/me/lettermark.png"
+              src="/assets/me/lettermark.png?v=2"
               alt="QUAN7UM"
               className="h-3.5 w-auto sm:h-4"
               initial={{ opacity: 0, y: 12 }}

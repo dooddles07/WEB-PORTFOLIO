@@ -164,7 +164,7 @@ export function Hero() {
             <div aria-hidden className="absolute inset-0 bg-violet/[0.07] mix-blend-multiply" />
             <div aria-hidden className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-bg/85 via-bg/25 to-transparent" />
             <div className="glass absolute bottom-4 left-4 flex items-center gap-2.5 rounded-[14px] border border-line-accent px-4 py-3">
-              <img src="/assets/me/lettermark.png" alt="" aria-hidden className="h-3 w-auto" />
+              <img src="/assets/me/lettermark.png?v=2" alt="" aria-hidden className="h-3 w-auto" />
               <span className="font-mono text-[11px] tracking-[0.14em] text-muted">AI NATIVE · FULL STACK</span>
             </div>
           </TiltCard>
