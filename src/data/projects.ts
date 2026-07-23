@@ -71,7 +71,7 @@ export const projects: Project[] = [
       '/assets/projects/cya3.webp',
     ],
     link: 'https://cya-daily-verses-production.up.railway.app',
-    repo: 'https://github.com/dooddles07/CYA-Daily-Verses',
+    repo: 'https://github.com/dooddles07/CYA-DV',
   },
 ]
 
