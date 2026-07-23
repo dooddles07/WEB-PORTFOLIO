@@ -25,22 +25,26 @@ export function TechMarquee() {
       </div>
 
       <div className="marquee-track marquee-mask mt-10 flex flex-col gap-4" aria-label="Technologies I work with">
-        <div className="flex w-max gap-4 marquee-left">
-          {techStack.map((tech, i) => (
-            <Chip key={tech} label={tech} index={i} />
-          ))}
-          {/* clone half only exists to make the loop seamless */}
-          <div aria-hidden className="flex gap-4">
+        {/* two identical halves (each with trailing pr-4 = gap) so -50% lands exactly on the seam */}
+        <div className="flex w-max marquee-left">
+          <div className="flex gap-4 pr-4">
+            {techStack.map((tech, i) => (
+              <Chip key={tech} label={tech} index={i} />
+            ))}
+          </div>
+          <div aria-hidden className="flex gap-4 pr-4">
             {techStack.map((tech, i) => (
               <Chip key={`clone-${tech}`} label={tech} index={i} />
             ))}
           </div>
         </div>
-        <div className="flex w-max gap-4 marquee-right">
-          {techStack2.map((tech, i) => (
-            <Chip key={tech} label={tech} highlight={tech === 'Claude Code'} index={i} />
-          ))}
-          <div aria-hidden className="flex gap-4">
+        <div className="flex w-max marquee-right">
+          <div className="flex gap-4 pr-4">
+            {techStack2.map((tech, i) => (
+              <Chip key={tech} label={tech} highlight={tech === 'Claude Code'} index={i} />
+            ))}
+          </div>
+          <div aria-hidden className="flex gap-4 pr-4">
             {techStack2.map((tech, i) => (
               <Chip key={`clone-${tech}`} label={tech} highlight={tech === 'Claude Code'} index={i} />
             ))}
