@@ -150,7 +150,7 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto shrink-0 lg:mx-0"
+          className="relative mx-auto shrink-0 lg:mx-0 lg:mr-20 xl:mr-36"
         >
           <div aria-hidden className="absolute -inset-3 rounded-[36px] bg-[radial-gradient(circle,rgba(94,200,242,0.34),rgba(139,92,246,0.2)_55%,transparent_78%)] blur-lg" />
           <TiltCard strength={6} className="relative h-[420px] w-[330px] overflow-hidden rounded-[28px] border border-line-accent bg-surface sm:h-[470px] sm:w-[370px]">
