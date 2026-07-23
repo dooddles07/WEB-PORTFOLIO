@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { projects, type Project } from '../data/projects'
 import { SectionHeader } from './shared/SectionHeader'
 import { Reveal } from './shared/Reveal'
 import { ScrollFillText } from './shared/ScrollFillText'
 import { TiltCard } from './shared/TiltCard'
+import { Lightbox } from './shared/Lightbox'
 
 function Badge({ project }: { project: Project }) {
   if (project.badgeStyle === 'live') {
@@ -106,11 +108,52 @@ function FeaturedCard({ project }: { project: Project }) {
   )
 }
 
-function ProjectCard({ project, delay }: { project: Project; delay: number }) {
+function GalleryStrip({ images, onOpen }: { images: string[]; onOpen: (index: number) => void }) {
+  return (
+    <div className="grid grid-cols-4 gap-2 px-7 pt-5">
+      {images.map((src, i) => (
+        <button
+          key={src}
+          onClick={() => onOpen(i)}
+          data-cursor="VIEW"
+          aria-label={`Open screenshot ${i + 1} of ${images.length}`}
+          className="group relative aspect-[4/3] overflow-hidden rounded-lg border border-line"
+        >
+          <img
+            src={src}
+            alt=""
+            aria-hidden
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+            loading="lazy"
+            draggable={false}
+          />
+          {i === 3 && images.length > 4 && (
+            <span className="absolute inset-0 flex items-center justify-center bg-bg/70 font-mono text-xs text-ink">
+              +{images.length - 4}
+            </span>
+          )}
+        </button>
+      ))}
+    </div>
+  )
+}
+
+function ProjectCard({
+  project,
+  delay,
+  onOpenGallery,
+}: {
+  project: Project
+  delay: number
+  onOpenGallery: (project: Project, index: number) => void
+}) {
   return (
     <Reveal delay={delay} className="flex-1" y={50}>
       <TiltCard strength={8} className="flex h-full flex-col overflow-hidden rounded-[20px] border border-line-accent bg-surface">
         <ShotLink project={project} className="relative block aspect-[421/250] w-full overflow-hidden bg-[#0a0a12]" />
+        {project.images && project.images.length > 1 && (
+          <GalleryStrip images={project.images} onOpen={(i) => onOpenGallery(project, i)} />
+        )}
         <div className="flex flex-1 flex-col gap-3 p-7">
           <div className="flex items-center justify-between gap-3">
             <h3 className="font-display text-[22px] font-bold tracking-tight text-ink">{project.name}</h3>
@@ -128,6 +171,7 @@ function ProjectCard({ project, delay }: { project: Project; delay: number }) {
 export function ProjectsSection() {
   const featured = projects.find((project) => project.featured)
   const rest = projects.filter((project) => !project.featured)
+  const [gallery, setGallery] = useState<{ project: Project; index: number } | null>(null)
 
   return (
     <section id="projects" className="relative scroll-mt-16 overflow-hidden border-t border-line px-6 py-24 sm:px-14 lg:py-28">
@@ -143,12 +187,26 @@ export function ProjectsSection() {
           {featured && <FeaturedCard project={featured} />}
           <div className="flex flex-col gap-6 lg:flex-row">
             {rest.map((project, i) => (
-              <ProjectCard key={project.name} project={project} delay={i * 0.12} />
+              <ProjectCard
+                key={project.name}
+                project={project}
+                delay={i * 0.12}
+                onOpenGallery={(p, index) => setGallery({ project: p, index })}
+              />
             ))}
           </div>
         </div>
 
       </div>
+
+      {gallery && (
+        <Lightbox
+          images={gallery.project.images!.map((src, i) => ({ src, alt: `${gallery.project.name} screenshot ${i + 1}` }))}
+          index={gallery.index}
+          onClose={() => setGallery(null)}
+          onNavigate={(index) => setGallery({ project: gallery.project, index })}
+        />
+      )}
     </section>
   )
 }

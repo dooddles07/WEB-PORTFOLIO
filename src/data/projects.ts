@@ -5,6 +5,8 @@ export interface Project {
   description: string
   stack: string
   image: string
+  /** extra screenshots for a gallery/lightbox; omit for a single-shot card */
+  images?: string[]
   link?: string
   repo?: string
   /** featured projects render as the wide spotlight card */
@@ -26,6 +28,13 @@ export const projects: Project[] = [
       'All in one app for running a modern residential community. Residents book shared facilities, reserve restaurant tables, invite guests with digital passes, join events, and read announcements. Staff and management each get their own secure login and dashboards.',
     stack: 'React, Tailwind, Node, Express, Prisma, PostgreSQL',
     image: '/assets/projects/stayflow.webp',
+    images: [
+      '/assets/projects/stayflow.webp',
+      '/assets/projects/stayflow2.webp',
+      '/assets/projects/stayflow3.webp',
+      '/assets/projects/stayflow4.webp',
+      '/assets/projects/stayflow5.webp',
+    ],
     link: 'https://stayflow-production-bc16.up.railway.app',
     repo: 'https://github.com/dooddles07/StayFlow',
   },
