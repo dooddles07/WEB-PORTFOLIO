@@ -9,7 +9,7 @@ export const profile = {
   tagline:
     'I build production web and mobile apps at the speed of AI, steered by a computer science foundation in algorithms, data structures, and system architecture. 5 live client projects shipped — open to full-time, part-time, or contract work, based in',
   summary:
-    'Every product on this site was built the same way: AI agents at the keyboard, my engineering judgment at the helm. I direct Claude Code through the full stack — architecture, data models, APIs, UI — then verify each decision against what I learned earning a Computer Science degree, cum laude: data structures, algorithms, design patterns, and system architecture. Certified 7 times by Anthropic. Strong with React, React Native, Node.js, TypeScript, PostgreSQL, REST APIs, OAuth, and Git workflows. This is how one developer ships platforms that used to need a team.',
+    'Every product on this site was built the same way: AI agents at the keyboard, my engineering judgment at the helm. I direct Claude Code through the full stack — architecture, data models, APIs, UI — then verify each decision against what I learned earning a Computer Science degree, cum laude: data structures, algorithms, design patterns, and system architecture. Certified 7 times by Anthropic. Strong with JavaScript, TypeScript, React, React Native, Node.js, PostgreSQL, REST APIs, OAuth, and Git workflows. This is how one developer ships platforms that used to need a team.',
   aboutHeadline:
     'AI writes the code with me. Computer science decides what ships.',
   location: 'Naga City, Camarines Sur, Philippines 4400',
@@ -37,8 +37,8 @@ export const profile = {
 }
 
 export const techStack = [
-  'React', 'TypeScript', 'Node.js', 'Express.js', 'PostgreSQL', 'MongoDB',
-  'Prisma', 'Tailwind CSS', 'React Native', 'Python',
+  'JavaScript', 'TypeScript', 'React', 'Node.js', 'Express.js', 'PostgreSQL',
+  'MongoDB', 'Prisma', 'Tailwind CSS', 'React Native', 'Python',
 ]
 
 export const techStack2 = [
