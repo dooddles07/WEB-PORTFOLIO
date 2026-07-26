@@ -35,7 +35,7 @@ export const projects: Project[] = [
       '/assets/projects/stayflow4.webp?v=2',
       '/assets/projects/stayflow5.webp?v=2',
     ],
-    link: 'https://stayflow-production-bc16.up.railway.app',
+    link: 'https://stay-flow-alpha.vercel.app',
     repo: 'https://github.com/dooddles07/StayFlow',
   },
   {
@@ -44,7 +44,7 @@ export const projects: Project[] = [
     badgeStyle: 'violet',
     description:
       'Live property management platform with three connected portals. Residents book facilities, register guests, track parcels, report defects, and pay deposits through real Stripe checkout. Every action shows up instantly for managers and guards.',
-    stack: 'JavaScript, Node, Express, MongoDB, Stripe, Railway',
+    stack: 'JavaScript, Node, Express, MongoDB, Stripe, Vercel',
     image: '/assets/projects/lumina.webp',
     images: [
       '/assets/projects/lumina.webp',
@@ -52,7 +52,7 @@ export const projects: Project[] = [
       '/assets/projects/lumina3.webp',
       '/assets/projects/lumina4.webp',
     ],
-    link: 'https://the-lumina-production.up.railway.app',
+    link: 'https://the-lumina.vercel.app',
     repo: 'https://github.com/dooddles07/The-Lumina',
     featured: true,
   },
@@ -62,15 +62,17 @@ export const projects: Project[] = [
     badgeStyle: 'violet',
     description:
       'Devotional web app for a youth ministry. Members get a fresh Bible verse every day, plus reading plans, daily challenges, a prayer wall, and events. A mood finder suggests Scripture based on how you feel. Verses come live from public Bible sources.',
-    stack: 'Next.js, React, TypeScript, Tailwind, Railway',
-    image: '/assets/projects/cya.webp',
+    stack: 'Next.js, React, TypeScript, Tailwind, MongoDB, Vercel',
+    image: '/assets/projects/cya.webp?v=2',
     images: [
-      '/assets/projects/cya.webp',
-      '/assets/projects/cya1.webp',
-      '/assets/projects/cya2.webp',
-      '/assets/projects/cya3.webp',
+      '/assets/projects/cya.webp?v=2',
+      '/assets/projects/cya1.webp?v=2',
+      '/assets/projects/cya2.webp?v=2',
+      '/assets/projects/cya3.webp?v=2',
+      '/assets/projects/cya4.webp?v=2',
+      '/assets/projects/cya5.webp?v=2',
     ],
-    link: 'https://cya-daily-verses-production.up.railway.app',
+    link: 'https://cya-dv.vercel.app',
     repo: 'https://github.com/dooddles07/CYA-DV',
   },
 ]
