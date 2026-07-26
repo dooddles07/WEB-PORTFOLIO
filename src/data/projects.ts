@@ -21,6 +21,25 @@ export interface MiniProject {
 
 export const projects: Project[] = [
   {
+    name: 'CortexVault',
+    badge: 'AI · RAG',
+    badgeStyle: 'violet',
+    description:
+      'Private knowledge base that answers questions from your own documents. Upload notes and PDFs, and every answer streams back with a citation pointing at the exact chunk it came from — nothing is invented. Keyword and vector search run together and re-rank, so exact terms and fuzzy recall both land.',
+    stack: 'Next.js, FastAPI, PostgreSQL, pgvector, SQLAlchemy, Vercel',
+    image: '/assets/projects/cortexvault.webp',
+    images: [
+      '/assets/projects/cortexvault.webp',
+      '/assets/projects/cortexvault2.webp',
+      '/assets/projects/cortexvault3.webp',
+      '/assets/projects/cortexvault4.webp',
+      '/assets/projects/cortexvault5.webp',
+    ],
+    link: 'https://cortex-vault-web.vercel.app',
+    repo: 'https://github.com/dooddles07/Cortex-Vault',
+    featured: true,
+  },
+  {
     name: 'StayFlow',
     badge: 'COMMUNITY APP',
     badgeStyle: 'cyan',
@@ -54,7 +73,6 @@ export const projects: Project[] = [
     ],
     link: 'https://the-lumina.vercel.app',
     repo: 'https://github.com/dooddles07/The-Lumina',
-    featured: true,
   },
   {
     name: 'CYA Daily Verse',
