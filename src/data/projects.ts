@@ -93,6 +93,24 @@ export const projects: Project[] = [
     link: 'https://cya-dv.vercel.app',
     repo: 'https://github.com/dooddles07/CYA-DV',
   },
+  {
+    name: 'SyncMind',
+    badge: 'AI MEETING ASSISTANT',
+    badgeStyle: 'violet',
+    description:
+      "Turns a meeting recording into everything you'd normally spend twenty minutes writing by hand. Upload the audio and get back a clean transcript, plain-language notes, a to-do list with owners and due dates, a follow-up email ready to send, and calendar reminders for every deadline — all pulled from what was actually said, with anything AI had to guess clearly marked as a guess. Sign-in and the whole pipeline are real, not a demo shell.",
+    stack: 'Next.js, Supabase, Groq, Vercel',
+    image: '/assets/projects/syncmind.webp',
+    images: [
+      '/assets/projects/syncmind.webp',
+      '/assets/projects/syncmind2.webp',
+      '/assets/projects/syncmind3.webp',
+      '/assets/projects/syncmind4.webp',
+      '/assets/projects/syncmind5.webp',
+    ],
+    link: 'https://sync-mind-three.vercel.app',
+    repo: 'https://github.com/dooddles07/SyncMind',
+  },
 ]
 
 export const miniProjects: MiniProject[] = [
