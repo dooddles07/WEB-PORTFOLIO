@@ -116,6 +116,29 @@ export const projects: Project[] = [
     link: 'https://sync-mind-three.vercel.app',
     repo: 'https://github.com/dooddles07/SyncMind',
   },
+  {
+    name: 'ScholarForge AI',
+    badge: 'AI · STUDY TOOL',
+    badgeStyle: 'violet',
+    description:
+      'Turns a PDF, slide deck, or set of notes into quizzes, flashcards, and practice exams, entirely on-device. Parsing, storage, search, and spaced-repetition scheduling all run in the browser; the server only holds the API key and checks that every generated question cites a real passage from the source document before it reaches you. Wrong answers show the exact page the correct answer came from.',
+    stack: 'React, TypeScript, Vite, Dexie/IndexedDB, Vercel, Gemini',
+    image: '/assets/projects/scholarforge.png',
+    images: [
+      '/assets/projects/scholarforge.png',
+      '/assets/projects/scholarforge2.png',
+      '/assets/projects/scholarforge3.png',
+      '/assets/projects/scholarforge4.png',
+      '/assets/projects/scholarforge5.png',
+      '/assets/projects/scholarforge6.png',
+      '/assets/projects/scholarforge7.png',
+      '/assets/projects/scholarforge8.png',
+      '/assets/projects/scholarforge9.png',
+      '/assets/projects/scholarforge10.png',
+    ],
+    link: 'https://scholar-forge-ai.vercel.app',
+    repo: 'https://github.com/dooddles07/ScholarForgeAI',
+  },
 ]
 
 export const miniProjects: MiniProject[] = [
