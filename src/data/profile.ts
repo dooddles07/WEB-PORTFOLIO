@@ -33,6 +33,55 @@ export const profile = {
   },
 }
 
+/** the same pass every build goes through, in order */
+export const workflow = [
+  {
+    name: 'Brainstorm',
+    detail:
+      'Work out what the thing actually needs to do before any code exists. Who uses it, what breaks if it gets this wrong, and what is deliberately out of scope.',
+  },
+  {
+    name: 'Plan',
+    detail:
+      'Write it down: the data model, the screens, and the order things get built in. If I cannot explain the plan in plain words, I do not understand the problem yet.',
+  },
+  {
+    name: 'Execute',
+    detail:
+      'AI agents write the code against that plan, one piece at a time. Small pieces, because a change I cannot read in one sitting is a change I cannot check.',
+  },
+  {
+    name: 'Code review',
+    detail:
+      'I read every diff. Looking for logic that is subtly wrong, code that repeats itself, and anything that quietly does more than it claims to.',
+  },
+  {
+    name: 'Security review',
+    detail:
+      'Anything touching sign-in, permissions, payments or personal data gets a second pass. Who can reach this, and what happens when someone reaches it who should not.',
+  },
+  {
+    name: 'Refine',
+    detail:
+      'Fix what those two passes turned up. Usually naming, edge cases, and what the app does when something fails rather than when everything works.',
+  },
+  {
+    name: 'Review',
+    detail:
+      'Read the whole thing again with fresh eyes, as one system instead of a stack of separate changes. Problems hide in the seams between good parts.',
+  },
+  {
+    name: 'Testing',
+    detail:
+      'Use it like someone trying to break it. Wrong inputs, dead connection, double taps, tiny screens, the back button at the worst possible moment.',
+  },
+  {
+    name: 'Ship',
+    detail:
+      'Deploy it, then keep using it in production and watch what real people actually do. That is where the last round of fixes comes from.',
+  },
+]
+
 /** grouped so the reader can see shape, not just an alphabet soup of chips */
 export const techGroups = [
   {

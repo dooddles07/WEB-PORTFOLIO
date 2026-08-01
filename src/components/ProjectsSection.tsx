@@ -132,7 +132,7 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="relative scroll-mt-16 overflow-hidden border-t border-line px-6 py-24 sm:px-10 lg:px-14 lg:py-32">
-      <SectionHeader index="04" label="Personal projects" />
+      <SectionHeader index="05" label="Personal projects" />
 
       <div className="mt-10 grid gap-8 lg:grid-cols-12">
         <h2 className="display lg:col-span-7" style={{ fontSize: 'var(--text-step-4)' }}>
