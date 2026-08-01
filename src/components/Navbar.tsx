@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion'
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'motion/react'
 import { profile } from '../data/profile'
 
 // labels mirror the section eyebrows exactly so the nav and the page agree

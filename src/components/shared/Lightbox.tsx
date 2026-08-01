@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 
 interface LightboxProps {
   images: { src: string; alt: string }[]

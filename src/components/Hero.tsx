@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
 import { useRef } from 'react'
 import { profile } from '../data/profile'
 import { experiences } from '../data/experience'

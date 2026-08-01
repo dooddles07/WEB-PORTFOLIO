@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { motion, AnimatePresence, useInView, useReducedMotion, type PanInfo } from 'framer-motion'
+import { motion, AnimatePresence, useInView, useReducedMotion, type PanInfo } from 'motion/react'
 
 /** wrap index into [0, count) */
 function wrap(count: number, v: number) {

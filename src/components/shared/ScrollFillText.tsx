@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
 
 /**
  * Headline that inks in as it scrolls through the viewport: a dim base layer

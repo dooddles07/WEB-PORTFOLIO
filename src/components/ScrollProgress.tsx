@@ -1,4 +1,4 @@
-import { motion, useScroll, useSpring } from 'framer-motion'
+import { motion, useScroll, useSpring } from 'motion/react'
 
 /** accent hairline pinned to the top edge, tracking scroll depth */
 export function ScrollProgress() {

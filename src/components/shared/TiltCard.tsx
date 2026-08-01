@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'motion/react'
 import type { ReactNode, MouseEvent } from 'react'
 
 interface TiltCardProps {

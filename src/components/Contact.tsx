@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import { profile } from '../data/profile'
 import { SectionHeader } from './shared/SectionHeader'
 import { Reveal } from './shared/Reveal'
