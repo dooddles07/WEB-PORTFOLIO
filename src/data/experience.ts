@@ -52,11 +52,12 @@ export const experiences: Experience[] = [
     roles: ['FULL STACK', 'QA', 'GHL AUTOMATION'],
     stack: 'Node.js, Express, MongoDB, JWT, GoHighLevel, Railway',
     fact: 'QR check in at the front desk',
+    // the rail opens on the first entry, so lead with the product, not the login
     images: [
-      '/assets/experience/src-member1.webp',
       '/assets/experience/src-member2.webp',
       '/assets/experience/src-member3.webp',
       '/assets/experience/src-member4.webp',
+      '/assets/experience/src-member1.webp',
     ],
   },
   {
