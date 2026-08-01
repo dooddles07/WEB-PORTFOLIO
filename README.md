@@ -72,6 +72,27 @@ node scripts/optimize-images.mjs       # assets-original/ -> WebP in public/
 `assets-original/` holds the source PNGs that `optimize-images.mjs` converts. It is
 not served.
 
+## Deploying
+
+Static build, no server. Point Vercel at the repo and it picks up `vercel.json`:
+framework `vite`, build `npm run build`, output `dist/`. Any static host works —
+the config only exists for the cache headers.
+
+Three cache tiers, and the split matters:
+
+- `/assets/*.js|css` and `/fonts/*` are immutable for a year. Vite fingerprints
+  bundle filenames and the font files carry the upstream Google hash, so a change
+  always changes the URL.
+- `/assets/{experience,projects,certs,me}/*` get one day with revalidation.
+  Screenshots are **not** fingerprinted, so caching them forever would strand
+  anyone who already visited when you replace an image in place.
+- `index.html`, the favicons and `og.png` are left on Vercel's defaults on
+  purpose. `index.html` must never be immutable — it points at the hashed
+  bundles, so a stale copy would load a deleted asset.
+
+Plus `nosniff`, `strict-origin-when-cross-origin`, `SAMEORIGIN`, and a
+`Permissions-Policy` denying camera, microphone and geolocation.
+
 ## Performance and accessibility
 
 - Project screenshots are gated on viewport entry, not `loading="lazy"` — Chrome's
