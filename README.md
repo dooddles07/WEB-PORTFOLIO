@@ -19,6 +19,7 @@ npm run build     # tsc -b && vite build -> dist/
 npm run preview   # serve the production build
 npm run lint      # oxlint
 npm run check-links   # every outbound URL + local asset path still resolves
+npm test              # Playwright smoke suite against the production build
 ```
 
 Run `check-links` after adding a project. Nothing in the build catches a dead
