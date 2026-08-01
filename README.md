@@ -18,7 +18,12 @@ npm run dev       # vite dev server on :5173
 npm run build     # tsc -b && vite build -> dist/
 npm run preview   # serve the production build
 npm run lint      # oxlint
+npm run check-links   # every outbound URL + local asset path still resolves
 ```
+
+Run `check-links` after adding a project. Nothing in the build catches a dead
+repo URL or a mistyped screenshot path; this does, and exits 1 so CI can gate on
+it.
 
 ## Where things live
 
