@@ -4,6 +4,8 @@ Personal portfolio site. Editorial single-page build: five client platforms, eig
 personal projects, seven Anthropic certificates, and the nine-step workflow every
 one of them went through.
 
+Live: https://web-portfolio-chi-steel.vercel.app
+
 ## Stack
 
 React 19 + TypeScript on Vite 8, Tailwind v4 (CSS-first, no config file), Framer

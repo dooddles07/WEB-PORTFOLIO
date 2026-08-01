@@ -52,6 +52,27 @@ test('counts on the page match the data files', async ({ page }) => {
   await expect(page.locator('#certifications img')).toHaveCount(certifications.length)
 })
 
+test('social card metadata is deployable', async ({ page }) => {
+  await load(page)
+
+  const meta = async (sel: string) =>
+    page.locator(sel).first().getAttribute('content')
+
+  const ogImage = await meta('meta[property="og:image"]')
+  const twImage = await meta('meta[name="twitter:image"]')
+
+  for (const [name, value] of [['og:image', ogImage], ['twitter:image', twImage]] as const) {
+    // Facebook and LinkedIn do not resolve relative paths; the card renders blank
+    expect(value, `${name} is missing`).toBeTruthy()
+    expect(value, `${name} must be an absolute URL`).toMatch(/^https?:\/\//)
+    expect(value, `${name} still points at the example.com placeholder`).not.toContain('example.com')
+  }
+
+  // Google truncates the snippet around 160 characters
+  const description = await meta('meta[name="description"]')
+  expect(description!.length, 'meta description is too long for a search snippet').toBeLessThanOrEqual(165)
+})
+
 test('every project renders a rail with loaded screenshots', async ({ page }) => {
   await load(page)
 
