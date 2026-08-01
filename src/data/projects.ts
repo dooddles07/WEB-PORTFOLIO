@@ -164,6 +164,26 @@ export const projects: Project[] = [
     link: 'https://scholar-forge-ai.vercel.app',
     repo: 'https://github.com/dooddles07/ScholarForgeAI',
   },
+  {
+    name: 'Liters Cafe',
+    badge: 'MARKETING · MENU SITE',
+    badgeStyle: 'cyan',
+    description:
+      'Real cafe in Naga City, no website before this. Built it so people stop guessing at Facebook photos and can actually see the menu, build their own milk tea order (flavor, size, series add-on, sinkers, live price), and check hours and directions before they walk in. Ordering is a one-tap Messenger deep link with the order already typed out — no accounts, no fake checkout. Menu and prices are transcribed straight from the physical in-store menu, not invented.',
+    stack: 'Next.js, TypeScript, Tailwind, Vercel',
+    image: '/assets/projects/liters.webp',
+    images: [
+      '/assets/projects/liters.webp',
+      '/assets/projects/liters2.webp',
+      '/assets/projects/liters3.webp',
+      '/assets/projects/liters4.webp',
+      '/assets/projects/liters5.webp',
+      '/assets/projects/liters6.webp',
+      '/assets/projects/liters7.webp',
+    ],
+    link: 'https://liters-cafe.vercel.app',
+    repo: 'https://github.com/dooddles07/Liters-Cafe',
+  },
 ]
 
 export const miniProjects: MiniProject[] = [
