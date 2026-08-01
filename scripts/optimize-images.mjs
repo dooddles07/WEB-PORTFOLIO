@@ -13,7 +13,6 @@ for (const folder of folders) {
   for (const file of files) {
     const ext = extname(file).toLowerCase()
     if (!['.png', '.jpg', '.jpeg'].includes(ext)) continue
-    if (file === 'lettermark.png') continue // keeps transparency, already small
     const src = join(folder, file)
     const out = join(folder, `${basename(file, ext)}.webp`)
     const { size } = await stat(src)

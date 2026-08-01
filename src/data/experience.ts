@@ -53,6 +53,7 @@ export const experiences: Experience[] = [
     stack: 'Node.js, Express, MongoDB, JWT, GoHighLevel, Railway',
     fact: 'QR check in at the front desk',
     images: [
+      '/assets/experience/src-member1.webp',
       '/assets/experience/src-member2.webp',
       '/assets/experience/src-member3.webp',
       '/assets/experience/src-member4.webp',
@@ -81,7 +82,11 @@ export const experiences: Experience[] = [
     fact: 'Around 10,000 customers in one CRM',
     images: [
       '/assets/experience/beeva-command.webp',
+      '/assets/experience/beeva-command2.webp',
+      '/assets/experience/beeva-command3.webp',
+      '/assets/experience/beeva-command4.webp',
       '/assets/experience/beeva-driver.webp',
+      '/assets/experience/beeva-driver2.webp',
       '/assets/experience/beeva-stock.webp',
     ],
   },
