@@ -1,0 +1,22 @@
+name: Link check
+
+# Link rot happens without a commit: a repo goes private, a deploy is deleted.
+# A push-triggered check would never notice. This runs weekly instead, and can
+# be kicked off by hand from the Actions tab.
+on:
+  schedule:
+    - cron: '0 3 * * 1' # Mondays, 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  links:
+    name: Outbound URLs and asset paths
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm run check-links
