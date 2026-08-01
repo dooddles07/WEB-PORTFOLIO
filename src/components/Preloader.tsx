@@ -13,14 +13,14 @@ export function Preloader({ onDone }: { onDone: () => void }) {
 
   useEffect(() => {
     // repeat visits in the same session skip straight to the page
-    const seen = sessionStorage.getItem('q7-loaded')
+    const seen = sessionStorage.getItem('portfolio-loaded')
     if (reduce || seen) {
       setCount(100)
       setGone(true)
       doneRef.current()
       return
     }
-    sessionStorage.setItem('q7-loaded', '1')
+    sessionStorage.setItem('portfolio-loaded', '1')
     const start = performance.now()
     let raf = 0
     let exitTimer = 0

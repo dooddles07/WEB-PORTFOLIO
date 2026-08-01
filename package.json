@@ -1,7 +1,8 @@
 {
-  "name": "quantum-portfolio",
+  "name": "brixsonn-romero-portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Personal portfolio of Brixsonn M. Romero, Full Stack AI Web and App Developer.",
   "type": "module",
   "scripts": {
     "dev": "vite",
