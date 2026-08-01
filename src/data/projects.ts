@@ -62,7 +62,8 @@ export const projects: Project[] = [
       '/assets/projects/northstar12.webp',
     ],
     link: 'https://north-star-tan.vercel.app',
-    repo: 'https://github.com/dooddles07/North-Star',
+    // repo omitted: github.com/dooddles07/North-Star is private or unpushed and 404s.
+    // Add `repo` back once it is public.
   },
   {
     name: 'StayFlow',
