@@ -75,10 +75,12 @@ function ProjectStage({
   project,
   onOpenGallery,
   galleryOpen,
+  priority,
 }: {
   project: Project
   onOpenGallery: (project: Project, index: number) => void
   galleryOpen: boolean
+  priority: boolean
 }) {
   const shots = project.images ?? [project.image]
 
@@ -89,6 +91,7 @@ function ProjectStage({
           images={shots}
           name={project.name}
           paused={galleryOpen}
+          priority={priority}
           onOpen={(index) => onOpenGallery(project, index)}
         />
 
@@ -147,10 +150,11 @@ export function ProjectsSection() {
       </div>
 
       <div className="mt-20 flex flex-col gap-28 lg:gap-36">
-        {ordered.map((project) => (
+        {ordered.map((project, i) => (
           <ProjectStage
             key={project.name}
             project={project}
+            priority={i === 0}
             galleryOpen={gallery?.project.name === project.name}
             onOpenGallery={(p, index) => setGallery({ project: p, index })}
           />

@@ -11,8 +11,9 @@ export function EducationSection() {
 
       <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-10">
         <Reveal delay={0.1} className="lg:col-span-5">
+          {/* the space before the break keeps the accessible name readable */}
           <h2 className="display" style={{ fontSize: 'var(--text-step-4)' }}>
-            Cum Laude,
+            Cum Laude,{' '}
             <br />
             <span className="display-italic text-accent">Computer Science.</span>
           </h2>

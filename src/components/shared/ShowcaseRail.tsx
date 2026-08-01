@@ -27,6 +27,8 @@ interface ShowcaseRailProps {
   images: string[]
   name: string
   paused?: boolean
+  /** only the first rail on the page is worth fetching before the user scrolls */
+  priority?: boolean
   onOpen: (index: number) => void
 }
 
@@ -35,11 +37,19 @@ interface ShowcaseRailProps {
  * into depth with blur falloff. Drag, swipe, horizontal wheel, arrows, keys.
  * Autoplays gently while in view. Click center opens the lightbox.
  */
-export function ShowcaseRail({ images, name, paused = false, onOpen }: ShowcaseRailProps) {
+export function ShowcaseRail({ images, name, paused = false, priority = false, onOpen }: ShowcaseRailProps) {
   const [active, setActive] = useState(0)
   const [hovering, setHovering] = useState(false)
   const stageRef = useRef<HTMLDivElement>(null)
   const inView = useInView(stageRef, { amount: 0.4 })
+  /**
+   * Chrome ignores loading="lazy" on these cards — they are absolutely
+   * positioned inside a 3D-transformed stage, so its distance heuristic gives
+   * up and fetches everything. Gate the src ourselves: nothing downloads until
+   * the rail is within 600px of the viewport.
+   */
+  const nearView = useInView(stageRef, { once: true, margin: '600px' })
+  const shouldLoad = priority || nearView
   const reduced = useReducedMotion()
   const isSm = useMediaQuery('(max-width: 640px)')
   const lastWheel = useRef(0)
@@ -103,16 +113,19 @@ export function ShowcaseRail({ images, name, paused = false, onOpen }: ShowcaseR
       {/* ambient glow from the active screenshot */}
       <div aria-hidden className="pointer-events-none absolute inset-x-0 -inset-y-10 overflow-hidden">
         <AnimatePresence mode="popLayout">
-          <motion.img
-            key={activeIndex}
-            src={images[activeIndex]}
-            alt=""
-            className="h-full w-full scale-110 object-cover opacity-0 blur-3xl saturate-150"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.22 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-          />
+          {shouldLoad && (
+            <motion.img
+              key={activeIndex}
+              src={images[activeIndex]}
+              alt=""
+              loading="lazy"
+              className="h-full w-full scale-110 object-cover opacity-0 blur-3xl saturate-150"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.22 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8 }}
+            />
+          )}
         </AnimatePresence>
         <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-bg" />
       </div>
@@ -164,13 +177,15 @@ export function ShowcaseRail({ images, name, paused = false, onOpen }: ShowcaseR
               }}
             >
               {/* sharp contain on dark surface: no screenshot ever crops */}
-              <img
-                src={images[index]}
-                alt={`${name} screenshot ${index + 1}`}
-                className="relative h-full w-full object-contain"
-                loading={isCenter ? 'eager' : 'lazy'}
-                draggable={false}
-              />
+              {shouldLoad && (
+                <img
+                  src={images[index]}
+                  alt={`${name} screenshot ${index + 1}`}
+                  className="relative h-full w-full object-contain"
+                  loading={isCenter && priority ? 'eager' : 'lazy'}
+                  draggable={false}
+                />
+              )}
               <div aria-hidden className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.06] to-transparent" />
             </motion.div>
           )
