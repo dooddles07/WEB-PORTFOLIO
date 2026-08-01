@@ -52,20 +52,20 @@ export function Preloader({ onDone }: { onDone: () => void }) {
           exit={{ y: '-100%' }}
           transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
         >
-          <div className="flex flex-col gap-3">
-            <motion.img
-              src="/assets/me/lettermark.png?v=2"
-              alt="QUAN7UM"
-              className="h-3.5 w-auto sm:h-4"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            />
-            <span className="mono-label text-faint">PORTFOLIO 2026</span>
-          </div>
-          <span className="font-display text-7xl font-bold tabular-nums leading-none tracking-tight text-ink sm:text-9xl">
+          <motion.div
+            className="flex flex-col gap-2"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="display text-[26px] leading-none text-ink sm:text-[32px]">
+              Brixsonn M. <span className="display-italic">Romero</span>
+            </span>
+            <span className="mono-label text-faint">Portfolio 2026</span>
+          </motion.div>
+          <span className="display text-[clamp(4rem,18vw,11rem)] tabular-nums text-ink">
             {count}
-            <span className="grad-text">%</span>
+            <span className="text-accent">%</span>
           </span>
         </motion.div>
       )}

@@ -5,6 +5,8 @@ export interface Project {
   description: string
   stack: string
   image: string
+  /** deployment state; defaults to 'live' when a link exists */
+  status?: 'live' | 'in-progress'
   /** extra screenshots for a gallery/lightbox; omit for a single-shot card */
   images?: string[]
   link?: string
@@ -25,7 +27,7 @@ export const projects: Project[] = [
     badge: 'AI · RAG',
     badgeStyle: 'violet',
     description:
-      'Private knowledge base that answers questions from your own documents. Upload notes and PDFs, and every answer streams back with a citation pointing at the exact chunk it came from — nothing is invented. Keyword and vector search run together, then an LLM re-ranks the fused results, so exact terms and fuzzy recall both land. Auth ships with session revocation, account lockout, and TOTP two-factor.',
+      'A private knowledge base that answers questions about your own documents. Upload your notes and PDFs, ask something, and every answer comes back pointing at the exact paragraph it came from, so you can check it yourself. Nothing is made up. It searches two ways at once, by exact wording and by meaning, so it still finds the right thing when you only half remember how it was phrased. Sign-in has two-factor and locks itself down after failed attempts.',
     stack: 'Next.js, FastAPI, PostgreSQL, pgvector, Groq, Vercel',
     image: '/assets/projects/cortexvault.webp?v=2',
     images: [
@@ -44,9 +46,10 @@ export const projects: Project[] = [
     badge: 'E-COMMERCE · FITMENT',
     badgeStyle: 'violet',
     description:
-      'Auto parts storefront built around one hard problem: does this part actually fit my car? Tell it what you drive once and it stays in your garage — every listing, filter, product badge, search result and cart line is then checked against a real fitment table of makes, models and model-year ranges, so "fits your 2022 WRX" is a fact the site can prove, not a spec you have to decode. Turn on the fitment filter and 27 parts narrow to the 11 that fit, with every facet count recalculated. The storefront is complete and deployed; checkout collects no payment details and sign-in is a demo session by design, and both say so on the page.',
+      'An auto parts shop built around the one question that actually matters: will this fit my car? Tell it what you drive once and it remembers. After that, every listing, filter, search result and cart line gets checked against a real table of makes, models and years, so "fits your 2022 WRX" is something the site can prove instead of a spec sheet you have to decode yourself. Switch the filter on and 27 parts drop to the 11 that fit, with every count updating as it goes. Still in progress: you can browse the whole shop, but checkout takes no card details and sign-in is a demo. The site says so on the page.',
     stack: 'Next.js 16, React 19, TypeScript, Tailwind v4, Zustand, Motion, Vercel',
     image: '/assets/projects/northstar.webp',
+    status: 'in-progress',
     images: [
       '/assets/projects/northstar.webp',
       '/assets/projects/northstar2.webp',
@@ -128,7 +131,7 @@ export const projects: Project[] = [
     badge: 'AI MEETING ASSISTANT',
     badgeStyle: 'violet',
     description:
-      "Turns a meeting recording into everything you'd normally spend twenty minutes writing by hand. Upload the audio and get back a clean transcript, plain-language notes, a to-do list with owners and due dates, a follow-up email ready to send, and calendar reminders for every deadline — all pulled from what was actually said, with anything AI had to guess clearly marked as a guess. Sign-in and the whole pipeline are real, not a demo shell.",
+      "Turns a meeting recording into everything you'd otherwise spend twenty minutes typing up. Upload the audio and you get back a clean transcript, notes in plain English, a to-do list with names and due dates, a follow-up email ready to send, and calendar reminders for each deadline. All of it comes from what was actually said, and anything the AI had to guess is marked as a guess. The sign-in and the whole thing behind it are real, not a demo shell.",
     stack: 'Next.js, Supabase, Groq, Vercel',
     image: '/assets/projects/syncmind.webp',
     images: [
@@ -146,7 +149,7 @@ export const projects: Project[] = [
     badge: 'AI · STUDY TOOL',
     badgeStyle: 'violet',
     description:
-      'Turns a PDF, slide deck, or set of notes into quizzes, flashcards, and practice exams, entirely on-device. Parsing, storage, search, and FSRS spaced-repetition scheduling all run in the browser; the server only holds the API key and checks that every generated question quotes real text from the source document, not just a real page number, before it reaches you. Wrong answers show the exact passage the correct answer came from. Preferences sync live across devices via Firebase, and study data can be backed up to the cloud on demand.',
+      'Turns a PDF, slide deck or pile of notes into quizzes, flashcards and practice exams, all on your own device. The reading, storing, searching and working out when to show you a card again happen in your browser. The server only holds the API key and double-checks that every question quotes real text from your document, not just a real page number, before it reaches you. Get one wrong and it shows you the exact passage the right answer came from. Your settings follow you between devices, and you can back your study data up to the cloud whenever you want.',
     stack: 'React, TypeScript, Vite, Dexie/IndexedDB, Firebase, Vercel, Groq',
     image: '/assets/projects/scholarforge.webp',
     images: [
@@ -169,9 +172,10 @@ export const projects: Project[] = [
     badge: 'MARKETING · MENU SITE',
     badgeStyle: 'cyan',
     description:
-      'Real cafe in Naga City, no website before this. Built it so people stop guessing at Facebook photos and can actually see the menu, build their own milk tea order (flavor, size, series add-on, sinkers, live price), and check hours and directions before they walk in. Ordering is a one-tap Messenger deep link with the order already typed out — no accounts, no fake checkout. Menu and prices are transcribed straight from the physical in-store menu, not invented.',
+      'A real cafe in Naga City that had no website at all. I built one so people stop guessing from Facebook photos: see the menu properly, build your own milk tea (flavor, size, series add-on, sinkers, price updating as you pick), and check the hours and directions before walking over. Ordering is one tap through to Messenger with the order already written out for you. No accounts, no pretend checkout. The menu and prices are copied straight off the board in the shop.',
     stack: 'Next.js, TypeScript, Tailwind, Vercel',
     image: '/assets/projects/liters.webp',
+    status: 'in-progress',
     images: [
       '/assets/projects/liters.webp',
       '/assets/projects/liters2.webp',

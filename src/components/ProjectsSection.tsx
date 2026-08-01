@@ -7,28 +7,27 @@ import { ShowcaseRail } from './shared/ShowcaseRail'
 import { Lightbox } from './shared/Lightbox'
 
 function Badge({ project }: { project: Project }) {
-  const tone =
-    project.badgeStyle === 'cyan'
-      ? 'border-cyan/30 text-cyan'
-      : project.badgeStyle === 'live'
-        ? 'border-green-400/40 text-green-400'
-        : 'border-line-accent text-violet'
   return (
-    <span className={`rounded-full border px-2.5 py-1.5 font-mono text-[10px] tracking-[0.14em] ${tone}`}>
+    <span className="rounded-full border border-line-strong px-3 py-1.5 font-mono text-[10px] tracking-[0.14em] text-muted">
       {project.badge}
     </span>
   )
 }
 
-/** every project ships deployed: pulsing LIVE chip shown whenever a link exists */
-function LiveChip() {
+/** deployment state chip: green LIVE when shipped, amber IN PROGRESS while still building */
+function StatusChip({ status }: { status: 'live' | 'in-progress' }) {
+  const live = status === 'live'
+  const tone = live
+    ? 'border-green-400/40 bg-green-400/10 text-green-400'
+    : 'border-amber-400/40 bg-amber-400/10 text-amber-400'
+  const dot = live ? 'bg-green-400' : 'bg-amber-400'
   return (
-    <span className="flex items-center gap-1.5 rounded-full border border-green-400/40 bg-green-400/10 px-2.5 py-1.5 font-mono text-[10px] tracking-[0.14em] text-green-400">
+    <span className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 font-mono text-[10px] tracking-[0.14em] ${tone}`}>
       <span aria-hidden className="relative flex h-1.5 w-1.5">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-60" />
-        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-400" />
+        <span className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-60 ${dot}`} />
+        <span className={`relative inline-flex h-1.5 w-1.5 rounded-full ${dot}`} />
       </span>
-      LIVE
+      {live ? 'LIVE' : 'IN PROGRESS'}
     </span>
   )
 }
@@ -42,9 +41,9 @@ function CardLinks({ project }: { project: Project }) {
           target="_blank"
           rel="noreferrer"
           data-cursor="OPEN"
-          className="flex items-center gap-1.5 font-mono text-[11px] tracking-[0.1em] text-cyan transition-colors hover:text-ink"
+          className="flex items-center gap-1.5 font-mono text-[11px] tracking-[0.1em] text-accent transition-colors hover:text-ink"
         >
-          VISIT LIVE SITE
+          {project.status === 'in-progress' ? 'VISIT PREVIEW' : 'VISIT LIVE SITE'}
           <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden>
             <path d="M2.5 9.5 9.5 2.5M4.5 2.5h5v5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -93,27 +92,31 @@ function ProjectStage({
           onOpen={(index) => onOpenGallery(project, index)}
         />
 
-        <div className="mx-auto mt-10 flex max-w-4xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-          <div className="flex max-w-xl flex-col gap-3">
-            {project.featured && (
-              <span className="font-mono text-[11px] tracking-[0.2em] text-cyan">FEATURED BUILD</span>
-            )}
-            <div className="flex flex-wrap items-center gap-4">
-              <h3 className="font-display text-[28px] font-bold tracking-tight text-ink sm:text-[32px]">
-                {project.name}
-              </h3>
-              <Badge project={project} />
-              {project.link && <LiveChip />}
+        <div className="mx-auto mt-12 max-w-5xl border-t border-line pt-8">
+          {project.featured && (
+            <span className="mono-label mb-4 block text-accent">Featured build</span>
+          )}
+          <div className="flex flex-col gap-8 lg:flex-row lg:justify-between lg:gap-14">
+            <div className="flex max-w-2xl flex-col gap-5">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+                <h3 className="display leading-none text-ink" style={{ fontSize: 'var(--text-step-3)' }}>
+                  {project.name}
+                </h3>
+                <Badge project={project} />
+                {project.link && <StatusChip status={project.status ?? 'live'} />}
+              </div>
+              <p className="prose-body text-muted">{project.description}</p>
             </div>
-            <p className="text-sm leading-[1.8] text-muted">{project.description}</p>
-            <span className="font-mono text-[11px] text-faint">{project.stack}</span>
-          </div>
 
-          <div className="flex shrink-0 flex-col items-start gap-3 sm:items-end">
-            <span className="font-mono text-[10px] tracking-[0.16em] text-faint">
-              {String(shots.length).padStart(2, '0')} SCREENS · DRAG TO EXPLORE
-            </span>
-            <CardLinks project={project} />
+            <div className="flex shrink-0 flex-col gap-4 lg:items-end lg:text-right">
+              <span className="mono-label text-faint">
+                {String(shots.length).padStart(2, '0')} screens · drag to explore
+              </span>
+              <CardLinks project={project} />
+              <span className="max-w-[26ch] font-mono text-[11px] leading-relaxed text-faint">
+                {project.stack}
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -128,25 +131,30 @@ export function ProjectsSection() {
   const [gallery, setGallery] = useState<{ project: Project; index: number } | null>(null)
 
   return (
-    <section id="projects" className="relative scroll-mt-16 overflow-hidden border-t border-line px-6 py-24 sm:px-14 lg:py-28">
-      <div aria-hidden className="pointer-events-none absolute -left-64 bottom-0 h-[620px] w-[620px] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.08),transparent_70%)]" />
+    <section id="projects" className="relative scroll-mt-16 overflow-hidden border-t border-line px-6 py-24 sm:px-10 lg:px-14 lg:py-32">
+      <SectionHeader index="04" label="Personal projects" />
 
-      <div className="relative">
-        <SectionHeader index="04" label="PERSONAL PROJECTS" />
-        <h2 className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+      <div className="mt-10 grid gap-8 lg:grid-cols-12">
+        <h2 className="display lg:col-span-7" style={{ fontSize: 'var(--text-step-4)' }}>
           <ScrollFillText text="Built on my own time." />
         </h2>
+        <Reveal delay={0.12} y={16} className="lg:col-span-5 lg:pt-3">
+          <p className="prose-body text-muted">
+            Nobody asked for these. I built them to find out whether I could, and where something
+            is unfinished the site says so instead of hiding it.
+          </p>
+        </Reveal>
+      </div>
 
-        <div className="mt-16 flex flex-col gap-24 lg:gap-28">
-          {ordered.map((project) => (
-            <ProjectStage
-              key={project.name}
-              project={project}
-              galleryOpen={gallery?.project.name === project.name}
-              onOpenGallery={(p, index) => setGallery({ project: p, index })}
-            />
-          ))}
-        </div>
+      <div className="mt-20 flex flex-col gap-28 lg:gap-36">
+        {ordered.map((project) => (
+          <ProjectStage
+            key={project.name}
+            project={project}
+            galleryOpen={gallery?.project.name === project.name}
+            onOpenGallery={(p, index) => setGallery({ project: p, index })}
+          />
+        ))}
       </div>
 
       {gallery && (

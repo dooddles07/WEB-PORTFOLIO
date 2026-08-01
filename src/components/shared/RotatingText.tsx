@@ -1,7 +1,7 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-/* Cycles through words with a spring slide-up, brand gradient on the active word. */
+/* Cycles through words with a spring slide-up; the caller owns the colour. */
 export function RotatingText({
   words,
   interval = 2600,
@@ -33,7 +33,7 @@ export function RotatingText({
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: '-110%', opacity: 0 }}
           transition={{ type: 'spring', stiffness: 320, damping: 32 }}
-          className="grad-text col-start-1 row-start-1 whitespace-nowrap font-semibold"
+          className="col-start-1 row-start-1 whitespace-nowrap"
         >
           {words[index]}
         </motion.span>

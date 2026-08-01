@@ -4,14 +4,25 @@ import type { ReactNode, MouseEvent } from 'react'
 interface MagneticButtonProps {
   children: ReactNode
   href?: string
-  download?: boolean
+  /** true, or a filename to save the download as */
+  download?: boolean | string
   className?: string
   onClick?: () => void
   external?: boolean
+  /** label the custom cursor morphs into over this control */
+  'data-cursor'?: string
 }
 
 /** button that leans toward the cursor within its hover radius */
-export function MagneticButton({ children, href, download, className, onClick, external }: MagneticButtonProps) {
+export function MagneticButton({
+  children,
+  href,
+  download,
+  className,
+  onClick,
+  external,
+  'data-cursor': dataCursor,
+}: MagneticButtonProps) {
   const reduce = useReducedMotion()
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -39,6 +50,7 @@ export function MagneticButton({ children, href, download, className, onClick, e
       onClick={onClick}
       target={external ? '_blank' : undefined}
       rel={external ? 'noreferrer' : undefined}
+      data-cursor={dataCursor}
       className={className}
       style={{ x: sx, y: sy }}
       onMouseMove={handleMove}

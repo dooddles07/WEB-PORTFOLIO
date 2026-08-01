@@ -1,21 +1,38 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #050508;
-  --color-surface: #0c0c14;
-  --color-surface-2: #12121e;
-  --color-ink: #f4f5fa;
-  --color-muted: #8a90a8;
-  --color-faint: #747c96;
-  --color-cyan: #5ec8f2;
-  --color-blue: #5b7cfa;
-  --color-violet: #8b5cf6;
-  --color-line: rgba(255, 255, 255, 0.08);
-  --color-line-accent: rgba(139, 92, 246, 0.28);
+  /* warm ink, not blue-black void */
+  --color-bg: #0b0a0a;
+  --color-surface: #141211;
+  --color-surface-2: #1c1917;
+  --color-ink: #f5f2ec;
+  --color-muted: #a8a29a;
+  --color-faint: #726d66;
 
-  --font-display: "Space Grotesk", sans-serif;
+  /* single accent carries the identity */
+  --color-accent: #8b5cf6;
+  --color-accent-soft: rgba(139, 92, 246, 0.14);
+
+  /* inverted editorial break */
+  --color-paper: #efe9df;
+  --color-paper-ink: #16120f;
+  --color-paper-muted: #5d564d;
+  --color-paper-line: rgba(22, 18, 15, 0.14);
+
+  --color-line: rgba(245, 242, 236, 0.1);
+  --color-line-strong: rgba(245, 242, 236, 0.2);
+
+  --font-display: "Instrument Serif", Georgia, serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+
+  /* editorial scale, fluid across the whole range */
+  --text-step-0: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+  --text-step-1: clamp(1.15rem, 1.05rem + 0.4vw, 1.4rem);
+  --text-step-2: clamp(1.6rem, 1.35rem + 1vw, 2.2rem);
+  --text-step-3: clamp(2.2rem, 1.7rem + 2.2vw, 3.6rem);
+  --text-step-4: clamp(3rem, 2rem + 4.4vw, 6rem);
+  --text-step-5: clamp(4rem, 2rem + 9vw, 11rem);
 }
 
 html {
@@ -36,18 +53,19 @@ body {
   color: var(--color-ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: rgba(139, 92, 246, 0.4);
+  background: var(--color-accent);
   color: #fff;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-cyan);
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 /* native cursor hides only while the custom cursor is active */
@@ -63,8 +81,8 @@ body {
   z-index: 100;
   padding: 10px 18px;
   border-radius: 999px;
-  background: #12121e;
-  border: 1px solid var(--color-line-accent);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-line-strong);
   color: var(--color-ink);
   font-family: var(--font-mono);
   font-size: 12px;
@@ -75,92 +93,106 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: #050508;
+  background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #5b7cfa, #8b5cf6);
+  background: var(--color-surface-2);
   border-radius: 999px;
-  border: 2px solid #050508;
+  border: 2px solid var(--color-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
 }
 
-/* single gradient system carrying the identity */
-.grad-text {
-  background-image: linear-gradient(92deg, #5ec8f2, #5b7cfa 48%, #8b5cf6);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+/* ---- editorial type ---- */
+
+/* Instrument Serif ships at 400 only: scale is the hierarchy, not weight */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
 }
 
-.grad-bg {
-  background-image: linear-gradient(90deg, #5b7cfa, #8b5cf6);
-}
-
-.glass {
-  background: rgba(12, 12, 20, 0.6);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+.display-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
 }
 
 .mono-label {
   font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.2em;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
-/* film-grain noise over the void */
-.noise::after {
+/* body copy set for reading, not for filling a box */
+.prose-editorial {
+  font-size: var(--text-step-1);
+  line-height: 1.65;
+  max-width: 34ch;
+  text-wrap: pretty;
+}
+
+.prose-body {
+  font-size: var(--text-step-0);
+  line-height: 1.75;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+/* ---- inverted editorial break ---- */
+.paper {
+  background: var(--color-paper);
+  color: var(--color-paper-ink);
+}
+.paper ::selection {
+  background: var(--color-paper-ink);
+  color: var(--color-paper);
+}
+
+/* ---- surfaces ---- */
+.grain::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 5;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* infinite marquee */
-@keyframes marquee-left {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-@keyframes marquee-right {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
-}
-.marquee-left { animation: marquee-left 36s linear infinite; }
-.marquee-right { animation: marquee-right 42s linear infinite; }
-
-.marquee-track:hover .marquee-left,
-.marquee-track:hover .marquee-right {
-  animation-play-state: paused;
+/*
+ * The portrait is a studio shot on a white backdrop. Multiply against the cream
+ * paper maps that white exactly onto the page colour, so the box disappears and
+ * only the subject remains — no cutout needed. This only works on a light
+ * surface, which is why the portrait lives in the About section.
+ */
+.portrait-treat {
+  filter: contrast(1.03) saturate(1.06);
+  mix-blend-mode: multiply;
+  mask-image: linear-gradient(#000 62%, transparent 97%);
+  -webkit-mask-image: linear-gradient(#000 62%, transparent 97%);
 }
 
-/* faint engineering grid, fades toward the edges */
-.grid-texture {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(ellipse 75% 70% at 50% 40%, #000 30%, transparent 78%);
-  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 40%, #000 30%, transparent 78%);
+/* frosted chrome for overlay controls */
+.glass {
+  background: rgba(20, 18, 17, 0.66);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
-/* hollow outlined glyph for the 7 watermark */
-.stroke-text {
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(139, 92, 246, 0.2);
+/* hairline that draws itself in on reveal */
+.rule {
+  height: 1px;
+  background: var(--color-line);
 }
 
-/* soft fade at both edges of the marquee */
-.marquee-mask {
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
-
-/* 3D space for tilt cards */
+/* 3D space for the project showcase rails */
 .persp {
   perspective: 1100px;
 }
@@ -169,10 +201,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-left,
-  .marquee-right {
-    animation: none;
-  }
   *,
   *::before,
   *::after {

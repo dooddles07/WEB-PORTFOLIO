@@ -1,29 +1,26 @@
 export const profile = {
   name: 'Brixsonn M. Romero',
-  firstName: 'BRIXSONN',
-  lastName: 'ROMERO',
-  brand: 'QUAN7UM',
+  firstName: 'Brixsonn',
+  lastName: 'Romero',
   role: 'Full Stack AI Web and App Developer — APIs, CRM and Workflow Automation, Conversational AI',
   roleShort: 'Full Stack AI Web and App Developer',
   specialties: ['APIs', 'CRM and Workflow Automation', 'Conversational AI'],
   tagline:
-    'I build production web and mobile apps at the speed of AI, steered by a computer science foundation in algorithms, data structures, and system architecture. 5 live client projects shipped — open to full-time, part-time, or contract work, based in',
-  summary:
-    'Every product on this site was built the same way: AI agents at the keyboard, my engineering judgment at the helm. I direct Claude Code through the full stack — architecture, data models, APIs, UI — then verify each decision against what I learned earning a Computer Science degree, cum laude: data structures, algorithms, design patterns, and system architecture. Certified 7 times by Anthropic. Strong with JavaScript, TypeScript, React, React Native, Node.js, PostgreSQL, REST APIs, OAuth, and Git workflows. This is how one developer ships platforms that used to need a team.',
+    'I build web and mobile apps fast. AI agents write the code, and software engineering fundamentals like system architecture, data modelling and security are what catch the things they get wrong.',
   aboutHeadline:
-    'AI writes the code with me. Computer science decides what ships.',
+    'AI writes the code with me. Engineering decides what ships.',
+  summary:
+    "Every product on this site was built the same way. AI agents write the code. I decide what actually ships. I run Claude Code across the whole thing, from the database up to the buttons, then check its work the way any engineer would: is the system structured right, is the data modelled properly, what happens when someone hits it who isn't me. That checking is the real job. AI will happily hand you something that looks finished and falls over the first time it meets a real user. Day to day I work in JavaScript and TypeScript, React on the front, Node and Postgres behind it. Seven certificates from Anthropic.",
+  /** the one line that earns the boast, kept separate so it can breathe */
+  pullQuote: 'This is how one developer ships platforms that used to need a team.',
   location: 'Naga City, Camarines Sur, Philippines 4400',
+  locationShort: 'Naga City, Camarines Sur',
   email: 'brixdodd07@gmail.com',
   phone: '+63 948 571 6293',
   github: 'https://github.com/dooddles07',
   linkedin: 'https://www.linkedin.com/in/brixsonn-romero-0b18b9327',
   resume: '/assets/me/resume.pdf',
-  availability: 'OPEN FOR WORK: FULL TIME, PART TIME, CONTRACTS',
-  stats: [
-    { value: '2+', label: 'YEARS BUILDING WITH AI' },
-    { value: '9+', label: 'PLATFORMS SHIPPED SOLO' },
-    { value: '7', label: 'ANTHROPIC CERTS' },
-  ],
+  availability: 'Open for work: full time, part time, contracts',
   education: {
     degree: 'B.S. Computer Science, Cum Laude',
     school: 'Naga College Foundation, Inc.',
@@ -36,12 +33,30 @@ export const profile = {
   },
 }
 
-export const techStack = [
-  'JavaScript', 'TypeScript', 'React', 'Node.js', 'Express.js', 'PostgreSQL',
-  'MongoDB', 'Prisma', 'Tailwind CSS', 'React Native', 'Python',
-]
-
-export const techStack2 = [
-  'Claude Code', 'GoHighLevel', 'Stripe', 'JWT', 'Vite', 'Railway',
-  'Vercel', 'Render', 'Laravel', 'MySQL',
+/** grouped so the reader can see shape, not just an alphabet soup of chips */
+export const techGroups = [
+  {
+    label: 'Languages',
+    items: ['JavaScript', 'TypeScript', 'Python', 'SQL'],
+  },
+  {
+    label: 'Frontend',
+    items: ['React', 'React Native', 'Next.js', 'Vite', 'Tailwind CSS'],
+  },
+  {
+    label: 'Backend',
+    items: ['Node.js', 'Express.js', 'FastAPI', 'Laravel', 'REST APIs', 'JWT / OAuth'],
+  },
+  {
+    label: 'Data',
+    items: ['PostgreSQL', 'MongoDB', 'MySQL', 'Prisma', 'pgvector'],
+  },
+  {
+    label: 'Platform',
+    items: ['Vercel', 'Railway', 'Render', 'Stripe', 'GoHighLevel', 'Git'],
+  },
+  {
+    label: 'AI',
+    items: ['Claude Code', 'Claude API', 'Groq', 'RAG / embeddings'],
+  },
 ]

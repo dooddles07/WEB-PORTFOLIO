@@ -3,16 +3,20 @@ import { Reveal } from './Reveal'
 interface SectionHeaderProps {
   index: string
   label: string
+  /** inverted (cream) sections need the dark ink treatment */
+  tone?: 'dark' | 'paper'
 }
 
-/** "// 03 FREELANCE EXPERIENCE ————" section eyebrow */
-export function SectionHeader({ index, label }: SectionHeaderProps) {
+/** "01 / ABOUT ————" section eyebrow */
+export function SectionHeader({ index, label, tone = 'dark' }: SectionHeaderProps) {
+  const paper = tone === 'paper'
   return (
-    <Reveal y={20}>
-      <div className="flex items-center gap-4">
-        <span className="mono-label text-cyan">{`// ${index}`}</span>
-        <span className="mono-label text-muted">{label}</span>
-        <div className="h-px w-[140px] bg-line sm:w-[200px]" />
+    <Reveal y={16}>
+      <div className="flex items-center gap-3">
+        <span className="mono-label text-accent">{index}</span>
+        <span className={`mono-label ${paper ? 'text-paper-muted' : 'text-faint'}`}>/</span>
+        <span className={`mono-label ${paper ? 'text-paper-muted' : 'text-muted'}`}>{label}</span>
+        <div className={`h-px flex-1 ${paper ? 'bg-paper-line' : 'bg-line'}`} />
       </div>
     </Reveal>
   )

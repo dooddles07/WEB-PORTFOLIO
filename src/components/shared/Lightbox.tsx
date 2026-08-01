@@ -49,7 +49,7 @@ export function Lightbox({ images, index, onClose, onNavigate }: LightboxProps) 
           key={current.src}
           src={current.src}
           alt={current.alt}
-          className="max-h-full max-w-full rounded-xl border border-line-accent object-contain shadow-[0_0_80px_rgba(139,92,246,0.25)]"
+          className="max-h-full max-w-full rounded-xl border border-accent/40 object-contain shadow-[0_0_80px_rgba(139,92,246,0.25)]"
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.25 }}
@@ -59,7 +59,7 @@ export function Lightbox({ images, index, onClose, onNavigate }: LightboxProps) 
         <button
           onClick={onClose}
           aria-label="Close viewer"
-          className="glass absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-line-accent"
+          className="glass absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent/40"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
             <path d="m2 2 10 10M12 2 2 12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
@@ -71,7 +71,7 @@ export function Lightbox({ images, index, onClose, onNavigate }: LightboxProps) 
             <button
               onClick={(e) => { e.stopPropagation(); prev() }}
               aria-label="Previous image"
-              className="glass absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-line-accent"
+              className="glass absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent/40"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
                 <path d="M9 2 4 7l5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -80,7 +80,7 @@ export function Lightbox({ images, index, onClose, onNavigate }: LightboxProps) 
             <button
               onClick={(e) => { e.stopPropagation(); next() }}
               aria-label="Next image"
-              className="glass absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-line-accent"
+              className="glass absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent/40"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
                 <path d="m5 2 5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />

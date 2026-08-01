@@ -22,11 +22,13 @@ export function Footer() {
   const time = useNagaTime()
 
   return (
-    <footer className="flex flex-col items-center justify-between gap-4 border-t border-line px-6 py-7 lg:flex-row sm:px-14">
+    <footer className="flex flex-col items-center justify-between gap-4 border-t border-line px-6 py-7 sm:px-10 lg:flex-row lg:px-14">
       <div className="flex items-center gap-5">
-        <img src="/assets/me/lettermark.png?v=2" alt="QUAN7UM" className="h-3 w-auto" />
+        <span className="display text-[17px] leading-none text-ink">
+          Brixsonn M. <span className="display-italic">Romero</span>
+        </span>
         <span className="flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] text-muted" aria-label="Local time in Naga City">
-          <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-cyan" />
+          <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent" />
           NAGA CITY {time} GMT+8
         </span>
       </div>

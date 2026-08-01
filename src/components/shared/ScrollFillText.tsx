@@ -2,8 +2,8 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 
 /**
- * Headline that fills with the brand gradient as it scrolls through the
- * viewport: a dim base layer sits under a gradient copy revealed by clip-path.
+ * Headline that inks in as it scrolls through the viewport: a dim base layer
+ * sits under a full-strength copy revealed by clip-path.
  */
 export function ScrollFillText({ text, className }: { text: string; className?: string }) {
   const reduce = useReducedMotion()
@@ -22,7 +22,7 @@ export function ScrollFillText({ text, className }: { text: string; className?: 
   return (
     <span ref={ref} className={`relative inline-block ${className ?? ''}`}>
       <span className="text-ink/20">{text}</span>
-      <motion.span aria-hidden className="grad-text absolute inset-0" style={{ clipPath: clip }}>
+      <motion.span aria-hidden className="absolute inset-0 text-ink" style={{ clipPath: clip }}>
         {text}
       </motion.span>
     </span>

@@ -138,7 +138,7 @@ export function ShowcaseRail({ images, name, paused = false, onOpen }: ShowcaseR
             <motion.div
               key={absIndex}
               className={`absolute overflow-hidden rounded-2xl border bg-[#0a0a12] shadow-2xl ${
-                isCenter ? 'z-20 border-line-accent shadow-[0_30px_80px_-20px_rgba(139,92,246,0.35)]' : 'z-10 border-line'
+                isCenter ? 'z-20 border-accent/40 shadow-[0_30px_80px_-20px_rgba(139,92,246,0.35)]' : 'z-10 border-line'
               }`}
               style={{ width: cfg.cardW, aspectRatio: '16/10', transformStyle: 'preserve-3d' }}
               initial={false}
@@ -183,7 +183,7 @@ export function ShowcaseRail({ images, name, paused = false, onOpen }: ShowcaseR
           onClick={prev}
           aria-label="Previous screenshot"
           data-cursor="PREV"
-          className="glass flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-line-accent"
+          className="glass flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent/40"
         >
           <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden>
             <path d="M9 2 4 7l5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -200,7 +200,7 @@ export function ShowcaseRail({ images, name, paused = false, onOpen }: ShowcaseR
             >
               <span
                 className={`h-[3px] rounded-full transition-all duration-300 ${
-                  i === activeIndex ? 'w-7 bg-cyan' : 'w-3 bg-line group-hover:bg-line-accent'
+                  i === activeIndex ? 'w-7 bg-accent' : 'w-3 bg-line group-hover:bg-line-strong'
                 }`}
               />
             </button>
@@ -214,7 +214,7 @@ export function ShowcaseRail({ images, name, paused = false, onOpen }: ShowcaseR
           onClick={next}
           aria-label="Next screenshot"
           data-cursor="NEXT"
-          className="glass flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-line-accent"
+          className="glass flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent/40"
         >
           <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden>
             <path d="m5 2 5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
