@@ -19,8 +19,9 @@ export const profile = {
   phone: '+63 948 571 6293',
   github: 'https://github.com/dooddles07',
   linkedin: 'https://www.linkedin.com/in/brixsonn-romero-0b18b9327',
+  facebook: 'https://www.facebook.com/brix.dodd',
   resume: '/assets/me/resume.pdf',
-  availability: 'Open for work: full time, part time, contracts',
+  availability: 'Open for remote work: full time, part time, contracts',
   education: {
     degree: 'B.S. Computer Science, Cum Laude',
     school: 'Naga College Foundation, Inc.',

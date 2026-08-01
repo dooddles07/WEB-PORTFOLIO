@@ -41,9 +41,9 @@ export function Contact() {
 
           <Reveal delay={0.12} y={20}>
             <p className="prose-body mt-7 text-muted">
-              Open for full time, part time, and contract work anywhere in the world. Email is the
-              fastest way to reach me. I read everything and reply to anything that isn't a
-              template.
+              Open for remote work anywhere in the world: full time, part time, and contracts.
+              Email is the fastest way to reach me. I read everything and reply to anything that
+              isn't a template.
             </p>
           </Reveal>
 
@@ -112,7 +112,7 @@ export function Contact() {
                 </a>
               </dd>
             </div>
-            <div className="flex flex-col gap-1 border-y border-line py-5">
+            <div className="flex flex-col gap-1 border-t border-line py-5">
               <dt className="mono-label text-faint">LinkedIn</dt>
               <dd>
                 <a
@@ -123,6 +123,20 @@ export function Contact() {
                   className="font-mono text-[13px] break-all text-muted underline-offset-4 transition-colors hover:text-ink hover:underline"
                 >
                   linkedin.com/in/brixsonn-romero
+                </a>
+              </dd>
+            </div>
+            <div className="flex flex-col gap-1 border-y border-line py-5">
+              <dt className="mono-label text-faint">Facebook</dt>
+              <dd>
+                <a
+                  href={profile.facebook}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="OPEN"
+                  className="font-mono text-[13px] break-all text-muted underline-offset-4 transition-colors hover:text-ink hover:underline"
+                >
+                  facebook.com/brix.dodd
                 </a>
               </dd>
             </div>
