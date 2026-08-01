@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* self-hosted: no third-party round trip before text can render */
+@import "./fonts.css";
 
 @theme {
   /* warm ink, not blue-black void */

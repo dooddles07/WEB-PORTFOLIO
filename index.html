@@ -28,12 +28,13 @@
     />
     <meta name="twitter:image" content="/og.png?v=3" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@100..800&display=swap"
-      rel="stylesheet"
-    />
+    <!-- the three faces above the fold; the rest load from src/fonts.css on demand -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="/fonts/instrument-serif-normal-400-latin.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="/fonts/instrument-serif-italic-400-latin.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="/fonts/jetbrains-mono-normal-100800-latin.woff2" />
 
     <script type="application/ld+json">
       {
