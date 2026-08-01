@@ -92,8 +92,18 @@ Three cache tiers, and the split matters:
   purpose. `index.html` must never be immutable — it points at the hashed
   bundles, so a stale copy would load a deleted asset.
 
-Plus `nosniff`, `strict-origin-when-cross-origin`, `SAMEORIGIN`, and a
-`Permissions-Policy` denying camera, microphone and geolocation.
+Plus `nosniff`, `strict-origin-when-cross-origin`, `SAMEORIGIN`, a
+`Permissions-Policy` denying camera, microphone and geolocation, and a
+`Content-Security-Policy` restricting everything to same-origin. `style-src`
+carries `'unsafe-inline'` because several components set inline `style={{}}`
+for computed values (fluid type sizes, drag transforms) — there's no user input
+reaching the DOM anywhere on this site, so the XSS surface that directive
+normally guards against doesn't exist here. Before loosening or tightening the
+policy, test it locally first: inject the same policy as a `<meta http-equiv>`
+tag into a built `dist/index.html`, serve it, and watch the console for CSP
+violations across a full scroll, the lightbox, and the mobile drawer. A wrong
+CSP fails silently — no error to the visitor, just missing fonts or a dead
+lightbox — so never ship a change to it unverified.
 
 ## Performance and accessibility
 
