@@ -7,7 +7,8 @@
   --color-surface-2: #1c1917;
   --color-ink: #f5f2ec;
   --color-muted: #a8a29a;
-  --color-faint: #726d66;
+  /* lightened from #726d66: that failed 4.5:1 on both bg and surface */
+  --color-faint: #837e75;
 
   /* single accent carries the identity */
   --color-accent: #8b5cf6;
@@ -18,6 +19,8 @@
   --color-paper-ink: #16120f;
   --color-paper-muted: #5d564d;
   --color-paper-line: rgba(22, 18, 15, 0.14);
+  /* the violet accent only hits 3.5:1 on cream, so light sections get a darker one */
+  --color-paper-accent: #6d28d9;
 
   --color-line: rgba(245, 242, 236, 0.1);
   --color-line-strong: rgba(245, 242, 236, 0.2);

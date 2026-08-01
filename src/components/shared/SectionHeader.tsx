@@ -13,7 +13,7 @@ export function SectionHeader({ index, label, tone = 'dark' }: SectionHeaderProp
   return (
     <Reveal y={16}>
       <div className="flex items-center gap-3">
-        <span className="mono-label text-accent">{index}</span>
+        <span className={`mono-label ${paper ? 'text-paper-accent' : 'text-accent'}`}>{index}</span>
         <span className={`mono-label ${paper ? 'text-paper-muted' : 'text-faint'}`}>/</span>
         <span className={`mono-label ${paper ? 'text-paper-muted' : 'text-muted'}`}>{label}</span>
         <div className={`h-px flex-1 ${paper ? 'bg-paper-line' : 'bg-line'}`} />

@@ -21,7 +21,9 @@ export function ScrollFillText({ text, className }: { text: string; className?: 
 
   return (
     <span ref={ref} className={`relative inline-block ${className ?? ''}`}>
-      <span className="text-ink/20">{text}</span>
+      {/* /40 not /20: the unfilled state has to clear 3:1 on its own, since a
+          visitor can sit at a scroll position where the fill never completes */}
+      <span className="text-ink/40">{text}</span>
       <motion.span aria-hidden className="absolute inset-0 text-ink" style={{ clipPath: clip }}>
         {text}
       </motion.span>
