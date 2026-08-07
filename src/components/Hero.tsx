@@ -2,11 +2,11 @@ import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
 import { useRef } from 'react'
 import { profile } from '../data/profile'
 import { experiences } from '../data/experience'
-import { projects } from '../data/projects'
 import { MagneticButton } from './shared/MagneticButton'
 import { RotatingText } from './shared/RotatingText'
 
-const shippedCount = experiences.length + projects.length
+// Client work and personal builds are counted separately everywhere else on
+// this site (see About.tsx) — this stat must not blur that line by summing them.
 
 const line = {
   hidden: {},
@@ -106,7 +106,7 @@ export function Hero() {
             </div>
             <div className="flex justify-between gap-4 border-y border-line py-3">
               <dt className="mono-label text-faint">Shipped</dt>
-              <dd className="mono-label text-muted">{shippedCount} platforms</dd>
+              <dd className="mono-label text-muted">{experiences.length} client platforms</dd>
             </div>
           </dl>
         </motion.div>
