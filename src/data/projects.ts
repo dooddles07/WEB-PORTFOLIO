@@ -109,8 +109,8 @@ export const projects: Project[] = [
     name: 'CYA Daily Verse',
     badge: 'DEVOTIONAL',
     description:
-      'Devotional web app for a youth ministry. Members get a fresh Bible verse every day, plus reading plans, daily challenges, a prayer wall, and events. A mood finder suggests Scripture based on how you feel. Verses come live from public Bible sources.',
-    stack: 'Next.js, React, TypeScript, Tailwind, MongoDB, Vercel',
+      "Devotional PWA for a youth ministry. Installable, works offline. Every member sees the same Bible verse each day from a 300-verse rotation, plus reading plans, daily challenges with XP and streaks, a moderated prayer wall, and event RSVPs. A mood picker suggests verses based on how you're feeling. Admin accounts require two-factor sign-in, every write endpoint is rate-limited and CSRF-protected, and a password reset immediately signs out every other session. Verse text is the Berean Standard Bible, public domain, stored in the app's own database.",
+    stack: 'Next.js 16, React 19, TypeScript, Tailwind v4, MongoDB, Resend, Vercel',
     image: '/assets/projects/cya.webp?v=2',
     images: [
       '/assets/projects/cya.webp?v=2',
