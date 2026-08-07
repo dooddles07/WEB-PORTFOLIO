@@ -99,14 +99,14 @@ export const techGroups = [
   },
   {
     label: 'Data',
-    items: ['PostgreSQL', 'MongoDB', 'MySQL', 'Prisma', 'pgvector'],
+    items: ['PostgreSQL', 'MongoDB', 'MySQL', 'Prisma', 'pgvector', 'Redis'],
   },
   {
     label: 'Platform',
-    items: ['Vercel', 'Railway', 'Render', 'Stripe', 'GoHighLevel', 'Git'],
+    items: ['Vercel', 'Railway', 'Render', 'Cloudflare Workers', 'Stripe', 'GoHighLevel', 'Git'],
   },
   {
     label: 'AI',
-    items: ['Claude Code', 'Claude API', 'Groq', 'RAG / embeddings'],
+    items: ['Claude Code', 'Claude API', 'Groq', 'Gemini', 'RAG / embeddings'],
   },
 ]
