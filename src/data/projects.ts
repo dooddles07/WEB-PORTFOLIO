@@ -41,6 +41,23 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    name: 'Marram',
+    badge: 'WEDDING · FULL-STACK',
+    description:
+      'A wedding planning site split into three connected parts. The public side has real wedding stories to browse, a venue and vendor directory for Britain and Europe, a style quiz to figure out the kind of day a couple actually wants, and a budget calculator to work out the numbers before any deposits go down. Couples who sign in get a private dashboard where they track tasks, split the budget by category, manage the guest list, and watch RSVPs come in as guests respond. When the plan is ready, they can publish their own wedding page at a personal URL where guests read the details and RSVP without needing an account or seeing anything else from the planning side.',
+    stack: 'Next.js, TypeScript, Neon Postgres, Drizzle ORM, NextAuth, Zustand, Tailwind CSS, Framer Motion, Upstash Redis, Resend, Vercel',
+    image: '/assets/projects/marram.webp',
+    images: [
+      '/assets/projects/marram.webp',
+      '/assets/projects/marram2.webp',
+      '/assets/projects/marram3.webp',
+      '/assets/projects/marram4.webp',
+      '/assets/projects/marram5.webp',
+      '/assets/projects/marram6.webp',
+    ],
+    link: 'https://wedding-planner-jet-seven.vercel.app',
+  },
+  {
     name: 'North Star',
     badge: 'E-COMMERCE · FITMENT',
     description:
