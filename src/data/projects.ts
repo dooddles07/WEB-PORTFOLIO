@@ -22,6 +22,28 @@ export interface MiniProject {
 
 export const projects: Project[] = [
   {
+    name: 'SchoolPulse',
+    badge: 'SAAS · MULTI-TENANT',
+    description:
+      "A school management platform where one login serves fourteen different roles, from admin and teacher down to finance, library, clinic, security and transport, each seeing only the tools and data their job needs. Every school is its own tenant, and a person can hold a role at more than one school without their data ever crossing over. Grades, attendance, incidents and admissions all write to an audit log, so there's a record of who changed what. Nothing touches the database directly from a page: every write goes through a server action that checks the caller's role first.",
+    stack: 'Next.js 16, TypeScript, PostgreSQL, Prisma 7, better-auth, Tailwind CSS v4, Vercel Blob',
+    image: '/assets/projects/schoolpulse.webp',
+    images: [
+      '/assets/projects/schoolpulse.webp',
+      '/assets/projects/schoolpulse2.webp',
+      '/assets/projects/schoolpulse3.webp',
+      '/assets/projects/schoolpulse4.webp',
+      '/assets/projects/schoolpulse5.webp',
+      '/assets/projects/schoolpulse6.webp',
+      '/assets/projects/schoolpulse7.webp',
+      '/assets/projects/schoolpulse8.webp',
+      '/assets/projects/schoolpulse9.webp',
+    ],
+    link: 'https://school-management-system-black-three.vercel.app',
+    repo: 'https://github.com/dooddles07/School-Management-System',
+    featured: true,
+  },
+  {
     name: 'CortexVault',
     badge: 'AI · RAG',
     description:
