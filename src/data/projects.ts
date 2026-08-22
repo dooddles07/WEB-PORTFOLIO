@@ -60,7 +60,6 @@ export const projects: Project[] = [
     ],
     link: 'https://cortex-vault-web.vercel.app',
     repo: 'https://github.com/dooddles07/Cortex-Vault',
-    featured: true,
   },
   {
     name: 'Marram',

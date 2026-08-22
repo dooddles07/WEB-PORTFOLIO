@@ -47,7 +47,7 @@ test('counts on the page match the data files', async ({ page }) => {
   await expect(page.locator('#about')).toContainText(String(certifications.length).padStart(2, '0'))
 
   // hero marginalia
-  await expect(page.locator('#top')).toContainText(`${experiences.length + projects.length} platforms`)
+  await expect(page.locator('#top')).toContainText(`${experiences.length} client platforms`)
 
   await expect(page.locator('#certifications img')).toHaveCount(certifications.length)
 })
