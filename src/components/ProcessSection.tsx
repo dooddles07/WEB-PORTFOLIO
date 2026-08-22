@@ -18,7 +18,7 @@ export function ProcessSection() {
         </h2>
         <Reveal delay={0.12} y={16} className="lg:col-span-5 lg:pt-3">
           <p className="prose-body text-muted">
-            Same nine steps on every build, client work or my own. The writing part is fast now.
+            Same seven steps on every build, client work or my own. The writing part is fast now.
             The deciding, checking and breaking parts are still mine, and they are what the job
             actually is.
           </p>

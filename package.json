@@ -2,7 +2,7 @@
   "name": "brixsonn-romero-portfolio",
   "private": true,
   "version": "1.0.0",
-  "description": "Personal portfolio of Brixsonn M. Romero, Full Stack AI Web and App Developer.",
+  "description": "Personal portfolio of Brixsonn M. Romero, AI Native Developer & Automation Developer.",
   "type": "module",
   "scripts": {
     "dev": "vite",

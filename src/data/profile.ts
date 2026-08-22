@@ -2,8 +2,8 @@ export const profile = {
   name: 'Brixsonn M. Romero',
   firstName: 'Brixsonn',
   lastName: 'Romero',
-  role: 'Full Stack AI Web and App Developer — APIs, CRM and Workflow Automation, Conversational AI',
-  roleShort: 'Full Stack AI Web and App Developer',
+  role: 'AI Native Developer & Automation Developer — APIs, CRM and Workflow Automation, Conversational AI',
+  roleShort: 'AI Native Developer & Automation Developer',
   specialties: ['APIs', 'CRM and Workflow Automation', 'Conversational AI'],
   tagline:
     'I build web and mobile apps fast. AI agents write the code, and software engineering fundamentals like system architecture, data modelling and security are what catch the things they get wrong.',
@@ -47,9 +47,9 @@ export const workflow = [
       'Write it down: the data model, the screens, and the order things get built in. If I cannot explain the plan in plain words, I do not understand the problem yet.',
   },
   {
-    name: 'Execute',
+    name: 'Implement + TDD',
     detail:
-      'AI agents write the code against that plan, one piece at a time. Small pieces, because a change I cannot read in one sitting is a change I cannot check.',
+      'AI agents write the code against that plan, tests written alongside it, not after. Wrong inputs, dead connection, double taps, the back button at the worst moment, each a case before it ships. Small pieces, because a change I cannot read in one sitting is a change I cannot check.',
   },
   {
     name: 'Code review',
@@ -64,17 +64,7 @@ export const workflow = [
   {
     name: 'Refine',
     detail:
-      'Fix what those two passes turned up. Usually naming, edge cases, and what the app does when something fails rather than when everything works.',
-  },
-  {
-    name: 'Review',
-    detail:
-      'Read the whole thing again with fresh eyes, as one system instead of a stack of separate changes. Problems hide in the seams between good parts.',
-  },
-  {
-    name: 'Testing',
-    detail:
-      'Use it like someone trying to break it. Wrong inputs, dead connection, double taps, tiny screens, the back button at the worst possible moment.',
+      'Fix what those two passes turned up, then read the whole thing again with fresh eyes, as one system instead of a stack of separate changes. Problems hide in the seams between good parts.',
   },
   {
     name: 'Ship',

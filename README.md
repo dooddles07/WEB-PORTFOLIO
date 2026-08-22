@@ -1,7 +1,7 @@
 # Brixsonn M. Romero — Portfolio
 
 Personal portfolio site. Editorial single-page build: five client platforms, eight
-personal projects, seven Anthropic certificates, and the nine-step workflow every
+personal projects, seven Anthropic certificates, and the seven-step workflow every
 one of them went through.
 
 Live: https://web-portfolio-chi-steel.vercel.app
