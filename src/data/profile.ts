@@ -20,7 +20,7 @@ export const profile = {
   github: 'https://github.com/dooddles07',
   linkedin: 'https://www.linkedin.com/in/brixsonn-romero-0b18b9327',
   facebook: 'https://www.facebook.com/brix.dodd',
-  resume: '/assets/me/resume.pdf?v=2',
+  resume: '/assets/me/resume.pdf?v=3',
   availability: 'Open for remote work: full time, part time, contracts',
   education: {
     degree: 'B.S. Computer Science, Cum Laude',
