@@ -129,6 +129,24 @@ export const projects: Project[] = [
     repo: 'https://github.com/dooddles07/StayFlow',
   },
   {
+    name: 'CareFlow CRM',
+    badge: 'HEALTHCARE CRM · RBAC',
+    description:
+      "A hospital CRM for the relationship work an EMR doesn't cover: who's still owed a follow-up, which lead source is converting, which complaint is about to breach its SLA. Nine staff roles get their access enforced twice, once in the app and again as row-level security inside Postgres itself, so a bug in the UI can't leak a patient outside their department. Contact details render masked by default, and revealing one writes an audit entry in the same database transaction as the reveal, so a value can never go visible without a record of who looked and when. A background queue drains appointment reminders and campaign sends on a schedule, and the whole thing, database included, runs on free-tier infrastructure end to end.",
+    stack: 'Next.js 16, TypeScript, Neon Postgres, Drizzle ORM, Better Auth, pg-boss, Resend, Vercel Blob, Groq',
+    image: '/assets/projects/careflow.webp',
+    images: [
+      '/assets/projects/careflow.webp',
+      '/assets/projects/careflow2.webp',
+      '/assets/projects/careflow3.webp',
+      '/assets/projects/careflow4.webp',
+      '/assets/projects/careflow5.webp',
+      '/assets/projects/careflow6.webp',
+    ],
+    link: 'https://crm-dashboard-beta-ebon.vercel.app',
+    repo: 'https://github.com/dooddles07/CRM-Dashboard',
+  },
+  {
     name: 'The Lumina',
     badge: 'PROPERTY PLATFORM',
     description:
