@@ -61,7 +61,7 @@ export function Hero() {
 
       <motion.div style={{ y: contentY, opacity: fade }} className="relative z-10 flex flex-1 flex-col justify-center py-6">
         <div className="grid gap-x-8 gap-y-12 lg:grid-cols-12">
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-7">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -96,43 +96,26 @@ export function Hero() {
             </motion.div>
           </div>
 
-          <motion.div
+          {/* marginalia: the facts a recruiter scans for, without a stat-card row */}
+          <motion.dl
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.7 }}
-            className="flex flex-col gap-7 lg:col-span-6 lg:col-start-7 lg:items-end lg:justify-center"
+            className="self-end lg:col-span-4 lg:col-start-9"
           >
-            <div className="relative w-full max-w-[260px] lg:max-w-[340px]">
-              {/* violet halo so the portrait sits in light, not floating on black */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -inset-x-16 -inset-y-12 -z-10 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.18),transparent_70%)] blur-2xl"
-              />
-              <img
-                src="/assets/me/profile.webp"
-                alt="Portrait of Brixsonn Romero"
-                className="w-full [mask-image:radial-gradient(125%_125%_at_50%_32%,#000_52%,transparent_94%)] [-webkit-mask-image:radial-gradient(125%_125%_at_50%_32%,#000_52%,transparent_94%)]"
-                draggable={false}
-              />
-              <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-bg via-bg/70 to-transparent" />
+            <div className="flex justify-between gap-4 border-t border-line py-3">
+              <dt className="mono-label text-faint">Based in</dt>
+              <dd className="mono-label text-muted">{profile.locationShort}</dd>
             </div>
-
-            {/* marginalia: the facts a recruiter scans for, without a stat-card row */}
-            <dl className="w-full">
-              <div className="flex justify-between gap-4 border-t border-line py-3">
-                <dt className="mono-label text-faint">Based in</dt>
-                <dd className="mono-label text-muted">{profile.locationShort}</dd>
-              </div>
-              <div className="flex justify-between gap-4 border-t border-line py-3">
-                <dt className="mono-label text-faint">Degree</dt>
-                <dd className="mono-label text-muted">BS Computer Science</dd>
-              </div>
-              <div className="flex justify-between gap-4 border-y border-line py-3">
-                <dt className="mono-label text-faint">Shipped</dt>
-                <dd className="mono-label text-muted">{experiences.length} client platforms</dd>
-              </div>
-            </dl>
-          </motion.div>
+            <div className="flex justify-between gap-4 border-t border-line py-3">
+              <dt className="mono-label text-faint">Degree</dt>
+              <dd className="mono-label text-muted">BS Computer Science</dd>
+            </div>
+            <div className="flex justify-between gap-4 border-y border-line py-3">
+              <dt className="mono-label text-faint">Shipped</dt>
+              <dd className="mono-label text-muted">{experiences.length} client platforms</dd>
+            </div>
+          </motion.dl>
         </div>
 
         <motion.div
