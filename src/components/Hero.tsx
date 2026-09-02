@@ -60,42 +60,49 @@ export function Hero() {
       />
 
       <motion.div style={{ y: contentY, opacity: fade }} className="relative z-10 flex flex-1 flex-col justify-center py-6">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="flex items-center gap-2.5"
-        >
-          <span className="relative h-[6px] w-[6px] rounded-full bg-accent" aria-hidden>
-            <span className="absolute inset-0 animate-ping rounded-full bg-accent/70" />
-          </span>
-          <span className="mono-label text-muted">{profile.availability}</span>
-        </motion.div>
-
-        <h1 className="mt-7 flex flex-col">
-          <NameLine text={profile.firstName} />
-          <NameLine text={profile.lastName} italic />
-        </h1>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.55 }}
-          className="mt-10 grid gap-8 lg:grid-cols-12 lg:gap-10"
-        >
-          <div className="border-l border-line-strong pl-5 lg:col-span-6">
-            <p className="font-mono text-[12px] leading-relaxed tracking-[0.08em] text-ink">
-              {profile.roleShort}
-              <br />
-              <span className="text-accent">
-                <RotatingText words={profile.specialties} />
+        <div className="grid gap-x-10 gap-y-12 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="flex items-center gap-2.5"
+            >
+              <span className="relative h-[6px] w-[6px] rounded-full bg-accent" aria-hidden>
+                <span className="absolute inset-0 animate-ping rounded-full bg-accent/70" />
               </span>
-            </p>
-            <p className="prose-body mt-5 text-muted">{profile.tagline}</p>
+              <span className="mono-label text-muted">{profile.availability}</span>
+            </motion.div>
+
+            <h1 className="mt-7 flex flex-col">
+              <NameLine text={profile.firstName} />
+              <NameLine text={profile.lastName} italic />
+            </h1>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.55 }}
+              className="mt-10 border-l border-line-strong pl-5"
+            >
+              <p className="font-mono text-[12px] leading-relaxed tracking-[0.08em] text-ink">
+                {profile.roleShort}
+                <br />
+                <span className="text-accent">
+                  <RotatingText words={profile.specialties} />
+                </span>
+              </p>
+              <p className="prose-body mt-5 max-w-[52ch] text-muted">{profile.tagline}</p>
+            </motion.div>
           </div>
 
-          <div className="flex flex-col gap-7 lg:col-span-5 lg:col-start-8 lg:items-end">
-            <div className="relative w-full max-w-[200px] lg:max-w-[240px]">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.7 }}
+            className="flex flex-col gap-7 lg:col-span-4 lg:col-start-9 lg:items-end lg:justify-center"
+          >
+            <div className="relative w-full max-w-[220px] lg:max-w-[280px]">
               <img
                 src="/assets/me/profile.webp"
                 alt="Portrait of Brixsonn Romero"
@@ -120,14 +127,14 @@ export function Hero() {
                 <dd className="mono-label text-muted">{experiences.length} client platforms</dd>
               </div>
             </dl>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-          className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4"
+          transition={{ duration: 0.7, delay: 0.85 }}
+          className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-4"
         >
           <MagneticButton
             href="#experience"
