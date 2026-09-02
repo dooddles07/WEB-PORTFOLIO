@@ -102,7 +102,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.7 }}
             className="flex flex-col gap-7 lg:col-span-6 lg:col-start-7 lg:items-end lg:justify-center"
           >
-            <div className="relative w-full max-w-[260px] lg:max-w-[340px]">
+            <div className="relative w-full max-w-[260px] lg:max-w-[320px]">
               {/* violet halo so the portrait sits in light, not floating on black */}
               <div
                 aria-hidden
