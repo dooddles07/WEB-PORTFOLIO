@@ -95,16 +95,14 @@ export function Hero() {
           </div>
 
           <div className="flex flex-col gap-7 lg:col-span-5 lg:col-start-8 lg:items-end">
-            <div className="relative w-full max-w-[200px] overflow-hidden rounded-xl border border-line-strong bg-surface lg:max-w-[240px]">
+            <div className="relative w-full max-w-[200px] lg:max-w-[240px]">
               <img
                 src="/assets/me/profile.webp"
                 alt="Portrait of Brixsonn Romero"
-                className="w-full object-cover grayscale contrast-[1.05] brightness-[0.92]"
+                className="w-full [mask-image:radial-gradient(120%_120%_at_50%_35%,#000_55%,transparent_92%)] [-webkit-mask-image:radial-gradient(120%_120%_at_50%_35%,#000_55%,transparent_92%)]"
                 draggable={false}
               />
-              <div aria-hidden className="pointer-events-none absolute inset-0 bg-accent/25 mix-blend-color" />
-              <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg to-transparent" />
-              <div aria-hidden className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-white/[0.06]" />
+              <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-bg via-bg/70 to-transparent" />
             </div>
 
             {/* marginalia: the facts a recruiter scans for, without a stat-card row */}
