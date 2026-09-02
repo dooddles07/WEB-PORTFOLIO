@@ -25,7 +25,7 @@ export const projects: Project[] = [
     name: 'SchoolPulse',
     badge: 'SAAS · MULTI-TENANT',
     description:
-      'Multi-tenant school platform where one login serves fourteen roles, each seeing only its own tools and data. Every school is isolated, every write goes through a role-checked server action, and grades, attendance and admissions all leave an audit trail.',
+      "Built a system that keeps a school's admissions, grades, attendance and fees in one place, with each person only seeing the part that's theirs.",
     stack: 'Next.js 16, TypeScript, PostgreSQL, Prisma 7, better-auth, Tailwind CSS v4, Vercel Blob',
     image: '/assets/projects/schoolpulse.webp',
     images: [
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     name: 'CortexVault',
     badge: 'AI · RAG',
     description:
-      'Private knowledge base that answers questions about your own documents, every answer citing the exact source paragraph. Hybrid keyword-and-meaning search, two-factor sign-in, and full export to plain files whenever you want.',
+      'Built a private tool for asking questions about your own notes and files that points you to the exact line each answer came from.',
     stack: 'Next.js, TypeScript, FastAPI, PostgreSQL, pgvector, Groq, Vercel, Render',
     image: '/assets/projects/cortexvault.webp?v=3',
     images: [
@@ -65,7 +65,7 @@ export const projects: Project[] = [
     name: 'Marram',
     badge: 'WEDDING · FULL-STACK',
     description:
-      'Wedding planning site in three parts: a public side with real wedding stories, a Britain and Europe venue directory, a style quiz and a budget calculator; a private dashboard for tasks, budget, guest list and RSVPs; and a publishable wedding page where guests RSVP without an account.',
+      'Built a wedding planning site with a venue search, a budget calculator, a guest list, RSVP tracking and a page you can share with guests.',
     stack: 'Next.js, TypeScript, Neon Postgres, Drizzle ORM, NextAuth, Zustand, Tailwind CSS, Framer Motion, Upstash Redis, Resend, Vercel',
     image: '/assets/projects/marram.webp',
     images: [
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     name: 'North Star',
     badge: 'E-COMMERCE · FITMENT',
     description:
-      'An auto parts shop built around one question: will this fit my car? Set your vehicle once and every listing, filter and search result is checked against a real make, model and year table. Still in progress: browsing works, but checkout and sign-in are demo only.',
+      'Built an online shop for car parts that only shows the ones that fit your car, with the checkout and sign-in still to come.',
     stack: 'Next.js 16, React 19, TypeScript, Tailwind v4, Zustand, Motion, Vercel',
     image: '/assets/projects/northstar.webp',
     status: 'in-progress',
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     name: 'StayFlow',
     badge: 'COMMUNITY APP',
     description:
-      'All-in-one app for running a residential community, with three logins that each see only their job: residents book facilities and guests, staff run a live front desk, management gets analytics and admin control. Every rule is enforced on the server, covered by 524 tests and a 151-case role matrix.',
+      'Built an app for running a residential community, covering facility bookings, guest passes, events and the front desk, with its own view for residents, staff and management.',
     stack: 'React, TanStack Start, Tailwind, Node, Express, Prisma, PostgreSQL',
     image: '/assets/projects/stayflow.webp?v=3',
     images: [
@@ -132,7 +132,7 @@ export const projects: Project[] = [
     name: 'CareFlow CRM',
     badge: 'HEALTHCARE CRM · RBAC',
     description:
-      'A hospital CRM for the relationship work an EMR skips: follow-ups owed, lead sources converting, SLAs about to breach. Nine roles are enforced twice, in the app and as row-level security in Postgres, and contact details stay masked until a reveal that is audited in the same transaction. Runs entirely on free-tier infrastructure.',
+      'Built a tool for a clinic to keep track of follow-up calls, where new patients come from and which complaints are running late, while keeping patient details private and logging every look.',
     stack: 'Next.js 16, TypeScript, Neon Postgres, Drizzle ORM, Better Auth, pg-boss, Resend, Vercel Blob, Groq',
     image: '/assets/projects/careflow.webp',
     images: [
@@ -172,7 +172,7 @@ export const projects: Project[] = [
     name: 'The Lumina',
     badge: 'PROPERTY PLATFORM',
     description:
-      'Live property management platform with three connected portals. Residents book facilities, register guests, track parcels, report defects and pay deposits through real Stripe checkout, and every action shows instantly for managers and guards.',
+      'Built a platform where residents book facilities, sign in guests, track parcels, report problems and pay deposits by card, with staff seeing it all right away.',
     stack: 'JavaScript, Node, Express, MongoDB, Stripe, Vercel',
     image: '/assets/projects/lumina.webp',
     images: [
@@ -188,7 +188,7 @@ export const projects: Project[] = [
     name: 'CYA Daily Verse',
     badge: 'DEVOTIONAL',
     description:
-      'A devotional app for a youth ministry: a daily Bible verse, reading plans, a prayer wall and community events, to help members build a Scripture habit and stay connected to their church.',
+      'Built an app that sends out a Bible verse every day along with reading plans, a prayer wall and a list of church events.',
     stack: 'Next.js 16, React 19, TypeScript, Tailwind v4, MongoDB, Resend, Vercel',
     image: '/assets/projects/cya.webp?v=2',
     images: [
@@ -206,7 +206,7 @@ export const projects: Project[] = [
     name: 'SyncMind',
     badge: 'AI MEETING ASSISTANT',
     description:
-      'Turns a meeting recording into a clean transcript, plain-English notes, a to-do list with owners and due dates, a ready-to-send follow-up email, and calendar reminders. Everything comes from what was said, and any guess is marked as one.',
+      'Built a tool that takes a meeting recording and gives back a transcript, a short set of notes, a to-do list with names and dates, and a follow-up email ready to send.',
     stack: 'Next.js, Supabase, Groq, Vercel',
     image: '/assets/projects/syncmind.webp',
     images: [
@@ -223,7 +223,7 @@ export const projects: Project[] = [
     name: 'ScholarForge AI',
     badge: 'AI · STUDY TOOL',
     description:
-      'Turns a PDF, slide deck or notes into quizzes, flashcards and practice exams, all processed on your device. The server only holds the API key and checks that every question quotes real text from your document. Wrong answers show the exact passage they came from, and study data backs up to the cloud on demand.',
+      "Built a study tool that turns a PDF, some slides or your notes into quizzes, flashcards and practice exams drawn from what's actually in the file.",
     stack: 'React, TypeScript, Vite, Dexie/IndexedDB, Firebase, Vercel, Groq',
     image: '/assets/projects/scholarforge.webp',
     images: [
@@ -245,7 +245,7 @@ export const projects: Project[] = [
     name: 'Liters Cafe',
     badge: 'MARKETING · MENU SITE',
     description:
-      'A website for a Naga City cafe that had none: browse the menu, build your own milk tea with live pricing, and check hours and directions. Ordering is one tap to Messenger with the order pre-written. No accounts, no fake checkout.',
+      'Built a website for a cafe that never had one, with the full menu, a build-your-own milk tea that prices as you go, opening hours, directions and ordering through Messenger.',
     stack: 'Next.js, TypeScript, Tailwind, Vercel',
     image: '/assets/projects/liters.webp',
     status: 'in-progress',
