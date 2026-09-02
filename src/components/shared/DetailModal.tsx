@@ -31,14 +31,14 @@ export function DetailModal({ onClose, labelledBy, suppressEsc = false, children
         role="dialog"
         aria-modal="true"
         aria-labelledby={labelledBy}
-        className="fixed inset-0 z-[90] flex items-start justify-center overflow-y-auto bg-bg/90 p-4 backdrop-blur-md sm:p-10"
+        className="fixed inset-0 z-[90] flex items-center justify-center bg-bg/90 p-4 backdrop-blur-md sm:p-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
       >
         <motion.div
-          className="glass relative my-auto w-full max-w-3xl overflow-hidden rounded-2xl border border-line bg-surface p-6 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.6)] sm:p-10"
+          className="glass relative flex max-h-full w-full max-w-3xl flex-col rounded-2xl border border-line bg-surface shadow-[0_40px_120px_-20px_rgba(0,0,0,0.6)]"
           initial={{ opacity: 0, y: 24, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 12, scale: 0.98 }}
@@ -54,7 +54,12 @@ export function DetailModal({ onClose, labelledBy, suppressEsc = false, children
               <path d="m2 2 10 10M12 2 2 12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
             </svg>
           </button>
-          {children}
+          <div
+            data-lenis-prevent
+            className="overflow-y-auto overscroll-contain rounded-2xl p-6 sm:p-10"
+          >
+            {children}
+          </div>
         </motion.div>
       </motion.div>
     </AnimatePresence>,
