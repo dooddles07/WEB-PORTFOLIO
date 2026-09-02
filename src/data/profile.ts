@@ -2,9 +2,9 @@ export const profile = {
   name: 'Brixsonn M. Romero',
   firstName: 'Brixsonn',
   lastName: 'Romero',
-  role: 'AI Native Developer & Automation Developer — APIs, CRM and Workflow Automation, Conversational AI',
-  roleShort: 'AI Native Developer & Automation Developer',
-  specialties: ['APIs', 'CRM and Workflow Automation', 'Conversational AI'],
+  role: 'Claude Code Developer & Automation Developer — CRM, SaaS, Dashboards, Landing Pages, Automations',
+  roleShort: 'Claude Code Developer & Automation Developer',
+  specialties: ['CRM', 'SaaS', 'Dashboards', 'Landing Pages', 'Automations'],
   tagline:
     'I build web and mobile apps fast. AI agents write the code, and software engineering fundamentals like system architecture, data modelling and security are what catch the things they get wrong.',
   aboutHeadline:

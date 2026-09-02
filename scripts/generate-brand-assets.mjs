@@ -34,7 +34,7 @@ const og = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width
   <text x="80" y="404" font-family="${SERIF}" font-size="150" font-style="italic" fill="${ACCENT}">Romero</text>
 
   <rect x="80" y="462" width="2" height="96" fill="${FAINT}"/>
-  <text x="108" y="497" font-family="${MONO}" font-size="21" letter-spacing="1.4" fill="${INK}">AI Native Developer &amp; Automation Developer</text>
+  <text x="108" y="497" font-family="${MONO}" font-size="21" letter-spacing="1.4" fill="${INK}">Claude Code Developer &amp; Automation Developer</text>
   <text x="108" y="537" font-family="${MONO}" font-size="19" letter-spacing="1.2" fill="${FAINT}">Naga City, Camarines Sur, Philippines</text>
 </svg>`
 

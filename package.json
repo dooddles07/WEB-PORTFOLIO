@@ -2,7 +2,7 @@
   "name": "brixsonn-romero-portfolio",
   "private": true,
   "version": "1.0.0",
-  "description": "Personal portfolio of Brixsonn M. Romero, AI Native Developer & Automation Developer.",
+  "description": "Personal portfolio of Brixsonn M. Romero, Claude Code Developer & Automation Developer.",
   "type": "module",
   "scripts": {
     "dev": "vite",
