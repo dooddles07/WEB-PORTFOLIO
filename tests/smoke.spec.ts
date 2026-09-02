@@ -41,11 +41,6 @@ test('every nav link points at a section that exists', async ({ page }) => {
 test('counts on the page match the data files', async ({ page }) => {
   await load(page)
 
-  // About stat row is derived from array lengths
-  await expect(page.locator('#about')).toContainText(String(experiences.length).padStart(2, '0'))
-  await expect(page.locator('#about')).toContainText(String(projects.length).padStart(2, '0'))
-  await expect(page.locator('#about')).toContainText(String(certifications.length).padStart(2, '0'))
-
   // hero marginalia
   await expect(page.locator('#top')).toContainText(`${experiences.length} client platforms`)
 
@@ -142,7 +137,7 @@ test('reduced motion renders everything without stranding content', async ({ bro
   const page = await browser.newPage({ reducedMotion: 'reduce' })
   await load(page)
 
-  await expect(page.locator('main section')).toHaveCount(7)
+  await expect(page.locator('main section')).toHaveCount(6)
   // the preloader must be skipped entirely
   await expect(page.locator('main')).toBeVisible()
 

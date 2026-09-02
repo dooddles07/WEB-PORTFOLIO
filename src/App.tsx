@@ -5,7 +5,6 @@ import { CustomCursor } from './components/CustomCursor'
 import { ScrollProgress } from './components/ScrollProgress'
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
-import { About } from './components/About'
 import { ExperienceSection } from './components/ExperienceSection'
 import { ProjectsSection } from './components/ProjectsSection'
 import { CertificationsSection } from './components/CertificationsSection'
@@ -48,7 +47,6 @@ export default function App() {
         {ready && (
           <>
             <Hero />
-            <About />
             <ExperienceSection />
             <ProjectsSection />
             <CertificationsSection />

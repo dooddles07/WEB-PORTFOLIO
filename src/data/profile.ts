@@ -6,7 +6,7 @@ export const profile = {
   roleShort: 'Claude Code Developer & Automation Developer',
   specialties: ['CRM', 'SaaS', 'Dashboards', 'Landing Pages', 'Automations'],
   tagline:
-    'I build web and mobile apps fast. AI agents write the code, and software engineering fundamentals like system architecture, data modelling and security are what catch the things they get wrong.',
+    'I build systems fast. AI agents write the code, and engineering fundamentals like architecture, data modelling and security catch what they get wrong. Mostly CRMs, SaaS products, dashboards, landing pages and automations.',
   aboutHeadline:
     'AI writes the code with me. Engineering decides what ships.',
   summary:

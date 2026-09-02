@@ -7,7 +7,7 @@ export function EducationSection() {
 
   return (
     <section id="education" className="scroll-mt-16 border-t border-line px-6 py-24 sm:px-10 lg:px-14 lg:py-32">
-      <SectionHeader index="05" label="Education" />
+      <SectionHeader index="04" label="Education" />
 
       <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:gap-10">
         <Reveal delay={0.1} className="lg:col-span-5">

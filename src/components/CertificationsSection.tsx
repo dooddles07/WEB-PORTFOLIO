@@ -11,7 +11,7 @@ export function CertificationsSection() {
 
   return (
     <section id="certifications" className="relative scroll-mt-16 overflow-hidden border-t border-line px-6 py-24 sm:px-10 lg:px-14 lg:py-32">
-      <SectionHeader index="04" label="Certifications" />
+      <SectionHeader index="03" label="Certifications" />
 
       <div className="mt-10 flex flex-wrap items-end justify-between gap-5">
         <h2 className="display" style={{ fontSize: 'var(--text-step-4)' }}>

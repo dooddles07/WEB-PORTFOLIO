@@ -94,21 +94,32 @@ export function Hero() {
             <p className="prose-body mt-5 text-muted">{profile.tagline}</p>
           </div>
 
-          {/* marginalia: the facts a recruiter scans for, without a stat-card row */}
-          <dl className="hidden lg:col-span-4 lg:col-start-9 lg:block">
-            <div className="flex justify-between gap-4 border-t border-line py-3">
-              <dt className="mono-label text-faint">Based in</dt>
-              <dd className="mono-label text-muted">{profile.locationShort}</dd>
+          <div className="flex flex-col gap-7 lg:col-span-5 lg:col-start-8 lg:items-end">
+            <div className="w-full max-w-[200px] overflow-hidden rounded-xl border border-line-strong lg:max-w-[240px]">
+              <img
+                src="/assets/me/profile.webp"
+                alt="Portrait of Brixsonn Romero"
+                className="w-full object-cover"
+                draggable={false}
+              />
             </div>
-            <div className="flex justify-between gap-4 border-t border-line py-3">
-              <dt className="mono-label text-faint">Degree</dt>
-              <dd className="mono-label text-muted">BS Computer Science</dd>
-            </div>
-            <div className="flex justify-between gap-4 border-y border-line py-3">
-              <dt className="mono-label text-faint">Shipped</dt>
-              <dd className="mono-label text-muted">{experiences.length} client platforms</dd>
-            </div>
-          </dl>
+
+            {/* marginalia: the facts a recruiter scans for, without a stat-card row */}
+            <dl className="w-full">
+              <div className="flex justify-between gap-4 border-t border-line py-3">
+                <dt className="mono-label text-faint">Based in</dt>
+                <dd className="mono-label text-muted">{profile.locationShort}</dd>
+              </div>
+              <div className="flex justify-between gap-4 border-t border-line py-3">
+                <dt className="mono-label text-faint">Degree</dt>
+                <dd className="mono-label text-muted">BS Computer Science</dd>
+              </div>
+              <div className="flex justify-between gap-4 border-y border-line py-3">
+                <dt className="mono-label text-faint">Shipped</dt>
+                <dd className="mono-label text-muted">{experiences.length} client platforms</dd>
+              </div>
+            </dl>
+          </div>
         </motion.div>
 
         <motion.div
