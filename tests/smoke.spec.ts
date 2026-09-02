@@ -73,40 +73,50 @@ test('social card metadata is deployable', async ({ page }) => {
   expect(description!.length, 'meta description is too long for a search snippet').toBeLessThanOrEqual(165)
 })
 
-test('every project renders a rail with loaded screenshots', async ({ page }) => {
+test('projects collapse to one row each, and a row opens a rail with loaded screenshots', async ({ page }) => {
   await load(page)
 
-  for (const project of projects) {
-    const rail = page.getByRole('region', { name: `${project.name} screenshots` })
-    await rail.scrollIntoViewIfNeeded()
-    await expect(rail, `${project.name} rail missing`).toBeVisible()
+  const rows = page.locator('section#projects button')
+  await expect(rows).toHaveCount(projects.length)
 
-    const imgs = rail.locator('img')
-    await expect(imgs.first()).toBeVisible()
+  // opening one row is enough for a smoke test
+  const featured = projects.find((p) => p.featured) ?? projects[0]
+  await rows.filter({ hasText: featured.name }).click()
 
-    // images are gated on viewport entry; none may resolve broken
-    const broken = await imgs.evaluateAll((els) =>
-      els.filter((i) => (i as HTMLImageElement).complete && (i as HTMLImageElement).naturalWidth === 0).length,
-    )
-    expect(broken, `${project.name} has broken images`).toBe(0)
-  }
+  const rail = page.getByRole('region', { name: `${featured.name} screenshots` })
+  await expect(rail, `${featured.name} rail missing`).toBeVisible()
+  await page.waitForTimeout(600)
+
+  const imgs = rail.locator('img')
+  await expect(imgs.first()).toBeVisible()
+  const broken = await imgs.evaluateAll((els) =>
+    els.filter((i) => (i as HTMLImageElement).complete && (i as HTMLImageElement).naturalWidth === 0).length,
+  )
+  expect(broken, `${featured.name} has broken images`).toBe(0)
 })
 
-test('in-progress projects show the right chip and link label', async ({ page }) => {
+test('in-progress projects show the right chip and link label in the modal', async ({ page }) => {
   await load(page)
 
   for (const project of projects.filter((p) => p.status === 'in-progress')) {
-    const heading = page.getByRole('heading', { name: project.name, exact: true })
-    const card = page.locator('section#projects > div > div').filter({ has: heading })
-    await expect(card).toContainText('IN PROGRESS')
-    await expect(card).toContainText('VISIT PREVIEW')
+    await page.locator('section#projects button').filter({ hasText: project.name }).click()
+    const modal = page.getByRole('dialog')
+    await expect(modal).toContainText('IN PROGRESS')
+    await expect(modal).toContainText('VISIT PREVIEW')
+    await page.getByRole('button', { name: 'Close', exact: true }).click()
+    await expect(modal).toBeHidden()
   }
 })
 
-test('lightbox opens from a rail and closes on Escape', async ({ page }) => {
+test('lightbox opens from the project modal and Escape peels back one layer at a time', async ({ page }) => {
   await load(page)
 
   const featured = projects.find((p) => p.featured) ?? projects[0]
+  await page.locator('section#projects button').filter({ hasText: featured.name }).click()
+
+  const modal = page.getByRole('dialog')
+  await expect(modal).toBeVisible()
+
   const rail = page.getByRole('region', { name: `${featured.name} screenshots` })
   await rail.scrollIntoViewIfNeeded()
   await page.waitForTimeout(600)
@@ -117,8 +127,15 @@ test('lightbox opens from a rail and closes on Escape', async ({ page }) => {
   await expect(close).toBeVisible()
   await expect.poll(() => page.evaluate(() => document.body.style.overflow)).toBe('hidden')
 
+  // first Escape closes only the lightbox; the modal stays and keeps the scroll lock
   await page.keyboard.press('Escape')
   await expect(close).toBeHidden()
+  await expect(modal).toBeVisible()
+  await expect.poll(() => page.evaluate(() => document.body.style.overflow)).toBe('hidden')
+
+  // second Escape closes the modal and releases the lock
+  await page.keyboard.press('Escape')
+  await expect(modal).toBeHidden()
   await expect.poll(() => page.evaluate(() => document.body.style.overflow)).not.toBe('hidden')
 })
 
@@ -126,7 +143,7 @@ test('reduced motion renders everything without stranding content', async ({ bro
   const page = await browser.newPage({ reducedMotion: 'reduce' })
   await load(page)
 
-  await expect(page.locator('main section')).toHaveCount(9)
+  await expect(page.locator('main section')).toHaveCount(7)
   // the preloader must be skipped entirely
   await expect(page.locator('main')).toBeVisible()
 

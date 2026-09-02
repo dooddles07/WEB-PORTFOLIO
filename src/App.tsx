@@ -6,8 +6,6 @@ import { ScrollProgress } from './components/ScrollProgress'
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
 import { About } from './components/About'
-import { TechStack } from './components/TechStack'
-import { ProcessSection } from './components/ProcessSection'
 import { ExperienceSection } from './components/ExperienceSection'
 import { ProjectsSection } from './components/ProjectsSection'
 import { CertificationsSection } from './components/CertificationsSection'
@@ -51,8 +49,6 @@ export default function App() {
           <>
             <Hero />
             <About />
-            <TechStack />
-            <ProcessSection />
             <ExperienceSection />
             <ProjectsSection />
             <CertificationsSection />

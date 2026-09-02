@@ -29,7 +29,7 @@ export function Contact() {
       id="contact"
       className="relative scroll-mt-16 overflow-hidden border-t border-line px-6 pb-24 pt-24 sm:px-10 lg:px-14 lg:pt-32"
     >
-      <SectionHeader index="08" label="Contact" />
+      <SectionHeader index="06" label="Contact" />
 
       <div className="mt-12 grid gap-12 lg:mt-16 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-7">

@@ -5,12 +5,11 @@ import { profile } from '../data/profile'
 // labels mirror the section eyebrows exactly so the nav and the page agree
 const links = [
   { label: 'ABOUT', index: '01', href: '#about', id: 'about' },
-  { label: 'HOW I WORK', index: '03', href: '#process', id: 'process' },
-  { label: 'CLIENT WORK', index: '04', href: '#experience', id: 'experience' },
-  { label: 'PROJECTS', index: '05', href: '#projects', id: 'projects' },
-  { label: 'CERTIFICATIONS', index: '06', href: '#certifications', id: 'certifications' },
-  { label: 'EDUCATION', index: '07', href: '#education', id: 'education' },
-  { label: 'CONTACT', index: '08', href: '#contact', id: 'contact' },
+  { label: 'CLIENT WORK', index: '02', href: '#experience', id: 'experience' },
+  { label: 'PROJECTS', index: '03', href: '#projects', id: 'projects' },
+  { label: 'CERTIFICATIONS', index: '04', href: '#certifications', id: 'certifications' },
+  { label: 'EDUCATION', index: '05', href: '#education', id: 'education' },
+  { label: 'CONTACT', index: '06', href: '#contact', id: 'contact' },
 ]
 
 export function Navbar() {

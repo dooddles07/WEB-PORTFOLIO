@@ -5,6 +5,7 @@ import { Reveal } from './shared/Reveal'
 import { ScrollFillText } from './shared/ScrollFillText'
 import { ShowcaseRail } from './shared/ShowcaseRail'
 import { Lightbox } from './shared/Lightbox'
+import { DetailModal } from './shared/DetailModal'
 
 function Badge({ project }: { project: Project }) {
   return (
@@ -70,60 +71,87 @@ function CardLinks({ project }: { project: Project }) {
   )
 }
 
-/** immersive stage: 3D screenshot rail on top, project identity below */
-function ProjectStage({
+/** collapsed list row: name + badge + state; click opens the detail modal */
+function ProjectRow({ project, onOpen }: { project: Project; onOpen: () => void }) {
+  const shots = project.images ?? [project.image]
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      data-cursor="OPEN"
+      className="group flex w-full items-baseline justify-between gap-6 border-b border-line py-6 text-left transition-colors hover:bg-surface-2/50"
+    >
+      <span className="flex min-w-0 items-baseline gap-4">
+        <span className="display text-ink" style={{ fontSize: 'var(--text-step-2)' }}>
+          {project.name}
+        </span>
+        <span className="mono-label hidden text-faint sm:inline">{project.badge}</span>
+      </span>
+      <span className="flex shrink-0 items-center gap-4">
+        {project.status === 'in-progress' ? (
+          <span className="mono-label text-amber-400">IN PROGRESS</span>
+        ) : (
+          project.link && <span className="mono-label text-green-400">LIVE</span>
+        )}
+        <span className="hidden font-mono text-[11px] text-faint sm:inline">
+          {shots.length} screens
+        </span>
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          fill="none"
+          aria-hidden
+          className="text-accent transition-transform duration-300 group-hover:translate-x-1"
+        >
+          <path d="M3 9h11M9 4l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </span>
+    </button>
+  )
+}
+
+/** everything about one project, opened from a row */
+function ProjectModal({
   project,
+  gallery,
   onOpenGallery,
-  galleryOpen,
-  priority,
+  onClose,
 }: {
   project: Project
-  onOpenGallery: (project: Project, index: number) => void
-  galleryOpen: boolean
-  priority: boolean
+  gallery: boolean
+  onOpenGallery: (index: number) => void
+  onClose: () => void
 }) {
   const shots = project.images ?? [project.image]
-
   return (
-    <Reveal y={60}>
-      <div className="relative">
+    <DetailModal onClose={onClose} labelledBy="pm-title" suppressEsc={gallery}>
+      <div className="flex flex-col gap-8 pt-6 sm:pt-2">
+        {project.featured && <span className="mono-label block text-accent">Featured build</span>}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+          <h3 id="pm-title" className="display leading-none text-ink" style={{ fontSize: 'var(--text-step-3)' }}>
+            {project.name}
+          </h3>
+          <Badge project={project} />
+          {project.link && <StatusChip status={project.status ?? 'live'} />}
+        </div>
+
         <ShowcaseRail
           images={shots}
           name={project.name}
-          paused={galleryOpen}
-          priority={priority}
-          onOpen={(index) => onOpenGallery(project, index)}
+          paused={gallery}
+          priority
+          onOpen={onOpenGallery}
         />
 
-        <div className="mx-auto mt-12 max-w-5xl border-t border-line pt-8">
-          {project.featured && (
-            <span className="mono-label mb-4 block text-accent">Featured build</span>
-          )}
-          <div className="flex flex-col gap-8 lg:flex-row lg:justify-between lg:gap-14">
-            <div className="flex max-w-2xl flex-col gap-5">
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-                <h3 className="display leading-none text-ink" style={{ fontSize: 'var(--text-step-3)' }}>
-                  {project.name}
-                </h3>
-                <Badge project={project} />
-                {project.link && <StatusChip status={project.status ?? 'live'} />}
-              </div>
-              <p className="prose-body text-muted">{project.description}</p>
-            </div>
+        <p className="prose-body text-muted">{project.description}</p>
 
-            <div className="flex shrink-0 flex-col gap-4 lg:items-end lg:text-right">
-              <span className="mono-label text-faint">
-                {String(shots.length).padStart(2, '0')} screens · drag to explore
-              </span>
-              <CardLinks project={project} />
-              <span className="max-w-[26ch] font-mono text-[11px] leading-relaxed text-faint">
-                {project.stack}
-              </span>
-            </div>
-          </div>
+        <div className="flex flex-col gap-4 border-t border-line pt-6">
+          <CardLinks project={project} />
+          <span className="font-mono text-[11px] leading-relaxed text-faint">{project.stack}</span>
         </div>
       </div>
-    </Reveal>
+    </DetailModal>
   )
 }
 
@@ -131,11 +159,12 @@ export function ProjectsSection() {
   const featured = projects.find((project) => project.featured)
   const rest = projects.filter((project) => !project.featured)
   const ordered = featured ? [featured, ...rest] : rest
+  const [active, setActive] = useState<Project | null>(null)
   const [gallery, setGallery] = useState<{ project: Project; index: number } | null>(null)
 
   return (
     <section id="projects" className="relative scroll-mt-16 overflow-hidden border-t border-line px-6 py-24 sm:px-10 lg:px-14 lg:py-32">
-      <SectionHeader index="05" label="Personal projects" />
+      <SectionHeader index="03" label="Personal projects" />
 
       <div className="mt-10 grid gap-8 lg:grid-cols-12">
         <h2 className="display lg:col-span-7" style={{ fontSize: 'var(--text-step-4)' }}>
@@ -149,17 +178,23 @@ export function ProjectsSection() {
         </Reveal>
       </div>
 
-      <div className="mt-20 flex flex-col gap-28 lg:gap-36">
-        {ordered.map((project, i) => (
-          <ProjectStage
-            key={project.name}
-            project={project}
-            priority={i === 0}
-            galleryOpen={gallery?.project.name === project.name}
-            onOpenGallery={(p, index) => setGallery({ project: p, index })}
-          />
+      <Reveal y={24} className="mt-16 block border-t border-line">
+        {ordered.map((project) => (
+          <ProjectRow key={project.name} project={project} onOpen={() => setActive(project)} />
         ))}
-      </div>
+      </Reveal>
+
+      {active && (
+        <ProjectModal
+          project={active}
+          gallery={gallery?.project.name === active.name}
+          onOpenGallery={(index) => setGallery({ project: active, index })}
+          onClose={() => {
+            setActive(null)
+            setGallery(null)
+          }}
+        />
+      )}
 
       {gallery && (
         <Lightbox

@@ -5,6 +5,7 @@ import { SectionHeader } from './shared/SectionHeader'
 import { Reveal } from './shared/Reveal'
 import { ScrollFillText } from './shared/ScrollFillText'
 import { Lightbox } from './shared/Lightbox'
+import { DetailModal } from './shared/DetailModal'
 
 /** stand-in for the one client platform with no shareable screenshots */
 function AbstractPanel({ title, subtitle }: { title: string; subtitle: string }) {
@@ -113,56 +114,99 @@ function ShotViewer({ exp, onOpen }: { exp: Experience; onOpen: (index: number) 
   )
 }
 
-function ExperienceRow({ exp, flip, onOpen }: { exp: Experience; flip: boolean; onOpen: (index: number) => void }) {
+/** collapsed list row: index + name + client context; click opens the detail modal */
+function ExperienceListRow({ exp, onOpen }: { exp: Experience; onOpen: () => void }) {
   return (
-    <article className="border-t border-line pt-10">
-      {/* masthead: oversized index in the margin, name set in the display serif */}
-      <Reveal y={24}>
-        <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
+    <button
+      type="button"
+      onClick={onOpen}
+      data-cursor="OPEN"
+      className="group flex w-full items-baseline justify-between gap-6 border-b border-line py-6 text-left transition-colors hover:bg-surface-2/50"
+    >
+      <span className="flex min-w-0 items-baseline gap-4">
+        <span className="display leading-none text-faint" style={{ fontSize: 'var(--text-step-2)' }}>
+          {exp.index}
+        </span>
+        <span className="display leading-none text-ink" style={{ fontSize: 'var(--text-step-2)' }}>
+          {exp.name}
+        </span>
+        <span className="mono-label hidden text-faint sm:inline">{exp.context}</span>
+      </span>
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        aria-hidden
+        className="shrink-0 self-center text-accent transition-transform duration-300 group-hover:translate-x-1"
+      >
+        <path d="M3 9h11M9 4l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </button>
+  )
+}
+
+/** everything about one client platform, opened from a row */
+function ExperienceModal({
+  exp,
+  viewerOpen,
+  onOpenViewer,
+  onClose,
+}: {
+  exp: Experience
+  viewerOpen: boolean
+  onOpenViewer: (index: number) => void
+  onClose: () => void
+}) {
+  return (
+    <DetailModal onClose={onClose} labelledBy="em-title" suppressEsc={viewerOpen}>
+      <div className="flex flex-col gap-7 pt-6 sm:pt-2">
+        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
           <span className="display leading-none text-faint" style={{ fontSize: 'var(--text-step-3)' }}>
             {exp.index}
           </span>
-          <h3 className="display leading-none text-ink" style={{ fontSize: 'var(--text-step-3)' }}>
+          <h3 id="em-title" className="display leading-none text-ink" style={{ fontSize: 'var(--text-step-3)' }}>
             {exp.name}
           </h3>
           <span className="mono-label text-faint">{exp.context}</span>
         </div>
-      </Reveal>
 
-      <div className={`mt-9 flex flex-col gap-9 lg:gap-14 ${flip ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
-        <Reveal className="w-full lg:w-[58%] lg:shrink-0" y={40}>
-          <ShotViewer exp={exp} onOpen={onOpen} />
-        </Reveal>
-
-        <Reveal className="flex flex-col gap-6 lg:flex-1" delay={0.1} y={28}>
-          {exp.fact && (
-            <p className="display-italic leading-snug text-accent" style={{ fontSize: 'var(--text-step-1)' }}>
-              {exp.fact}
-            </p>
-          )}
-          <p className="prose-body text-muted">{exp.description}</p>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-            {exp.roles.map((role) => (
-              <span key={role} className="mono-label text-faint">
-                {role}
-              </span>
-            ))}
+        {exp.abstract ? (
+          <div className="aspect-[8/5] w-full overflow-hidden border border-line">
+            <AbstractPanel {...exp.abstract} />
           </div>
-          <span className="border-t border-line pt-4 font-mono text-[11px] leading-relaxed text-faint">
-            {exp.stack}
-          </span>
-        </Reveal>
+        ) : (
+          <ShotViewer exp={exp} onOpen={onOpenViewer} />
+        )}
+
+        {exp.fact && (
+          <p className="display-italic leading-snug text-accent" style={{ fontSize: 'var(--text-step-1)' }}>
+            {exp.fact}
+          </p>
+        )}
+        <p className="prose-body text-muted">{exp.description}</p>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          {exp.roles.map((role) => (
+            <span key={role} className="mono-label text-faint">
+              {role}
+            </span>
+          ))}
+        </div>
+        <span className="border-t border-line pt-4 font-mono text-[11px] leading-relaxed text-faint">
+          {exp.stack}
+        </span>
       </div>
-    </article>
+    </DetailModal>
   )
 }
 
 export function ExperienceSection() {
+  const [active, setActive] = useState<Experience | null>(null)
   const [viewer, setViewer] = useState<{ exp: Experience; index: number } | null>(null)
 
   return (
     <section id="experience" className="relative scroll-mt-16 border-t border-line px-6 py-24 sm:px-10 lg:px-14 lg:py-32">
-      <SectionHeader index="04" label="Client work" />
+      <SectionHeader index="02" label="Client work" />
 
       <div className="mt-10 grid gap-8 lg:grid-cols-12">
         <h2 className="display lg:col-span-7" style={{ fontSize: 'var(--text-step-4)' }}>
@@ -175,16 +219,23 @@ export function ExperienceSection() {
         </Reveal>
       </div>
 
-      <div className="mt-20 flex flex-col gap-20 lg:gap-28">
-        {experiences.map((exp, i) => (
-          <ExperienceRow
-            key={exp.name}
-            exp={exp}
-            flip={i % 2 === 1}
-            onOpen={(index) => setViewer({ exp, index })}
-          />
+      <Reveal y={24} className="mt-16 block border-t border-line">
+        {experiences.map((exp) => (
+          <ExperienceListRow key={exp.name} exp={exp} onOpen={() => setActive(exp)} />
         ))}
-      </div>
+      </Reveal>
+
+      {active && (
+        <ExperienceModal
+          exp={active}
+          viewerOpen={viewer?.exp.name === active.name}
+          onOpenViewer={(index) => setViewer({ exp: active, index })}
+          onClose={() => {
+            setActive(null)
+            setViewer(null)
+          }}
+        />
+      )}
 
       {viewer && (
         <Lightbox
