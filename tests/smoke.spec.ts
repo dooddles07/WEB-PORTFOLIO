@@ -118,10 +118,9 @@ test('lightbox opens from the project modal and Escape peels back one layer at a
   await expect(modal).toBeVisible()
 
   const rail = page.getByRole('region', { name: `${featured.name} screenshots` })
-  await rail.scrollIntoViewIfNeeded()
-  await page.waitForTimeout(600)
+  await expect(rail).toBeVisible()
 
-  await rail.getByRole('img', { name: `${featured.name} screenshot 1` }).click()
+  await rail.getByRole('button', { name: `Open ${featured.name} screenshots full size` }).click()
 
   const close = page.getByRole('button', { name: 'Close viewer' })
   await expect(close).toBeVisible()

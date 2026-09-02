@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { useState } from 'react'
 import { experiences, type Experience } from '../data/experience'
 import { SectionHeader } from './shared/SectionHeader'
 import { Reveal } from './shared/Reveal'
 import { ScrollFillText } from './shared/ScrollFillText'
 import { Lightbox } from './shared/Lightbox'
 import { DetailModal } from './shared/DetailModal'
+import { ScreenViewer } from './shared/ScreenViewer'
 
 /** stand-in for the one client platform with no shareable screenshots */
 function AbstractPanel({ title, subtitle }: { title: string; subtitle: string }) {
@@ -23,93 +23,6 @@ function AbstractPanel({ title, subtitle }: { title: string; subtitle: string })
         </span>
         <span className="mono-label text-faint">{subtitle}</span>
       </div>
-    </div>
-  )
-}
-
-function ShotViewer({ exp, onOpen }: { exp: Experience; onOpen: (index: number) => void }) {
-  const reduce = useReducedMotion()
-  const [active, setActive] = useState(0)
-  const [paused, setPaused] = useState(false)
-  const many = exp.images.length > 1
-
-  // slow auto cycle so the gallery shows itself; hover pauses it
-  useEffect(() => {
-    if (!many || paused || reduce) return
-    const timer = setInterval(() => setActive((current) => (current + 1) % exp.images.length), 4000)
-    return () => clearInterval(timer)
-  }, [many, paused, reduce, exp.images.length])
-
-  return (
-    <div className="w-full overflow-hidden border border-line bg-surface">
-      <div
-        className="group/shot relative aspect-[8/5] w-full"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        {exp.abstract ? (
-          <AbstractPanel {...exp.abstract} />
-        ) : (
-          <>
-            <button
-              onClick={() => onOpen(active)}
-              data-cursor="VIEW"
-              aria-label={`Open ${exp.name} screenshots full size`}
-              className="absolute inset-0 z-10"
-            />
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={active}
-                src={exp.images[active]}
-                alt={`${exp.name} screenshot ${active + 1}`}
-                className="absolute inset-0 h-full w-full object-contain"
-                initial={{ opacity: 0, scale: 1.02 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.35 }}
-                loading="lazy"
-                draggable={false}
-              />
-            </AnimatePresence>
-            {many && (
-              <>
-                <button
-                  onClick={(e) => { e.stopPropagation(); setActive((active - 1 + exp.images.length) % exp.images.length) }}
-                  aria-label={`Previous ${exp.name} screenshot`}
-                  className="glass absolute left-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-line text-ink opacity-0 transition-opacity duration-200 group-hover/shot:opacity-100"
-                >
-                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden>
-                    <path d="M9 2 4 7l5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button>
-                <button
-                  onClick={(e) => { e.stopPropagation(); setActive((active + 1) % exp.images.length) }}
-                  aria-label={`Next ${exp.name} screenshot`}
-                  className="glass absolute right-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-line text-ink opacity-0 transition-opacity duration-200 group-hover/shot:opacity-100"
-                >
-                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden>
-                    <path d="m5 2 5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button>
-              </>
-            )}
-          </>
-        )}
-      </div>
-      {many && (
-        <div className="flex items-center justify-center gap-2 border-t border-line py-3">
-          {exp.images.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              aria-label={`Show ${exp.name} screenshot ${i + 1}`}
-              className={`h-1 rounded-full transition-all ${
-                i === active ? 'w-6 bg-accent' : 'w-1 bg-faint hover:bg-muted'
-              }`}
-            />
-          ))}
-        </div>
-      )}
     </div>
   )
 }
@@ -172,11 +85,11 @@ function ExperienceModal({
         </div>
 
         {exp.abstract ? (
-          <div className="aspect-[8/5] w-full overflow-hidden border border-line">
+          <div className="aspect-[16/10] w-full overflow-hidden rounded-xl border border-line">
             <AbstractPanel {...exp.abstract} />
           </div>
         ) : (
-          <ShotViewer exp={exp} onOpen={onOpenViewer} />
+          <ScreenViewer images={exp.images} name={exp.name} onOpen={onOpenViewer} />
         )}
 
         {exp.fact && (

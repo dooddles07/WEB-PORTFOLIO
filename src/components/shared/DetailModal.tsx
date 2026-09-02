@@ -38,7 +38,7 @@ export function DetailModal({ onClose, labelledBy, suppressEsc = false, children
         onClick={onClose}
       >
         <motion.div
-          className="glass relative my-auto w-full max-w-3xl rounded-2xl border border-line bg-surface p-6 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.6)] sm:p-10"
+          className="glass relative my-auto w-full max-w-3xl overflow-hidden rounded-2xl border border-line bg-surface p-6 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.6)] sm:p-10"
           initial={{ opacity: 0, y: 24, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 12, scale: 0.98 }}

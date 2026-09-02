@@ -3,7 +3,7 @@ import { projects, type Project } from '../data/projects'
 import { SectionHeader } from './shared/SectionHeader'
 import { Reveal } from './shared/Reveal'
 import { ScrollFillText } from './shared/ScrollFillText'
-import { ShowcaseRail } from './shared/ShowcaseRail'
+import { ScreenViewer } from './shared/ScreenViewer'
 import { Lightbox } from './shared/Lightbox'
 import { DetailModal } from './shared/DetailModal'
 
@@ -136,13 +136,7 @@ function ProjectModal({
           {project.link && <StatusChip status={project.status ?? 'live'} />}
         </div>
 
-        <ShowcaseRail
-          images={shots}
-          name={project.name}
-          paused={gallery}
-          priority
-          onOpen={onOpenGallery}
-        />
+        <ScreenViewer images={shots} name={project.name} onOpen={onOpenGallery} />
 
         <p className="prose-body text-muted">{project.description}</p>
 
