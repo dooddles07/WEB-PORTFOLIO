@@ -4,7 +4,7 @@ AI-Native React & Next.js Developer
 
 Naga City, Camarines Sur, Philippines 4400 | +63 948 571 6293 | brixdodd07@gmail.com
 GitHub: https://github.com/dooddles07
-LinkedIn: https://www.linkedin.com/in/brixsonn-romero-0b18b9327
+LinkedIn: https://www.linkedin.com/in/brixsonn-romero-0b18b9327/
 
 ---
 
