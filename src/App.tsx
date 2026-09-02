@@ -8,7 +8,6 @@ import { Hero } from './components/Hero'
 import { ExperienceSection } from './components/ExperienceSection'
 import { ProjectsSection } from './components/ProjectsSection'
 import { CertificationsSection } from './components/CertificationsSection'
-import { EducationSection } from './components/EducationSection'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 
@@ -50,7 +49,6 @@ export default function App() {
             <ExperienceSection />
             <ProjectsSection />
             <CertificationsSection />
-            <EducationSection />
             <Contact />
             <Footer />
           </>

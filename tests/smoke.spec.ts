@@ -137,7 +137,7 @@ test('reduced motion renders everything without stranding content', async ({ bro
   const page = await browser.newPage({ reducedMotion: 'reduce' })
   await load(page)
 
-  await expect(page.locator('main section')).toHaveCount(6)
+  await expect(page.locator('main section')).toHaveCount(5)
   // the preloader must be skipped entirely
   await expect(page.locator('main')).toBeVisible()
 
