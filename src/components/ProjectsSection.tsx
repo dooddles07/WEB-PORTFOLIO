@@ -6,6 +6,7 @@ import { ScrollFillText } from './shared/ScrollFillText'
 import { ScreenViewer } from './shared/ScreenViewer'
 import { Lightbox } from './shared/Lightbox'
 import { DetailModal } from './shared/DetailModal'
+import { TiltCard } from './shared/TiltCard'
 
 function Badge({ project }: { project: Project }) {
   return (
@@ -71,42 +72,44 @@ function CardLinks({ project }: { project: Project }) {
   )
 }
 
-/** collapsed list row: name + badge + state; click opens the detail modal */
-function ProjectRow({ project, onOpen }: { project: Project; onOpen: () => void }) {
-  const shots = project.images ?? [project.image]
+/** gallery card: one screenshot, name + badge below; click opens the detail modal */
+function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void }) {
+  const state = project.status === 'in-progress' ? 'IN PROGRESS' : project.link ? 'LIVE' : null
   return (
     <button
       type="button"
       onClick={onOpen}
       data-cursor="OPEN"
-      className="group flex w-full items-baseline justify-between gap-6 border-b border-line py-6 text-left transition-colors hover:bg-surface-2/50"
+      className="group block w-full text-left"
     >
-      <span className="flex min-w-0 items-baseline gap-4">
-        <span className="display text-ink" style={{ fontSize: 'var(--text-step-2)' }}>
+      <TiltCard strength={6} className="overflow-hidden border border-line">
+        <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface">
+          <img
+            src={project.image}
+            alt={`${project.name} screenshot`}
+            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+            loading="lazy"
+            draggable={false}
+          />
+          {state && (
+            <span
+              className={`glass absolute left-3 top-3 rounded-full border px-2.5 py-1 font-mono text-[10px] tracking-[0.14em] ${
+                state === 'LIVE'
+                  ? 'border-green-400/40 text-green-400'
+                  : 'border-amber-400/40 text-amber-400'
+              }`}
+            >
+              {state}
+            </span>
+          )}
+        </div>
+      </TiltCard>
+      <div className="mt-4 flex flex-col gap-1.5">
+        <span className="display leading-none text-ink transition-colors group-hover:text-accent" style={{ fontSize: 'var(--text-step-2)' }}>
           {project.name}
         </span>
-        <span className="mono-label hidden text-faint sm:inline">{project.badge}</span>
-      </span>
-      <span className="flex shrink-0 items-center gap-4">
-        {project.status === 'in-progress' ? (
-          <span className="mono-label text-amber-400">IN PROGRESS</span>
-        ) : (
-          project.link && <span className="mono-label text-green-400">LIVE</span>
-        )}
-        <span className="hidden font-mono text-[11px] text-faint sm:inline">
-          {shots.length} screens
-        </span>
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          aria-hidden
-          className="text-accent transition-transform duration-300 group-hover:translate-x-1"
-        >
-          <path d="M3 9h11M9 4l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </span>
+        <span className="mono-label text-faint">{project.badge}</span>
+      </div>
     </button>
   )
 }
@@ -172,11 +175,13 @@ export function ProjectsSection() {
         </Reveal>
       </div>
 
-      <Reveal y={24} className="mt-16 block border-t border-line">
-        {ordered.map((project) => (
-          <ProjectRow key={project.name} project={project} onOpen={() => setActive(project)} />
+      <div className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        {ordered.map((project, i) => (
+          <Reveal key={project.name} delay={(i % 3) * 0.08} y={36}>
+            <ProjectCard project={project} onOpen={() => setActive(project)} />
+          </Reveal>
         ))}
-      </Reveal>
+      </div>
 
       {active && (
         <ProjectModal
