@@ -25,7 +25,7 @@ export const projects: Project[] = [
     name: 'SchoolPulse',
     badge: 'SAAS · MULTI-TENANT',
     description:
-      "A school management platform where one login serves fourteen different roles, from admin and teacher down to finance, library, clinic, security and transport, each seeing only the tools and data their job needs. Every school is its own tenant, and a person can hold a role at more than one school without their data ever crossing over. Grades, attendance, incidents and admissions all write to an audit log, so there's a record of who changed what. Nothing touches the database directly from a page: every write goes through a server action that checks the caller's role first.",
+      'Multi-tenant school platform where one login serves fourteen roles, each seeing only its own tools and data. Every school is isolated, every write goes through a role-checked server action, and grades, attendance and admissions all leave an audit trail.',
     stack: 'Next.js 16, TypeScript, PostgreSQL, Prisma 7, better-auth, Tailwind CSS v4, Vercel Blob',
     image: '/assets/projects/schoolpulse.webp',
     images: [
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     name: 'CortexVault',
     badge: 'AI · RAG',
     description:
-      'A private knowledge base that answers questions about your own documents. Upload your notes and PDFs, ask something, and every answer comes back pointing at the exact paragraph it came from, so you can check it yourself. Nothing is made up. It searches two ways at once, by exact wording and by meaning, so it still finds the right thing when you only half remember how it was phrased. Sign-in has two-factor and locks itself down after failed attempts, and you can pull everything back out as a plain file whenever you want, so the vault never becomes a trap.',
+      'Private knowledge base that answers questions about your own documents, every answer citing the exact source paragraph. Hybrid keyword-and-meaning search, two-factor sign-in, and full export to plain files whenever you want.',
     stack: 'Next.js, TypeScript, FastAPI, PostgreSQL, pgvector, Groq, Vercel, Render',
     image: '/assets/projects/cortexvault.webp?v=3',
     images: [
@@ -65,7 +65,7 @@ export const projects: Project[] = [
     name: 'Marram',
     badge: 'WEDDING · FULL-STACK',
     description:
-      'A wedding planning site split into three connected parts. The public side has real wedding stories to browse, a venue and vendor directory for Britain and Europe, a style quiz to figure out the kind of day a couple actually wants, and a budget calculator to work out the numbers before any deposits go down. Couples who sign in get a private dashboard where they track tasks, split the budget by category, manage the guest list, and watch RSVPs come in as guests respond. When the plan is ready, they can publish their own wedding page at a personal URL where guests read the details and RSVP without needing an account or seeing anything else from the planning side.',
+      'Wedding planning site in three parts: a public side with real wedding stories, a Britain and Europe venue directory, a style quiz and a budget calculator; a private dashboard for tasks, budget, guest list and RSVPs; and a publishable wedding page where guests RSVP without an account.',
     stack: 'Next.js, TypeScript, Neon Postgres, Drizzle ORM, NextAuth, Zustand, Tailwind CSS, Framer Motion, Upstash Redis, Resend, Vercel',
     image: '/assets/projects/marram.webp',
     images: [
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     name: 'North Star',
     badge: 'E-COMMERCE · FITMENT',
     description:
-      'An auto parts shop built around the one question that actually matters: will this fit my car? Tell it what you drive once and it remembers. After that, every listing, filter, search result and cart line gets checked against a real table of makes, models and years, so "fits your 2022 WRX" is something the site can prove instead of a spec sheet you have to decode yourself. Switch the filter on and 27 parts drop to the 11 that fit, with every count updating as it goes. Still in progress: you can browse the whole shop, but checkout takes no card details and sign-in is a demo. The site says so on the page.',
+      'An auto parts shop built around one question: will this fit my car? Set your vehicle once and every listing, filter and search result is checked against a real make, model and year table. Still in progress: browsing works, but checkout and sign-in are demo only.',
     stack: 'Next.js 16, React 19, TypeScript, Tailwind v4, Zustand, Motion, Vercel',
     image: '/assets/projects/northstar.webp',
     status: 'in-progress',
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     name: 'StayFlow',
     badge: 'COMMUNITY APP',
     description:
-      "All in one app for running a modern residential community, with three logins that each see only their own job: residents book shared facilities and restaurant tables, invite guests with a QR pass, RSVP to events, and read notices; staff run the front desk from a live queue of bookings and check-ins; management gets analytics, the resident/staff directory, and full administrative control. Every rule is enforced on the server, not just hidden in the UI, and it's proven: a 151-case test matrix checks every route against every role, and 524 tests cover the parts that actually break systems like this, like two residents racing for the same pool slot. Sessions are revocable, passwords are locked out after repeated failures, and a caller who skips the edge in front of the API doesn't get to spoof its rate limits either.",
+      'All-in-one app for running a residential community, with three logins that each see only their job: residents book facilities and guests, staff run a live front desk, management gets analytics and admin control. Every rule is enforced on the server, covered by 524 tests and a 151-case role matrix.',
     stack: 'React, TanStack Start, Tailwind, Node, Express, Prisma, PostgreSQL',
     image: '/assets/projects/stayflow.webp?v=3',
     images: [
@@ -132,7 +132,7 @@ export const projects: Project[] = [
     name: 'CareFlow CRM',
     badge: 'HEALTHCARE CRM · RBAC',
     description:
-      "A hospital CRM for the relationship work an EMR doesn't cover: who's still owed a follow-up, which lead source is converting, which complaint is about to breach its SLA. Nine staff roles get their access enforced twice, once in the app and again as row-level security inside Postgres itself, so a bug in the UI can't leak a patient outside their department. Contact details render masked by default, and revealing one writes an audit entry in the same database transaction as the reveal, so a value can never go visible without a record of who looked and when. A background queue drains appointment reminders and campaign sends on a schedule, and the whole thing, database included, runs on free-tier infrastructure end to end.",
+      'A hospital CRM for the relationship work an EMR skips: follow-ups owed, lead sources converting, SLAs about to breach. Nine roles are enforced twice, in the app and as row-level security in Postgres, and contact details stay masked until a reveal that is audited in the same transaction. Runs entirely on free-tier infrastructure.',
     stack: 'Next.js 16, TypeScript, Neon Postgres, Drizzle ORM, Better Auth, pg-boss, Resend, Vercel Blob, Groq',
     image: '/assets/projects/careflow.webp',
     images: [
@@ -172,7 +172,7 @@ export const projects: Project[] = [
     name: 'The Lumina',
     badge: 'PROPERTY PLATFORM',
     description:
-      'Live property management platform with three connected portals. Residents book facilities, register guests, track parcels, report defects, and pay deposits through real Stripe checkout. Every action shows up instantly for managers and guards.',
+      'Live property management platform with three connected portals. Residents book facilities, register guests, track parcels, report defects and pay deposits through real Stripe checkout, and every action shows instantly for managers and guards.',
     stack: 'JavaScript, Node, Express, MongoDB, Stripe, Vercel',
     image: '/assets/projects/lumina.webp',
     images: [
@@ -188,7 +188,7 @@ export const projects: Project[] = [
     name: 'CYA Daily Verse',
     badge: 'DEVOTIONAL',
     description:
-      "A devotional app for a youth ministry. It gives members a Bible verse to read every day, along with reading plans, a prayer wall, and community events, so they can build a habit of reading Scripture and stay connected to their church community.",
+      'A devotional app for a youth ministry: a daily Bible verse, reading plans, a prayer wall and community events, to help members build a Scripture habit and stay connected to their church.',
     stack: 'Next.js 16, React 19, TypeScript, Tailwind v4, MongoDB, Resend, Vercel',
     image: '/assets/projects/cya.webp?v=2',
     images: [
@@ -206,7 +206,7 @@ export const projects: Project[] = [
     name: 'SyncMind',
     badge: 'AI MEETING ASSISTANT',
     description:
-      "Turns a meeting recording into everything you'd otherwise spend twenty minutes typing up. Upload the audio and you get back a clean transcript, notes in plain English, a to-do list with names and due dates, a follow-up email ready to send, and calendar reminders for each deadline. All of it comes from what was actually said, and anything the AI had to guess is marked as a guess. The sign-in and the whole thing behind it are real, not a demo shell.",
+      'Turns a meeting recording into a clean transcript, plain-English notes, a to-do list with owners and due dates, a ready-to-send follow-up email, and calendar reminders. Everything comes from what was said, and any guess is marked as one.',
     stack: 'Next.js, Supabase, Groq, Vercel',
     image: '/assets/projects/syncmind.webp',
     images: [
@@ -223,7 +223,7 @@ export const projects: Project[] = [
     name: 'ScholarForge AI',
     badge: 'AI · STUDY TOOL',
     description:
-      'Turns a PDF, slide deck or pile of notes into quizzes, flashcards and practice exams, all on your own device. The reading, storing, searching and working out when to show you a card again happen in your browser. The server only holds the API key and double-checks that every question quotes real text from your document, not just a real page number, before it reaches you. Get one wrong and it shows you the exact passage the right answer came from. Your settings follow you between devices, and you can back your study data up to the cloud whenever you want.',
+      'Turns a PDF, slide deck or notes into quizzes, flashcards and practice exams, all processed on your device. The server only holds the API key and checks that every question quotes real text from your document. Wrong answers show the exact passage they came from, and study data backs up to the cloud on demand.',
     stack: 'React, TypeScript, Vite, Dexie/IndexedDB, Firebase, Vercel, Groq',
     image: '/assets/projects/scholarforge.webp',
     images: [
@@ -245,7 +245,7 @@ export const projects: Project[] = [
     name: 'Liters Cafe',
     badge: 'MARKETING · MENU SITE',
     description:
-      'A real cafe in Naga City that had no website at all. I built one so people stop guessing from Facebook photos: see the menu properly, build your own milk tea (flavor, size, series add-on, sinkers, price updating as you pick), and check the hours and directions before walking over. Ordering is one tap through to Messenger with the order already written out for you. No accounts, no pretend checkout. The menu and prices are copied straight off the board in the shop.',
+      'A website for a Naga City cafe that had none: browse the menu, build your own milk tea with live pricing, and check hours and directions. Ordering is one tap to Messenger with the order pre-written. No accounts, no fake checkout.',
     stack: 'Next.js, TypeScript, Tailwind, Vercel',
     image: '/assets/projects/liters.webp',
     status: 'in-progress',
