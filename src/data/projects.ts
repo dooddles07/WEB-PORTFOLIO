@@ -22,6 +22,21 @@ export interface MiniProject {
 
 export const projects: Project[] = [
   {
+    name: 'Stockpile',
+    badge: 'INVENTORY · RBAC',
+    description:
+      'Built a full inventory management system for tracking stock across multiple warehouses, with purchase orders, transfers, adjustments, cycle counts and role-based access across five permission levels.',
+    stack: 'Next.js 16, React 19, TypeScript, Neon Postgres, Drizzle ORM, Better Auth, Tailwind CSS v4, Vercel',
+    image: '/assets/projects/stockpile.png',
+    images: [
+      '/assets/projects/stockpile.png',
+      '/assets/projects/stockpile2.png',
+      '/assets/projects/stockpile3.png',
+    ],
+    link: 'https://stockpile-peach.vercel.app',
+    repo: 'https://github.com/dooddles07/Inventory-Management-System',
+  },
+  {
     name: 'SchoolPulse',
     badge: 'SAAS · MULTI-TENANT',
     description:
