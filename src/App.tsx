@@ -3,6 +3,7 @@ import Lenis from 'lenis'
 import { Preloader } from './components/Preloader'
 import { CustomCursor } from './components/CustomCursor'
 import { ScrollProgress } from './components/ScrollProgress'
+import { ParallaxBackground } from './components/ParallaxBackground'
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
 import { ExperienceSection } from './components/ExperienceSection'
@@ -39,10 +40,11 @@ export default function App() {
       <Preloader onDone={() => setReady(true)} />
       <CustomCursor />
       <ScrollProgress />
+      <ParallaxBackground />
       <Navbar />
       {/* sections mount only when the veil starts lifting, so entrance
           animations play in front of the visitor instead of behind the loader */}
-      <main id="main" className="relative">
+      <main id="main" className="relative z-10">
         {ready && (
           <>
             <Hero />
