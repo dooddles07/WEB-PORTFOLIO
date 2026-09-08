@@ -5,6 +5,11 @@ import { SectionHeader } from './shared/SectionHeader'
 import { Reveal } from './shared/Reveal'
 import { MagneticButton } from './shared/MagneticButton'
 
+/* the visible label is derived from the href so the two cannot drift apart:
+   they had, and the LinkedIn row was displaying a profile URL that resolved
+   to nobody while the link itself was fine */
+const label = (url: string) => url.replace(/^https:\/\/(www\.)?/, '').replace(/\/$/, '')
+
 export function Contact() {
   const [copied, setCopied] = useState(false)
 
@@ -108,7 +113,7 @@ export function Contact() {
                   data-cursor="OPEN"
                   className="font-mono text-[13px] text-muted underline-offset-4 transition-colors hover:text-ink hover:underline"
                 >
-                  github.com/dooddles07
+                  {label(profile.github)}
                 </a>
               </dd>
             </div>
@@ -122,7 +127,7 @@ export function Contact() {
                   data-cursor="OPEN"
                   className="font-mono text-[13px] break-all text-muted underline-offset-4 transition-colors hover:text-ink hover:underline"
                 >
-                  linkedin.com/in/brixsonn-romero
+                  {label(profile.linkedin)}
                 </a>
               </dd>
             </div>
@@ -136,7 +141,7 @@ export function Contact() {
                   data-cursor="OPEN"
                   className="font-mono text-[13px] break-all text-muted underline-offset-4 transition-colors hover:text-ink hover:underline"
                 >
-                  facebook.com/brix.dodd
+                  {label(profile.facebook)}
                 </a>
               </dd>
             </div>

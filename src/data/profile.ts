@@ -2,8 +2,8 @@ export const profile = {
   name: 'Brixsonn M. Romero',
   firstName: 'Brixsonn',
   lastName: 'Romero',
-  role: 'Claude Code Developer & Automation Developer — CRM, SaaS, Dashboards, Landing Pages, Automations',
-  roleShort: 'Claude Code Developer & Automation Developer',
+  role: 'AI Driven & Automation Developer — CRM, SaaS, Dashboards, Landing Pages, Automations',
+  roleShort: 'AI Driven & Automation Developer',
   specialties: ['CRM', 'SaaS', 'Dashboards', 'Landing Pages', 'Automations'],
   tagline:
     'I design and build responsive websites and reliable systems — SaaS, CRMs, dashboards, landing pages, automations, and more.',
@@ -20,7 +20,7 @@ export const profile = {
   github: 'https://github.com/dooddles07',
   linkedin: 'https://www.linkedin.com/in/brixsonn-romero-0b18b9327/',
   facebook: 'https://www.facebook.com/brix.dodd',
-  resume: '/assets/me/resume.pdf?v=4',
+  resume: '/assets/me/resume.pdf?v=5',
   availability: 'Open for remote work: full time, part time, contracts',
   education: {
     degree: 'B.S. Computer Science, Cum Laude',
