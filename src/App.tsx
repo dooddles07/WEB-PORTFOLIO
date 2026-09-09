@@ -5,7 +5,6 @@ import { Preloader } from './components/Preloader'
 import { CustomCursor } from './components/CustomCursor'
 import { ScrollProgress } from './components/ScrollProgress'
 import { ParallaxBackground } from './components/ParallaxBackground'
-import { ScrollExpandMedia } from './components/shared/ScrollExpandMedia'
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
 import { ExperienceSection } from './components/ExperienceSection'
@@ -51,13 +50,6 @@ export default function App() {
       <main id="main" className="relative z-10">
         {ready && (
           <>
-            <ScrollExpandMedia
-              mediaSrc="/assets/bg/intro.webp"
-              alt="Amethyst formation deep in a basalt cavern"
-              title="Built to ship"
-              eyebrow="BRIXSONN M. ROMERO"
-              hint="SCROLL TO ENTER"
-            />
             <Hero />
             <ExperienceSection />
             <ProjectsSection />
