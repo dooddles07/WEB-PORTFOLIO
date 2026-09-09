@@ -77,6 +77,21 @@ export const projects: Project[] = [
     repo: 'https://github.com/dooddles07/Cortex-Vault',
   },
   {
+    name: 'XS Chatbot',
+    badge: 'AI · LLM CHATBOT',
+    description:
+      'Built a chatbot landing page where every message hits a real backend and LLM instead of a scripted array, with an automatic Groq-to-Gemini failover and per-IP rate limiting, all on free tiers.',
+    stack: 'Node, Express, Vercel serverless, Groq, Google Gemini, Upstash Redis, vanilla JS',
+    image: '/assets/projects/xschatbot.webp',
+    images: [
+      '/assets/projects/xschatbot.webp',
+      '/assets/projects/xschatbot2.webp',
+      '/assets/projects/xschatbot3.webp',
+    ],
+    link: 'https://xs-chatbot.vercel.app',
+    repo: 'https://github.com/dooddles07/XS-Chatbot',
+  },
+  {
     name: 'Marram',
     badge: 'WEDDING · FULL-STACK',
     description:
